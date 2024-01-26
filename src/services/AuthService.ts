@@ -4,14 +4,45 @@ import { IAdminData } from '../store/types/IAdminData'
 import { IBaristaData } from '../store/types/IBaristaData'
 import { ILoginData } from '../types/ILoginData'
 import { ILoginResponseData } from '../types/ILoginResponseData'
+import { IRegistrationData } from '../types/IRegistrationData'
 
 export const AuthService = {
-	// async registration(
-	// 	userData: IUserData
-	// ): Promise<IResponseUserData | undefined> {
-	// 	const { data } = await instance.post<IResponseUserData>('profile', userData)
-	// 	return data
-	// },
+	async registration(
+		registrationData: IRegistrationData
+	): Promise<string | undefined> {
+		const { data } = await axios.post<string>(
+			'http://localhost:3000/api/auth/registration',
+			registrationData
+		)
+		return data
+	},
+	async confirmEmail(token: string): Promise<string> {
+		const { data } = await axios.get<string>(
+			`http://localhost:3000/api/auth/confirming/${token}`
+		)
+		return data
+	},
+	async restorePasswordRequest(email: string): Promise<string> {
+		const { data } = await axios.post<string>(
+			'http://localhost:3000/api/auth/password/restore',
+			{
+				email,
+			}
+		)
+		return data
+	},
+	async updatePasswordForAdmin(
+		token: string,
+		password: string
+	): Promise<string> {
+		const { data } = await axios.post<string>(
+			`http://localhost:3000/api/auth/password/update/${token}`,
+			{
+				password,
+			}
+		)
+		return data
+	},
 	async login(loginData: ILoginData): Promise<ILoginResponseData | undefined> {
 		const { data } = await axios.post<ILoginResponseData>(
 			'http://localhost:3000/api/auth/login',
