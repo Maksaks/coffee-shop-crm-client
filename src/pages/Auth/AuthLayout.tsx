@@ -1,6 +1,7 @@
 import { Coffee } from 'lucide-react'
 import { FC } from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import AuthRoutesProtector from './AuthRoutesProtector'
 
 const AuthLayout: FC = () => {
 	return (
@@ -13,7 +14,9 @@ const AuthLayout: FC = () => {
 			</div>
 			<div className='h-[95%] flex items-center'>
 				<div className='bg-zinc-600 w-[500px] h-auto py-28 rounded-[50px] flex flex-col items-center justify-start'>
-					<Outlet />
+					<AuthRoutesProtector>
+						<Outlet />
+					</AuthRoutesProtector>
 				</div>
 			</div>
 		</div>

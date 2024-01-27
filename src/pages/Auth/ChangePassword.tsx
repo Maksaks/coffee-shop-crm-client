@@ -54,7 +54,7 @@ const ChangePassword: FC = () => {
 								placeholder='Confirm password...'
 							/>
 						</div>
-						<Button title='Change' type='submit' className='mt-20 uppercase' />
+						<Button title='Change' type='submit' className='mt-10 uppercase' />
 					</form>
 				</>
 			) : (

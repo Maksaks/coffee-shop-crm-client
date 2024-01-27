@@ -8,6 +8,8 @@ import ConfirmingEmail from '../pages/Auth/ConfirmingEmail'
 import Login from '../pages/Auth/Login'
 import Registration from '../pages/Auth/Registration'
 import RestorePassword from '../pages/Auth/RestorePassword'
+import SelectPoint from '../pages/Auth/SelectPoint'
+import { pointsLoader } from '../pages/Auth/loaders/pointsLoader'
 import Barista from '../pages/Baritsta/Barista'
 import ErrorPage from '../pages/Error/ErrorPage'
 
@@ -36,6 +38,11 @@ export const router = createBrowserRouter([
 			{
 				path: 'restore',
 				element: <RestorePassword />,
+			},
+			{
+				path: 'select',
+				element: <SelectPoint />,
+				loader: pointsLoader,
 			},
 		],
 	},

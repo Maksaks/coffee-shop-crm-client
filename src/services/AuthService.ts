@@ -4,7 +4,9 @@ import { IAdminData } from '../store/types/IAdminData'
 import { IBaristaData } from '../store/types/IBaristaData'
 import { ILoginData } from '../types/ILoginData'
 import { ILoginResponseData } from '../types/ILoginResponseData'
+import { IPointAllData } from '../types/IPointAllData'
 import { IRegistrationData } from '../types/IRegistrationData'
+import { IShiftData } from '../types/IShiftData'
 
 export const AuthService = {
 	async registration(
@@ -71,5 +73,27 @@ export const AuthService = {
 			}
 		)
 		if (data) return data
+	},
+	async startBaristaShiftOnPoint(pointID: number) {
+		const { data } = await axios.get<IShiftData>(
+			`http://localhost:3000/api/barista/shift/start/${pointID}`,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+		return data
+	},
+	async getBaristaPoint(pointID: number) {
+		const { data } = await axios.get<IPointAllData>(
+			`http://localhost:3000/api/barista/points/${pointID}`,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+		return data
 	},
 }

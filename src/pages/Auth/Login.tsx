@@ -28,7 +28,6 @@ const Login: FC = () => {
 		try {
 			e.preventDefault()
 			const data = await AuthService.login({ email, password })
-			console.log(data?.token)
 			if (data) {
 				setTokenToLocalStorage(data.token)
 				if (data.role === 'barista') {
@@ -38,7 +37,7 @@ const Login: FC = () => {
 						toast.success(
 							`Hello, ${profile.name}. You are successfully login as ${profile.role}!`
 						)
-						navigate('/barista')
+						navigate('/auth/select')
 					}
 				} else if (data.role === 'admin') {
 					const profile = await AuthService.getProfileAdmin()
