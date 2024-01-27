@@ -85,6 +85,17 @@ export const AuthService = {
 		)
 		return data
 	},
+	async endBaristaShiftOnPoint(pointID: number) {
+		const { data } = await axios.get<IShiftData>(
+			`http://localhost:3000/api/barista/shift/end/${pointID}`,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+		return data
+	},
 	async getBaristaPoint(pointID: number) {
 		const { data } = await axios.get<IPointAllData>(
 			`http://localhost:3000/api/barista/points/${pointID}`,

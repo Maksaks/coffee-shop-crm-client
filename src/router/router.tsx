@@ -10,7 +10,12 @@ import Registration from '../pages/Auth/Registration'
 import RestorePassword from '../pages/Auth/RestorePassword'
 import SelectPoint from '../pages/Auth/SelectPoint'
 import { pointsLoader } from '../pages/Auth/loaders/pointsLoader'
+import AboutMe from '../pages/Baritsta/AboutMe'
 import Barista from '../pages/Baritsta/Barista'
+import CreateOrder from '../pages/Baritsta/CreateOrder'
+import CurrentPointInfo from '../pages/Baritsta/CurrentPointInfo'
+import IngredientsInfo from '../pages/Baritsta/IngredientsInfo'
+import OrdersInfo from '../pages/Baritsta/OrdersInfo'
 import ErrorPage from '../pages/Error/ErrorPage'
 
 export const router = createBrowserRouter([
@@ -54,6 +59,26 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <Barista />,
+			},
+			{
+				path: 'me',
+				element: <AboutMe />,
+			},
+			{
+				path: 'ingredients',
+				element: <IngredientsInfo />,
+			},
+			{
+				path: 'createOrder',
+				element: <CreateOrder />,
+			},
+			{
+				path: 'orders',
+				element: <OrdersInfo />,
+			},
+			{
+				path: 'point',
+				element: <CurrentPointInfo />,
 			},
 		],
 	},
