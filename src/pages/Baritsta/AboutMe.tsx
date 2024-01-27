@@ -6,6 +6,7 @@ import { IAboutMeDataLoader } from './loaders/aboutMeLoader'
 
 const AboutMe: FC = () => {
 	const { aboutMe } = useLoaderData() as IAboutMeDataLoader
+	console.log(aboutMe)
 	return (
 		<div className='w-[80%] min-h-[80%] mx-auto my-auto flex flex-row gap-3'>
 			<div className='bg-zinc-700 w-[30%] h-full rounded-3xl flex flex-col items-center'>
@@ -14,8 +15,6 @@ const AboutMe: FC = () => {
 					Statistics for last month:
 				</h2>
 				<div className='grid grid-cols-2 mb-4 gap-x-20 text-white text-lg w-full px-10 pb-12 gap-y-4'>
-					<p className='font-bold uppercase'>Count of orders:</p>
-					<p className='text-xl'>{aboutMe.orders.length}</p>
 					<p className='font-bold uppercase'>Count of shifts:</p>
 					<p className='text-xl'>{aboutMe.shifts.length}</p>
 					<p className='font-bold uppercase'>Total shifts salary:</p>

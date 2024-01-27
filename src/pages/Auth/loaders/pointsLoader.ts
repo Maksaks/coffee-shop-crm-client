@@ -15,7 +15,6 @@ export const pointsLoader = async () => {
 			},
 		}
 	)
-
 	return {
 		points: points.data,
 	}

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLoaderData, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -16,6 +16,13 @@ const SelectPoint: FC = () => {
 	const { points } = useLoaderData() as IPointsLoaderResponse
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (!points.length) {
+			removeTokenFromLocalStorage()
+			dispatch(logoutBarista())
+		}
+	}, [points])
 
 	const onChangeSelectionHandler = (
 		e: React.ChangeEvent<HTMLSelectElement>
@@ -103,7 +110,7 @@ const SelectPoint: FC = () => {
 					linkData={{ title: 'to work', to: '/barista' }}
 				/>
 			)}
-			{!message.length ? (
+			{!message.length && points.length ? (
 				<Button
 					title='Back to login'
 					className='mt-2 uppercase w-2/3'

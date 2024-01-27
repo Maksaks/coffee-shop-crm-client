@@ -15,7 +15,7 @@ import { loginBarista } from '../../store/slice/barista.slice'
 const Login: FC = () => {
 	const whoAuth = useCheckWhoAuth()
 	const barista = useAppSelector(state => state.barista)
-	const isPointSet =
+	const isNotPointSet =
 		!barista.IsAuth && barista.barista?.id && !barista.point?.id
 	const navigate = useNavigate()
 	const [email, setEmail] = useState<string>('')
@@ -25,11 +25,11 @@ const Login: FC = () => {
 	useEffect(() => {
 		if (whoAuth) {
 			navigate(`/${whoAuth}`)
-		}
-		if (isPointSet) {
+		} else if (isNotPointSet) {
+			console.log(barista.IsAuth)
 			navigate('/auth/select')
 		}
-	}, [whoAuth, navigate, isPointSet])
+	}, [whoAuth])
 
 	const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {

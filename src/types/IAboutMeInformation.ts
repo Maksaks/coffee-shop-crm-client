@@ -1,4 +1,3 @@
-import { IOrderData } from './IOrderData'
 import { IPointData } from './IPointData'
 import { IShiftData } from './IShiftData'
 
@@ -14,5 +13,4 @@ export interface IAboutMeInformation {
 	points: IPointData[]
 	totalShiftsSalary: number
 	shifts: IShiftData[]
-	orders: IOrderData[]
 }
