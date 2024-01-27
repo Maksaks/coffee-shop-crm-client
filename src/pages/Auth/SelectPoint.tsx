@@ -1,12 +1,13 @@
 import { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import MessageBox from '../../components/MessageBox/MessageBox'
 import { dateFormater } from '../../helper/date-formater.helper'
+import { removeTokenFromLocalStorage } from '../../helper/localstorage.helper'
 import { AuthService } from '../../services/AuthService'
-import { setPointData } from '../../store/slice/barista.slice'
+import { logoutBarista, setPointData } from '../../store/slice/barista.slice'
 import { IPointsLoaderResponse } from './loaders/pointsLoader'
 
 const SelectPoint: FC = () => {
@@ -14,11 +15,13 @@ const SelectPoint: FC = () => {
 	const [message, setMessage] = useState<string>('')
 	const { points } = useLoaderData() as IPointsLoaderResponse
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const onChangeSelectionHandler = (
 		e: React.ChangeEvent<HTMLSelectElement>
 	) => {
-		setSelectedPointID(+e.target.value)
+		if (e.target.value === 'DEFAULT') setSelectedPointID(-1)
+		else setSelectedPointID(+e.target.value)
 	}
 
 	const selectPointHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -99,6 +102,19 @@ const SelectPoint: FC = () => {
 					message={message}
 					linkData={{ title: 'to work', to: '/barista' }}
 				/>
+			)}
+			{!message.length ? (
+				<Button
+					title='Back to login'
+					className='mt-2 uppercase w-2/3'
+					onClick={() => {
+						removeTokenFromLocalStorage()
+						dispatch(logoutBarista())
+						navigate('/auth/login')
+					}}
+				/>
+			) : (
+				''
 			)}
 		</>
 	)

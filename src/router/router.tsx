@@ -16,6 +16,7 @@ import CreateOrder from '../pages/Baritsta/CreateOrder'
 import CurrentPointInfo from '../pages/Baritsta/CurrentPointInfo'
 import IngredientsInfo from '../pages/Baritsta/IngredientsInfo'
 import OrdersInfo from '../pages/Baritsta/OrdersInfo'
+import { aboutMeLoader } from '../pages/Baritsta/loaders/aboutMeLoader'
 import ErrorPage from '../pages/Error/ErrorPage'
 
 export const router = createBrowserRouter([
@@ -63,6 +64,7 @@ export const router = createBrowserRouter([
 			{
 				path: 'me',
 				element: <AboutMe />,
+				loader: aboutMeLoader,
 			},
 			{
 				path: 'ingredients',

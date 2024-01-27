@@ -8,11 +8,15 @@ import Input from '../../components/Input/Input'
 import { setTokenToLocalStorage } from '../../helper/localstorage.helper'
 import { useCheckWhoAuth } from '../../hooks/useCheckWhoAuth.hook'
 import { AuthService } from '../../services/AuthService'
+import { useAppSelector } from '../../store/hooks'
 import { loginAdmin } from '../../store/slice/admin.slice'
 import { loginBarista } from '../../store/slice/barista.slice'
 
 const Login: FC = () => {
 	const whoAuth = useCheckWhoAuth()
+	const barista = useAppSelector(state => state.barista)
+	const isPointSet =
+		!barista.IsAuth && barista.barista?.id && !barista.point?.id
 	const navigate = useNavigate()
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
@@ -22,7 +26,10 @@ const Login: FC = () => {
 		if (whoAuth) {
 			navigate(`/${whoAuth}`)
 		}
-	}, [whoAuth, navigate])
+		if (isPointSet) {
+			navigate('/auth/select')
+		}
+	}, [whoAuth, navigate, isPointSet])
 
 	const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {

@@ -5,5 +5,5 @@ export const dateFormater = (dateIn: string): string => {
 		month: 'long',
 		day: 'numeric',
 	}
-	return date.toLocaleDateString('us-US', options)
+	return date.toLocaleDateString('en-US', options)
 }

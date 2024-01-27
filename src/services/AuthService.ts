@@ -74,6 +74,28 @@ export const AuthService = {
 		)
 		if (data) return data
 	},
+	async getRole(): Promise<string | undefined> {
+		const { data } = await axios.get<IAdminData>(
+			'http://localhost:3000/api/auth/profile',
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+		if (data.role) return data.role
+	},
+	async getLastShiftPoint(): Promise<string> {
+		const { data } = await axios.get<string>(
+			'http://localhost:3000/api/barista/lastpoint',
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+		return data
+	},
 	async startBaristaShiftOnPoint(pointID: number) {
 		const { data } = await axios.get<IShiftData>(
 			`http://localhost:3000/api/barista/shift/start/${pointID}`,

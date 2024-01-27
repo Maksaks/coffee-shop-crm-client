@@ -6,7 +6,7 @@ import RolesRoutesProtector from '../../components/RolesRoutesProtector/RolesRou
 const AdminLayout: FC = () => {
 	return (
 		<RolesRoutesProtector>
-			<div>
+			<div className='bg-zinc-600 min-h-screen h-screen flex flex-col'>
 				<AdminHeader />
 				<Outlet />
 			</div>
