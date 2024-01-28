@@ -1,15 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-	body {
-		@apply text-sm;
-	}
-	td {
-		@apply capitalize text-white/70;
-	}
-	thead td {
-		@apply text-white;
-	}
-}
