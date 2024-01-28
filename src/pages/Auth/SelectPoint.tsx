@@ -38,10 +38,9 @@ const SelectPoint: FC = () => {
 				return
 			}
 			const data = await AuthService.startBaristaShiftOnPoint(selectedPointID)
-			console.log(data)
 			if (data) {
 				setMessage(`${data.status}. Time: ${dateFormater(data.time)}`)
-				const pointData = await AuthService.getBaristaPoint(selectedPointID)
+				const pointData = points?.find(item => item.id == selectedPointID)
 				if (pointData) {
 					dispatch(setPointData(pointData))
 				}

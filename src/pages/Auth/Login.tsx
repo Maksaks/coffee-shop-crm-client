@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
+import { dateFormater } from '../../helper/date-formater.helper'
 import { setTokenToLocalStorage } from '../../helper/localstorage.helper'
 import { AuthService } from '../../services/AuthService'
 import { loginAdmin } from '../../store/slice/admin.slice'
@@ -32,6 +33,22 @@ const Login: FC = () => {
 
 						if (profile.lastPoint) {
 							dispatch(setPointData(profile.lastPoint))
+							navigate('/barista')
+						} else if (profile.points?.length == 1) {
+							const data = await AuthService.startBaristaShiftOnPoint(
+								profile.points[0].id
+							)
+							if (data) {
+								toast.success(
+									`${data.status}. Time: ${dateFormater(data.time)}`
+								)
+								const pointData = await AuthService.getBaristaPoint(
+									profile.points[0].id
+								)
+								if (pointData) {
+									dispatch(setPointData(pointData))
+								}
+							}
 							navigate('/barista')
 						} else {
 							navigate('/auth/select')
