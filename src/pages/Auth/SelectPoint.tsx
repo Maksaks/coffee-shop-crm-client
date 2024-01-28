@@ -1,25 +1,24 @@
 import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useLoaderData, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import MessageBox from '../../components/MessageBox/MessageBox'
 import { dateFormater } from '../../helper/date-formater.helper'
 import { removeTokenFromLocalStorage } from '../../helper/localstorage.helper'
 import { AuthService } from '../../services/AuthService'
+import { useAppSelector } from '../../store/hooks'
 import { logoutBarista, setPointData } from '../../store/slice/barista.slice'
-import { IPointsLoaderResponse } from './loaders/pointsLoader'
 
 const SelectPoint: FC = () => {
 	const [selectedPointID, setSelectedPointID] = useState<number>(-1)
 	const [message, setMessage] = useState<string>('')
-	const { points } = useLoaderData() as IPointsLoaderResponse
+	const points = useAppSelector(state => state.barista.barista?.points)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!points.length) {
-			removeTokenFromLocalStorage()
+		if (!points?.length) {
 			dispatch(logoutBarista())
 		}
 	}, [points])
@@ -58,7 +57,7 @@ const SelectPoint: FC = () => {
 		<>
 			{!message.length ? (
 				<>
-					{points.length ? (
+					{points?.length ? (
 						<>
 							<h2 className='text-white text-[40px] font-bold leading-[50px] mb-[50px] border-b-4 text-center uppercase'>
 								SELECT POINT
@@ -105,12 +104,9 @@ const SelectPoint: FC = () => {
 					)}
 				</>
 			) : (
-				<MessageBox
-					message={message}
-					linkData={{ title: 'to work', to: '/barista' }}
-				/>
+				<MessageBox message={message} linkData={{ title: '', to: '' }} />
 			)}
-			{!message.length && points.length ? (
+			{!message.length && points?.length ? (
 				<Button
 					title='Back to login'
 					className='mt-2 uppercase w-2/3'

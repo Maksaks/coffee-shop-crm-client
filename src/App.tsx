@@ -7,6 +7,8 @@ import { AuthService } from './services/AuthService'
 import { useAppDispatch } from './store/hooks'
 import { loginAdmin } from './store/slice/admin.slice'
 import { loginBarista, setPointData } from './store/slice/barista.slice'
+import { IAdminData } from './store/types/IAdminData'
+import { IBaristaData } from './store/types/IBaristaData'
 
 function App() {
 	const dispatch = useAppDispatch()
@@ -15,24 +17,24 @@ function App() {
 		const token = getTokenFromLocalStorage()
 		try {
 			if (token) {
-				const data = await AuthService.getRole()
-				if (data == 'barista') {
-					const barista = await AuthService.getProfileBarista()
+				const data = await AuthService.getProfileBarista()
+				console.log(data)
+				if (data?.role == 'barista') {
+					const barista = data as IBaristaData
 					if (barista) {
 						dispatch(loginBarista(barista))
-						const pointID = await AuthService.getLastShiftPoint()
-						if (pointID != '-1') {
-							const point = await AuthService.getBaristaPoint(+pointID)
-							dispatch(setPointData(point))
+						if (barista.lastPoint) {
+							dispatch(setPointData(barista.lastPoint))
 						}
 					}
-				} else if (data == 'admin') {
-					const admin = await AuthService.getProfileAdmin()
+				} else if (data?.role == 'admin') {
+					const admin = data as IAdminData
 					if (admin) {
 						dispatch(loginAdmin(admin))
 					}
 				}
 			}
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (err: any) {
 			const error = err.response?.data.message
 			toast.error(error ? error.toString() : 'Uncaught error')

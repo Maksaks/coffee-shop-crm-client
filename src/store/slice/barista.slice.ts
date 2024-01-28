@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { IPointAllData } from '../../types/IPointAllData'
+import { IPointData } from '../../types/IPointData'
 import { IBaristaData } from '../types/IBaristaData'
 
 interface BaristaState {
 	barista: IBaristaData | null
-	point: IPointAllData | null
+	point: IPointData | null
 	IsAuth: boolean
 }
 
@@ -26,7 +26,7 @@ export const baristaSlice = createSlice({
 			state.IsAuth = false
 			state.point = null
 		},
-		setPointData: (state, action: PayloadAction<IPointAllData>) => {
+		setPointData: (state, action: PayloadAction<IPointData>) => {
 			state.point = action.payload
 			state.IsAuth = true
 		},

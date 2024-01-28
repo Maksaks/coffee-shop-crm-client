@@ -9,7 +9,6 @@ import Login from '../pages/Auth/Login'
 import Registration from '../pages/Auth/Registration'
 import RestorePassword from '../pages/Auth/RestorePassword'
 import SelectPoint from '../pages/Auth/SelectPoint'
-import { pointsLoader } from '../pages/Auth/loaders/pointsLoader'
 import AboutMe from '../pages/Baritsta/AboutMe'
 import Barista from '../pages/Baritsta/Barista'
 import CreateOrder from '../pages/Baritsta/CreateOrder'
@@ -48,7 +47,6 @@ export const router = createBrowserRouter([
 			{
 				path: 'select',
 				element: <SelectPoint />,
-				loader: pointsLoader,
 			},
 		],
 	},

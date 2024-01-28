@@ -1,35 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 import { setTokenToLocalStorage } from '../../helper/localstorage.helper'
-import { useCheckWhoAuth } from '../../hooks/useCheckWhoAuth.hook'
 import { AuthService } from '../../services/AuthService'
-import { useAppSelector } from '../../store/hooks'
 import { loginAdmin } from '../../store/slice/admin.slice'
-import { loginBarista } from '../../store/slice/barista.slice'
+import { loginBarista, setPointData } from '../../store/slice/barista.slice'
 
 const Login: FC = () => {
-	const whoAuth = useCheckWhoAuth()
-	const barista = useAppSelector(state => state.barista)
-	const isNotPointSet =
-		!barista.IsAuth && barista.barista?.id && !barista.point?.id
 	const navigate = useNavigate()
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
 	const dispatch = useDispatch()
-
-	useEffect(() => {
-		if (whoAuth) {
-			navigate(`/${whoAuth}`)
-		} else if (isNotPointSet) {
-			console.log(barista.IsAuth)
-			navigate('/auth/select')
-		}
-	}, [whoAuth])
 
 	const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {
@@ -44,7 +29,13 @@ const Login: FC = () => {
 						toast.success(
 							`Hello, ${profile.name}. You are successfully login as ${profile.role}!`
 						)
-						navigate('/auth/select')
+
+						if (profile.lastPoint) {
+							dispatch(setPointData(profile.lastPoint))
+							navigate('/barista')
+						} else {
+							navigate('/auth/select')
+						}
 					}
 				} else if (data.role === 'admin') {
 					const profile = await AuthService.getProfileAdmin()

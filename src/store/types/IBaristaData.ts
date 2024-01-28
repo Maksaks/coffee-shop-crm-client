@@ -1,3 +1,5 @@
+import { IPointData } from '../../types/IPointData'
+
 export interface IBaristaData {
 	id: number
 	name: string
@@ -5,4 +7,6 @@ export interface IBaristaData {
 	email: string
 	role: string
 	adminID: number
+	lastPoint: IPointData
+	points?: IPointData[]
 }
