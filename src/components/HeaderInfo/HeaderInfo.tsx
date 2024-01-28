@@ -15,12 +15,13 @@ import Button from '../Button/Button'
 
 const HeaderInfo: FC = () => {
 	const whoAuth = useCheckWhoAuth()
-	const state = useAppSelector(state => state)
+	const barista = useAppSelector(state => state.barista)
+	const admin = useAppSelector(state => state.admin)
 	let entity: IBaristaData | IAdminData | null = null
 	if (whoAuth === 'admin') {
-		entity = state.admin.admin
+		entity = admin.admin
 	} else if (whoAuth === 'barista') {
-		entity = state.barista.barista
+		entity = barista.barista
 	}
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -32,9 +33,9 @@ const HeaderInfo: FC = () => {
 			navigate('/auth/login')
 		} else if (whoAuth === 'barista') {
 			try {
-				if (state.barista.point) {
+				if (barista.point) {
 					const data = await AuthService.endBaristaShiftOnPoint(
-						state.barista?.point?.id
+						barista?.point?.id
 					)
 					toast.success(
 						`Logout successfully!Your salary for this shift:${data.baristaSalary}. Time: ${dateFormater(data.time)}`
@@ -61,7 +62,7 @@ const HeaderInfo: FC = () => {
 						</p>
 						<p className='text-white/50'>Point:</p>
 						<p className='col-span-2'>
-							{state.barista.point ? state.barista.point.name : 'No point'}
+							{barista.point ? barista.point.name : 'No point'}
 						</p>
 					</>
 				) : (
@@ -77,7 +78,7 @@ const HeaderInfo: FC = () => {
 				className='h-[70%] w-[20%] p-1'
 				icon={<CircleUserRound size={40} />}
 				onClick={() => {
-					navigate(`/${whoAuth}/me`)
+					navigate(`/${whoAuth}`)
 				}}
 			/>
 			<Button

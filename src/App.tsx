@@ -18,7 +18,6 @@ function App() {
 		try {
 			if (token) {
 				const data = await AuthService.getProfileBarista()
-				console.log(data)
 				if (data?.role == 'barista') {
 					const barista = data as IBaristaData
 					if (barista) {

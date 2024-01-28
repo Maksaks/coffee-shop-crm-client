@@ -1,8 +1,11 @@
 import { User } from 'lucide-react'
 import { FC, useState } from 'react'
-import { Form, useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import { dateFormater } from '../../helper/date-formater.helper'
+import { BaristaService } from '../../services/BaristaServices'
+import { IBaristaUpdateData } from '../../types/IBaristaUpdateData'
 import { IAboutMeDataLoader } from './loaders/aboutMeLoader'
 
 const AboutMe: FC = () => {
@@ -11,6 +14,30 @@ const AboutMe: FC = () => {
 	const [surname, setSurname] = useState(aboutMe.surname)
 	const [email, setEmail] = useState(aboutMe.email)
 	const [phoneNumber, setPhoneNumber] = useState(aboutMe.phoneNumber)
+
+	const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+		try {
+			e.preventDefault()
+			let dataToUpdate: IBaristaUpdateData = {}
+			if (name !== aboutMe.name) {
+				dataToUpdate = { ...dataToUpdate, name }
+			}
+			if (surname !== aboutMe.surname) {
+				dataToUpdate = { ...dataToUpdate, surname }
+			}
+			if (email !== aboutMe.email) {
+				dataToUpdate = { ...dataToUpdate, email }
+			}
+			if (phoneNumber !== aboutMe.phoneNumber) {
+				dataToUpdate = { ...dataToUpdate, phoneNumber }
+			}
+			await BaristaService.updateBarista(dataToUpdate)
+			toast.success('Data was successfully updated')
+		} catch (err: any) {
+			const error = err.response?.data.message
+			toast.error(error.toString())
+		}
+	}
 
 	return (
 		<div className='w-[80%] p-10 mx-auto my-auto flex flex-row gap-10 font-roboto text-white'>
@@ -41,7 +68,10 @@ const AboutMe: FC = () => {
 				<h1 className='w-full text-center text-white uppercase text-4xl font-bold p-5 border-b-4'>
 					Profile info
 				</h1>
-				<Form className='grid grid-cols-3 px-20 py-10 gap-y-10'>
+				<form
+					className='grid grid-cols-3 px-20 py-10 gap-y-10'
+					onSubmit={submitHandler}
+				>
 					<label className='text-2xl font-bold p-3'>Name:</label>
 					<input
 						required
@@ -83,7 +113,7 @@ const AboutMe: FC = () => {
 						title='Update'
 						type='submit'
 					/>
-				</Form>
+				</form>
 				<div className='w-full flex flex-row'>
 					<div className='w-[50%] flex flex-col items-center'>
 						<h2 className='w-full text-center border-t-4 text-3xl uppercase font-bold p-5'>

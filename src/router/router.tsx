@@ -10,12 +10,12 @@ import Registration from '../pages/Auth/Registration'
 import RestorePassword from '../pages/Auth/RestorePassword'
 import SelectPoint from '../pages/Auth/SelectPoint'
 import AboutMe from '../pages/Baritsta/AboutMe'
-import Barista from '../pages/Baritsta/Barista'
 import CreateOrder from '../pages/Baritsta/CreateOrder'
 import CurrentPointInfo from '../pages/Baritsta/CurrentPointInfo'
 import IngredientsInfo from '../pages/Baritsta/IngredientsInfo'
 import OrdersInfo from '../pages/Baritsta/OrdersInfo'
 import { aboutMeLoader } from '../pages/Baritsta/loaders/aboutMeLoader'
+import { ingredientsLoader } from '../pages/Baritsta/loaders/ingredientsLoader'
 import ErrorPage from '../pages/Error/ErrorPage'
 
 export const router = createBrowserRouter([
@@ -57,16 +57,13 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Barista />,
-			},
-			{
-				path: 'me',
 				element: <AboutMe />,
 				loader: aboutMeLoader,
 			},
 			{
 				path: 'ingredients',
 				element: <IngredientsInfo />,
+				loader: ingredientsLoader,
 			},
 			{
 				path: 'createOrder',

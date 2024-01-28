@@ -15,7 +15,6 @@ export const aboutMeLoader = async () => {
 			},
 		}
 	)
-	console.log(meInfo)
 
 	return {
 		aboutMe: meInfo.data,

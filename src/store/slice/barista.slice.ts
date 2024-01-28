@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { IPointData } from '../../types/IPointData'
 import { IBaristaData } from '../types/IBaristaData'
 
-interface BaristaState {
+export interface BaristaState {
 	barista: IBaristaData | null
 	point: IPointData | null
 	IsAuth: boolean

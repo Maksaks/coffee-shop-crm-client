@@ -21,7 +21,6 @@ const Registration: FC = () => {
 				email,
 				password,
 			})
-			console.log(data)
 			if (data) {
 				setMessage(data)
 			}
