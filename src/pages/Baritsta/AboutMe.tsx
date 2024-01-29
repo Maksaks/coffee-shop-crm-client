@@ -47,7 +47,7 @@ const AboutMe: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 w-[30%] h-full rounded-3xl flex flex-col items-center'
+				className='bg-zinc-700 w-[30%] rounded-3xl flex flex-col items-center h-[1100px]'
 			>
 				<User className='w-[100%] h-[40%]' color='white' />
 				<h2 className=' text-3xl font-bold pt-5 pb-12 border-t-4 w-full text-center'>
@@ -76,13 +76,13 @@ const AboutMe: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 w-[70%] h-full rounded-3xl pb-10'
+				className='bg-zinc-700 w-[70%] h-[1100px] rounded-3xl pb-10'
 			>
 				<h1 className='w-full text-center text-white uppercase text-4xl font-bold p-5 border-b-4'>
 					Profile info
 				</h1>
 				<form
-					className='grid grid-cols-3 px-20 py-10 gap-y-10'
+					className='grid grid-cols-3 px-20 py-10 gap-y-10  h-[50%]'
 					onSubmit={submitHandler}
 				>
 					<label className='text-2xl font-bold p-3'>Name:</label>
@@ -127,64 +127,68 @@ const AboutMe: FC = () => {
 						type='submit'
 					/>
 				</form>
-				<div className='w-full flex flex-row'>
+				<div className='w-full flex flex-row h-[45%]'>
 					<div className='w-[50%] flex flex-col items-center'>
 						<h2 className='w-full text-center border-t-4 text-3xl uppercase font-bold p-5'>
 							Your working points
 						</h2>
-						<table className='table-auto w-[90%] text-center border-collapse'>
-							<thead>
-								<tr className='text-xl bg-zinc-800'>
-									<th className='w-[10%] p-2 border border-white'>ID</th>
-									<th className='w-[45%] p-2 border border-white'>NAME</th>
-									<th className='w-[45%] p-2 border border-white'>ADDRESS</th>
-								</tr>
-							</thead>
-							<tbody>
-								{aboutMe.points.map((item, indx) => {
-									return (
-										<tr key={indx} className='bg-zinc-600'>
-											<td className='p-2 border border-white'>{indx + 1}</td>
-											<td className='border border-white'>{item.name}</td>
-											<td className='border border-white'>{item.address}</td>
-										</tr>
-									)
-								})}
-							</tbody>
-						</table>
+						<div className='w-[90%] overflow-auto h-[80%]'>
+							<table className='table-auto w-full text-center border-collapse'>
+								<thead>
+									<tr className='sticky top-0 text-xl bg-zinc-800'>
+										<th className='w-[10%] p-2 border border-white'>ID</th>
+										<th className='w-[45%] p-2 border border-white'>NAME</th>
+										<th className='w-[45%] p-2 border border-white'>ADDRESS</th>
+									</tr>
+								</thead>
+								<tbody>
+									{aboutMe.points.map((item, indx) => {
+										return (
+											<tr key={indx} className='bg-zinc-600'>
+												<td className='p-2 border border-white'>{indx + 1}</td>
+												<td className='border border-white'>{item.name}</td>
+												<td className='border border-white'>{item.address}</td>
+											</tr>
+										)
+									})}
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div className='w-[50%] flex flex-col items-center'>
 						<h2 className='w-full text-center border-t-4 text-3xl uppercase font-bold p-5'>
 							Your shifts
 						</h2>
-						<table className='table-auto w-[90%] text-center border-collapse'>
-							<thead>
-								<tr className='text-xl bg-zinc-800'>
-									<th className='w-[10%] p-2 border border-white'>ID</th>
-									<th className='w-[30%] p-2 border border-white'>DATA</th>
-									<th className='w-[30%] p-2 border border-white'>SALARY</th>
-									<th className='w-[30%] p-2 border border-white'>POINT</th>
-								</tr>
-							</thead>
-							<tbody>
-								{aboutMe.shifts.map((item, indx) => {
-									return (
-										<tr key={indx} className='bg-zinc-600'>
-											<td className='p-2 border border-white'>{indx + 1}</td>
-											<td className='border border-white'>
-												{dateFormater(item.time)}
-											</td>
-											<td className='border border-white'>
-												{item.baristaSalary} UAH
-											</td>
-											<td className='border border-white'>
-												{item.point?.name}
-											</td>
-										</tr>
-									)
-								})}
-							</tbody>
-						</table>
+						<div className='w-[90%] overflow-auto h-[80%]'>
+							<table className='table-auto w-full text-center border-collapse'>
+								<thead>
+									<tr className='sticky top-0 text-xl bg-zinc-800'>
+										<th className='w-[10%] p-2 border border-white'>ID</th>
+										<th className='w-[30%] p-2 border border-white'>DATA</th>
+										<th className='w-[30%] p-2 border border-white'>SALARY</th>
+										<th className='w-[30%] p-2 border border-white'>POINT</th>
+									</tr>
+								</thead>
+								<tbody>
+									{aboutMe.shifts.map((item, indx) => {
+										return (
+											<tr key={indx} className='bg-zinc-600'>
+												<td className='p-2 border border-white'>{indx + 1}</td>
+												<td className='border border-white'>
+													{dateFormater(item.time)}
+												</td>
+												<td className='border border-white'>
+													{item.baristaSalary} UAH
+												</td>
+												<td className='border border-white'>
+													{item.point?.name}
+												</td>
+											</tr>
+										)
+									})}
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</motion.div>
