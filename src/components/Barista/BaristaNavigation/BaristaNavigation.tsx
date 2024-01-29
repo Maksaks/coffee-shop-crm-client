@@ -9,8 +9,8 @@ const BaristaNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2'
+							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'ingredients'}
 			>
@@ -21,8 +21,8 @@ const BaristaNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2'
+							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'createOrder'}
 			>
@@ -33,8 +33,8 @@ const BaristaNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2'
+							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'orders'}
 			>
@@ -45,12 +45,24 @@ const BaristaNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2'
+							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'point'}
 			>
 				Point Info
+			</NavLink>
+			<NavLink
+				className={({ isActive, isPending }) =>
+					isPending
+						? 'pending'
+						: isActive
+							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60 underline underline-offset-8 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60 hover:border-x-2 transition-transform transform hover:scale-110 hover:shadow-lg'
+				}
+				to={'recipes'}
+			>
+				Recipes
 			</NavLink>
 		</nav>
 	)

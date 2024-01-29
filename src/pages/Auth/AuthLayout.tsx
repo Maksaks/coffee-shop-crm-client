@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Coffee } from 'lucide-react'
 import { FC } from 'react'
 import { Link, Outlet } from 'react-router-dom'
@@ -13,11 +14,17 @@ const AuthLayout: FC = () => {
 				<h1 className='text-3xl font-bold text-white'>COFFEE CRM</h1>
 			</div>
 			<div className='h-[95%] flex items-center'>
-				<div className='bg-zinc-600 w-[500px] h-auto py-28 rounded-[50px] flex  flex-col items-center justify-start shadow-[0_15px_15px_10px_rgba(161,161,170,0.2)]'>
+				<motion.div
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -20 }}
+					transition={{ duration: 0.7 }}
+					className='bg-zinc-600 w-[500px] h-auto py-28 rounded-[50px] flex  flex-col items-center justify-start shadow-[0_15px_15px_10px_rgba(161,161,170,0.2)]'
+				>
 					<AuthRoutesProtector>
 						<Outlet />
 					</AuthRoutesProtector>
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	)

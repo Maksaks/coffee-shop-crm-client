@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -37,7 +38,13 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 		}
 	}
 	return (
-		<div className='fixed w-full h-full bg-black/50 flex justify-center items-center'>
+		<motion.div
+			initial={{ opacity: 0, y: -20 }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0, y: -20 }}
+			transition={{ duration: 0.7 }}
+			className='fixed w-full h-full bg-black/50 flex justify-center items-center'
+		>
 			<form
 				className='w-[20%] h-[300px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
 				onSubmit={submitHandler}
@@ -74,7 +81,7 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 					</button>
 				</div>
 			</form>
-		</div>
+		</motion.div>
 	)
 }
 

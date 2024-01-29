@@ -57,7 +57,7 @@ const HeaderInfo: FC = () => {
 				{whoAuth === 'barista' ? (
 					<>
 						<p className='text-white/50'>Barista:</p>
-						<p className='col-span-2'>
+						<p className='col-span-2 font-bold'>
 							{entity?.surname} {entity?.name}
 						</p>
 						<p className='text-white/50'>Point:</p>

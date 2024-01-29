@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { User } from 'lucide-react'
 import { FC, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
@@ -41,7 +42,13 @@ const AboutMe: FC = () => {
 
 	return (
 		<div className='w-[80%] p-10 mx-auto my-auto flex flex-row gap-10 font-roboto text-white'>
-			<div className='bg-zinc-700 w-[30%] h-full rounded-3xl flex flex-col items-center'>
+			<motion.div
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				exit={{ opacity: 0, y: -20 }}
+				transition={{ duration: 0.7 }}
+				className='bg-zinc-700 w-[30%] h-full rounded-3xl flex flex-col items-center'
+			>
 				<User className='w-[100%] h-[40%]' color='white' />
 				<h2 className=' text-3xl font-bold pt-5 pb-12 border-t-4 w-full text-center'>
 					Statistics for last month:
@@ -63,8 +70,14 @@ const AboutMe: FC = () => {
 					<p className='font-bold uppercase'>Date of employment:</p>
 					<p className='text-xl'>{dateFormater(aboutMe.dateOfEmployment)}</p>
 				</div>
-			</div>
-			<div className='bg-zinc-700 w-[70%] h-full rounded-3xl pb-10'>
+			</motion.div>
+			<motion.div
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				exit={{ opacity: 0, y: -20 }}
+				transition={{ duration: 0.7 }}
+				className='bg-zinc-700 w-[70%] h-full rounded-3xl pb-10'
+			>
 				<h1 className='w-full text-center text-white uppercase text-4xl font-bold p-5 border-b-4'>
 					Profile info
 				</h1>
@@ -174,7 +187,7 @@ const AboutMe: FC = () => {
 						</table>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	)
 }

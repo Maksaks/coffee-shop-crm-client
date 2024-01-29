@@ -14,8 +14,10 @@ import CreateOrder from '../pages/Baritsta/CreateOrder'
 import CurrentPointInfo from '../pages/Baritsta/CurrentPointInfo'
 import IngredientsInfo from '../pages/Baritsta/IngredientsInfo'
 import OrdersInfo from '../pages/Baritsta/OrdersInfo'
+import Recipes from '../pages/Baritsta/Recipes'
 import { aboutMeLoader } from '../pages/Baritsta/loaders/aboutMeLoader'
 import { ingredientsLoader } from '../pages/Baritsta/loaders/ingredientsLoader'
+import { menuLoader } from '../pages/Baritsta/loaders/menuLoader'
 import ErrorPage from '../pages/Error/ErrorPage'
 
 export const router = createBrowserRouter([
@@ -76,6 +78,11 @@ export const router = createBrowserRouter([
 			{
 				path: 'point',
 				element: <CurrentPointInfo />,
+			},
+			{
+				path: 'recipes',
+				element: <Recipes />,
+				loader: menuLoader,
 			},
 		],
 	},
