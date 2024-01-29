@@ -106,20 +106,20 @@ const Recipes: FC = () => {
 					<div className='grid grid-cols-4 p-10 border-b-4 h-[40%]'>
 						<ChefHat className='w-[80%] h-[80%]' />
 						<div className='col-span-3 grid grid-cols-5 w-full gap-y-5  text-xl'>
-							<label>Category:</label>
-							<label className='col-span-4'>
+							<label className='flex items-center h-[55px]'>Category:</label>
+							<label className='col-span-4 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
 								{selectedPosition
 									? selectedPosition.category.title
 									: 'NOT FOUND'}
 							</label>
-							<label>Price:</label>
-							<label className='col-span-4'>
+							<label className='flex items-center h-[55px]'>Price:</label>
+							<label className='col-span-4 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
 								{selectedPosition
 									? `${selectedPosition.price} UAH`
 									: 'NOT FOUND'}
 							</label>
-							<label>Description:</label>
-							<label className='col-span-4 max-h-[70%] overflow-auto'>
+							<label className='flex items-center h-[55px]'>Description:</label>
+							<label className='col-span-4 max-h-[50%] min-h-[55px]  overflow-auto bg-gradient-to-r from-zinc-500 to-zinc-400 px-3 py-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
 								{selectedPosition ? selectedPosition.description : 'NOT FOUND'}
 							</label>
 						</div>

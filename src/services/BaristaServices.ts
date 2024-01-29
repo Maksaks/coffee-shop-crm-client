@@ -2,6 +2,7 @@ import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helper/localstorage.helper'
 import { IBaristaUpdateData } from '../types/IBaristaUpdateData'
 import { IIngredientQuantityUpdate } from '../types/IIngredientQuantityUpdate'
+import { ITakeMoneyAmount } from '../types/ITakeMoneyAmount'
 
 export const BaristaService = {
 	async updateBarista(updateBaristaData: IBaristaUpdateData) {
@@ -23,6 +24,17 @@ export const BaristaService = {
 		await axios.post<IIngredientQuantityUpdate>(
 			`http://localhost:3000/api/barista/ingredients/${ingredientID}/onPoint/${pointID}`,
 			quantity,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+	},
+	async takeMoneyFromPointBalance(amount: ITakeMoneyAmount, pointID: number) {
+		await axios.post<ITakeMoneyAmount>(
+			`http://localhost:3000/api/barista/points/${pointID}/takeMoney`,
+			amount,
 			{
 				headers: {
 					Authorization: 'Bearer ' + getTokenFromLocalStorage(),

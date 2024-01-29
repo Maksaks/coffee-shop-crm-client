@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from 'framer-motion'
 import { User } from 'lucide-react'
 import { FC, useState } from 'react'
@@ -59,7 +60,7 @@ const AboutMe: FC = () => {
 					<p className='font-bold uppercase'>Total shifts salary:</p>
 					<p className='text-xl'>{aboutMe.totalShiftsSalary} UAH</p>
 				</div>
-				<h2 className=' font-roboto text-3xl font-bold p-5 border-t-4 w-full text-center pt-5 pb-12'>
+				<h2 className='font-roboto text-3xl font-bold p-5 border-t-4 w-full text-center pt-5 pb-12'>
 					Working conditions:
 				</h2>
 				<div className='grid grid-cols-2 mb-4 gap-x-20 text-lg w-full px-10 gap-y-4'>
