@@ -1,3 +1,4 @@
+import { IDiscountData } from './IDiscountData'
 import { IIngredientData } from './IIngredientData'
 
 export interface IMenuPositionWithRecipeData {
@@ -14,4 +15,5 @@ export interface IMenuPositionWithRecipeData {
 		id: number
 		title: string
 	}
+	discount?: IDiscountData
 }

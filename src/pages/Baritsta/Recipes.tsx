@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChefHat } from 'lucide-react'
+import { ChefHat, Footprints, Puzzle } from 'lucide-react'
 import { FC, useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { IMenuPositionWithRecipeData } from '../../types/IMenuPositionWithRecipe'
@@ -103,7 +103,7 @@ const Recipes: FC = () => {
 					)}
 				</h2>
 				<div className='w-full h-full flex flex-col gap-2'>
-					<div className='grid grid-cols-4 p-10 border-b-4 h-[40%]'>
+					<div className='grid grid-cols-4 p-10 border-b-4 h-[45%]'>
 						<ChefHat className='w-[80%] h-[80%]' />
 						<div className='col-span-3 grid grid-cols-5 w-full gap-y-5  text-xl'>
 							<label className='flex items-center h-[55px]'>Category:</label>
@@ -118,13 +118,24 @@ const Recipes: FC = () => {
 									? `${selectedPosition.price} UAH`
 									: 'NOT FOUND'}
 							</label>
+							{selectedPosition && selectedPosition.discount && (
+								<>
+									{' '}
+									<label className='flex items-center h-[55px]'>
+										Discount:
+									</label>
+									<label className='col-span-4 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
+										{selectedPosition.discount?.amount} %
+									</label>
+								</>
+							)}
 							<label className='flex items-center h-[55px]'>Description:</label>
 							<label className='col-span-4 max-h-[50%] min-h-[55px]  overflow-auto bg-gradient-to-r from-zinc-500 to-zinc-400 px-3 py-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
 								{selectedPosition ? selectedPosition.description : 'NOT FOUND'}
 							</label>
 						</div>
 					</div>
-					<div className='flex h-[60%]'>
+					<div className='flex h-[55%]'>
 						<div className='flex flex-col w-[50%] p-3 gap-5'>
 							<h2 className='w-full h-[5%] uppercase text-2xl font-bold text-center'>
 								Steps to reproduce
@@ -136,8 +147,9 @@ const Recipes: FC = () => {
 												return (
 													<label
 														key={indx}
-														className='p-3 border-[1px] rounded-xl'
+														className='p-3 border-[1px] rounded-xl flex gap-3'
 													>
+														<Footprints />
 														{step}
 													</label>
 												)
@@ -157,8 +169,9 @@ const Recipes: FC = () => {
 												return (
 													<label
 														key={indx}
-														className='p-3 border-[1px] rounded-xl'
+														className='p-3 border-[1px] rounded-xl flex gap-3'
 													>
+														<Puzzle />
 														{ingredient.name}
 													</label>
 												)
