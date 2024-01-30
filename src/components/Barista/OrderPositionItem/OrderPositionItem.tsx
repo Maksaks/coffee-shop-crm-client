@@ -1,18 +1,19 @@
 import { Trash2 } from 'lucide-react'
 import { FC } from 'react'
-import { SelectedPosition } from '../../../pages/Baritsta/CreateOrder'
+import { useDispatch } from 'react-redux'
+import {
+	removeFromOrder,
+	updateOrderPosition,
+} from '../../../store/slice/order.slice'
+import { ISelectedPosition } from '../../../types/ISelectedPosition'
 
 interface Props {
-	orderPosition: SelectedPosition
-	removePosition: (position: SelectedPosition) => void
-	updatePosition: (position: SelectedPosition) => void
+	orderPosition: ISelectedPosition
 }
 
-const OrderPositionItem: FC<Props> = ({
-	orderPosition,
-	removePosition,
-	updatePosition,
-}) => {
+const OrderPositionItem: FC<Props> = ({ orderPosition }) => {
+	const dispatch = useDispatch()
+
 	return (
 		<div className='w-[90%] h-32 bg-zinc-500 rounded-2xl py-3 text-xl'>
 			<div className='flex flex-row h-[50%] border-b-2 pb-2 items-center px-5'>
@@ -21,7 +22,7 @@ const OrderPositionItem: FC<Props> = ({
 				</label>
 				<button
 					className='h-full w-auto'
-					onClick={() => removePosition(orderPosition)}
+					onClick={() => dispatch(removeFromOrder(orderPosition))}
 				>
 					<Trash2 className='h-full w-auto hover:bg-zinc-600 p-1 rounded-xl' />
 				</button>
@@ -47,8 +48,12 @@ const OrderPositionItem: FC<Props> = ({
 						className='text-5xl hover:bg-zinc-400 py-2 px-3 h-[70%] flex justify-center items-center rounded-xl'
 						onClick={() => {
 							if (orderPosition.amount >= 100) return
-							orderPosition.amount += 1
-							updatePosition(orderPosition)
+							dispatch(
+								updateOrderPosition({
+									position: orderPosition.position,
+									amount: orderPosition.amount + 1,
+								})
+							)
 						}}
 					>
 						+
@@ -66,8 +71,12 @@ const OrderPositionItem: FC<Props> = ({
 						className='text-5xl hover:bg-zinc-400 py-2 px-4 h-[70%] flex justify-center items-center rounded-xl'
 						onClick={() => {
 							if (orderPosition.amount <= 1) return
-							orderPosition.amount -= 1
-							updatePosition(orderPosition)
+							dispatch(
+								updateOrderPosition({
+									position: orderPosition.position,
+									amount: orderPosition.amount - 1,
+								})
+							)
 						}}
 					>
 						-

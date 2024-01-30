@@ -1,10 +1,11 @@
 import { ChefHat, Coffee, CupSoda, GlassWater, Sandwich } from 'lucide-react'
 import { FC } from 'react'
+import { useDispatch } from 'react-redux'
+import { addToOrder } from '../../../store/slice/order.slice'
 import { IMenuPositionWithRecipeData } from '../../../types/IMenuPositionWithRecipe'
 
 interface Props {
 	menuPosition: IMenuPositionWithRecipeData
-	addPositionToOrder: (position: IMenuPositionWithRecipeData) => void
 }
 
 const CategoryIconSelector = (category: string) => {
@@ -31,11 +32,12 @@ const CategoryIconSelector = (category: string) => {
 	}
 }
 
-const MenuPositionItem: FC<Props> = ({ menuPosition, addPositionToOrder }) => {
+const MenuPositionItem: FC<Props> = ({ menuPosition }) => {
+	const dispatch = useDispatch()
 	return (
 		<button
 			className='w-full h-[200px] border-2 rounded-xl bg-zinc-600 flex flex-col items-center justify-center hover:bg-zinc-500 relative'
-			onClick={() => addPositionToOrder(menuPosition)}
+			onClick={() => dispatch(addToOrder(menuPosition))}
 		>
 			{menuPosition.discount && (
 				<span className='absolute top-1 right-1 border-2 rounded-full p-1 bg-zinc-200 text-black'>

@@ -1,25 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { motion } from 'framer-motion'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import MenuPositionItem from '../../components/Barista/MenuPositionItem/MenuPositionItem'
 import OrderPositionList from '../../components/Barista/OrderPositionList/OrderPositionList'
 import { IMenuPositionWithRecipeData } from '../../types/IMenuPositionWithRecipe'
 import { IMenuPositionWithRecipeDataLoader } from './loaders/menuLoader'
 
-export interface SelectedPosition {
-	position: IMenuPositionWithRecipeData
-	amount: number
-}
-
 const CreateOrder: FC = () => {
 	const { menuPositions } = useLoaderData() as IMenuPositionWithRecipeDataLoader
-	const [selectedPositions, setSelectedPositions] = useState<
-		SelectedPosition[]
-	>([])
+	const [searchedPosition, setSearchedPositions] =
+		useState<IMenuPositionWithRecipeData[]>()
 
-	const addPositionToOrderHandler = (position: IMenuPositionWithRecipeData) => {
-		if (selectedPositions.find(item => item.position.id == position.id)) return
-		setSelectedPositions(prev => [...prev, { position, amount: 1 }])
+	useEffect(() => {
+		setSearchedPositions(menuPositions)
+	}, [])
+
+	const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (!e.target.value.length) {
+			setSearchedPositions(menuPositions)
+			return
+		}
+		setSearchedPositions(
+			menuPositions?.filter(item =>
+				item.name.toLowerCase().includes(e.target.value.toLowerCase())
+			)
+		)
 	}
 
 	return (
@@ -30,30 +36,32 @@ const CreateOrder: FC = () => {
 			transition={{ duration: 0.7 }}
 			className='w-[80%] h-[1100px] mt-20 mx-auto text-white font-roboto flex flex-row gap-20'
 		>
-			<div className='w-[60%] bg-zinc-700 rounded-3xl'>
+			<div className='w-[60%] bg-zinc-700 rounded-3xl flex items-center flex-col'>
 				<h2 className='h-[5%] p-4 uppercase w-full text-center text-2xl font-bold border-b-4'>
 					menu positions
 				</h2>
-				<div className='w-[95%] mx-auto max-h-[90%] grid grid-cols-4 gap-5 p-5 overflow-auto'>
-					{menuPositions.map(item => {
-						return (
-							<MenuPositionItem
-								addPositionToOrder={addPositionToOrderHandler}
-								key={item.id}
-								menuPosition={item}
-							/>
-						)
-					})}
+				<input
+					className='w-[90%] py-2 px-5 my-5 rounded-2xl text-black text-xl'
+					placeholder='Search position by name...'
+					onChange={searchHandler}
+				/>
+				<div className='w-[95%] mx-auto max-h-[80%] grid grid-cols-4 gap-5 p-5 overflow-auto'>
+					{searchedPosition?.length ? (
+						searchedPosition.map(item => {
+							return <MenuPositionItem key={item.id} menuPosition={item} />
+						})
+					) : (
+						<h2 className='col-span-4 w-full text-center p-10 text-2xl font-bold'>
+							Any positions were not found
+						</h2>
+					)}
 				</div>
 			</div>
 			<div className='w-[40%] bg-zinc-700 rounded-3xl'>
 				<h2 className='h-[5%] p-4 uppercase w-full text-center text-2xl font-bold border-b-4'>
 					current order info
 				</h2>
-				<OrderPositionList
-					selectedPositions={selectedPositions}
-					setSelectedPositions={setSelectedPositions}
-				/>
+				<OrderPositionList />
 			</div>
 		</motion.div>
 	)
