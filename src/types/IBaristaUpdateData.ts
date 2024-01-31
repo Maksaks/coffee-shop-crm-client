@@ -3,4 +3,7 @@ export interface IBaristaUpdateData {
 	surname?: string
 	email?: string
 	phoneNumber?: string
+	fixedHourRate?: number
+	percentFromEarnings?: number
+	password?: string
 }

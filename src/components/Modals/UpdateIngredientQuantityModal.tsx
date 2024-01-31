@@ -74,6 +74,7 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 						Add
 					</button>
 					<button
+						type='button'
 						onClick={() => setVisibleModal(false)}
 						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black'
 					>
