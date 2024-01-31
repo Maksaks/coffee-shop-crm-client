@@ -2,6 +2,16 @@ import { createBrowserRouter } from 'react-router-dom'
 import AdminLayout from '../layouts/admin/AdminLayout'
 import BaristaLayout from '../layouts/barista/BaristaLayout'
 import Admin from '../pages/Admin/Admin'
+import Baristas from '../pages/Admin/Baristas'
+import Categories from '../pages/Admin/Categories'
+import Discounts from '../pages/Admin/Discounts'
+import Ingredients from '../pages/Admin/Ingredients'
+import MenuPositions from '../pages/Admin/MenuPositions'
+import Orders from '../pages/Admin/Orders'
+import Points from '../pages/Admin/Points'
+import Shifts from '../pages/Admin/Shifts'
+import Statistics from '../pages/Admin/Statistics'
+import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
 import AuthLayout from '../pages/Auth/AuthLayout'
 import ChangePassword from '../pages/Auth/ChangePassword'
 import ConfirmingEmail from '../pages/Auth/ConfirmingEmail'
@@ -100,6 +110,48 @@ export const router = createBrowserRouter([
 				index: true,
 				element: <Admin />,
 			},
+			{
+				path: 'baristas',
+				element: <Baristas />,
+				loader: baristasLoader,
+			},
+			{
+				path: 'categories',
+				element: <Categories />,
+			},
+			{
+				path: 'discounts',
+				element: <Discounts />,
+			},
+			{
+				path: 'ingredients',
+				element: <Ingredients />,
+			},
+			{
+				path: 'positions',
+				element: <MenuPositions />,
+			},
+			{
+				path: 'orders',
+				element: <Orders />,
+			},
+			{
+				path: 'points',
+				element: <Points />,
+			},
+			{
+				path: 'shifts',
+				element: <Shifts />,
+			},
+
+			{
+				path: 'statistics',
+				element: <Statistics />,
+			},
 		],
+	},
+	{
+		index: true,
+		element: <ErrorPage />,
 	},
 ])

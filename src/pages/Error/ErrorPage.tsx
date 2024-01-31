@@ -8,9 +8,9 @@ const ErrorPage: FC = () => {
 			<ShieldAlert size={350} />
 			<Link
 				to={'/'}
-				className='bg-zinc-100 rounded-xl h-[70px] w-[250px] text-black text-[40px] flex justify-center items-center font-bold'
+				className='bg-zinc-100 rounded-xl h-[70px] w-[250px] text-zinc-700 text-[30px] flex justify-center items-center font-bold'
 			>
-				Back
+				TO MAIN PAGE
 			</Link>
 		</div>
 	)
