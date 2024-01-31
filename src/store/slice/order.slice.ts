@@ -84,10 +84,14 @@ export const orderSlice = createSlice({
 			newArray[positionID] = action.payload
 			state.selectedMenuPositions = newArray
 		},
+		clearOrder: state => {
+			state.selectedMenuPositions = []
+			state.totalAmount = 0
+		},
 	},
 })
 
-export const { addToOrder, removeFromOrder, updateOrderPosition } =
+export const { addToOrder, removeFromOrder, updateOrderPosition, clearOrder } =
 	orderSlice.actions
 
 export default orderSlice.reducer

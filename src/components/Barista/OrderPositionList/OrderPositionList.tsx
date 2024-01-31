@@ -1,23 +1,76 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import { BaristaService } from '../../../services/BaristaServices'
 import { useAppSelector } from '../../../store/hooks'
+import { putMoneyOnPointBalance } from '../../../store/slice/barista.slice'
+import { clearOrder } from '../../../store/slice/order.slice'
+import {
+	ICreateOrderData,
+	IOrderPositionData,
+} from '../../../types/ICreateOrderData'
+import { ICreatedOrderResultData } from '../../../types/ICreatedOrderResultData'
 import OrderPositionItem from '../OrderPositionItem/OrderPositionItem'
 
-const OrderPositionList: FC = () => {
+interface Props {
+	setVisibleModal: (visible: boolean) => void
+	setOrderResult: (visible: ICreatedOrderResultData) => void
+}
+
+const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 	const orderList = useAppSelector(state => state.order)
-	const [paymentMethod, setPaymentMethod] = useState('cash')
-	const [recivedAmount, setRecivedAmount] = useState('0')
+	const point = useAppSelector(state => state.barista.point)
+	const [paymentMethod, setPaymentMethod] = useState('By Cash')
+	const [receivedAmount, setReceivedAmount] = useState('0')
+
+	const dispatch = useDispatch()
 
 	const paymentChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPaymentMethod(e.target.value)
 	}
 
-	const recivedAmountChangeHandler = (
+	const receivedAmountChangeHandler = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
-		setRecivedAmount(e.target.value)
+		setReceivedAmount(e.target.value)
 	}
 
-	const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {}
+	const submitHandler = async () => {
+		try {
+			if (point && +receivedAmount - orderList.totalAmount > point.pointMoney) {
+				toast.warning(
+					'Not enough money on point for giving the rest from this amount'
+				)
+				return
+			}
+			if (point) {
+				const orderPositions: IOrderPositionData[] =
+					orderList.selectedMenuPositions.map(item => {
+						return {
+							menuPosition: { id: item.position.id },
+							quantity: item.amount,
+						}
+					})
+				const newOrder: ICreateOrderData = {
+					receivedAmount: +receivedAmount,
+					paymentMethod: paymentMethod,
+					point: { id: point?.id },
+					totalAmount: orderList.totalAmount,
+					orderList: orderPositions,
+				}
+				setOrderResult(await BaristaService.createOrder(newOrder))
+				setVisibleModal(true)
+				setReceivedAmount('0')
+				dispatch(putMoneyOnPointBalance(orderList.totalAmount))
+				dispatch(clearOrder())
+				toast.success('Order was successfully created!')
+			}
+		} catch (err: any) {
+			const error = err.response?.data.message
+			toast.error(error.toString())
+		}
+	}
 
 	return (
 		<div className='w-full h-[95%]'>
@@ -26,7 +79,7 @@ const OrderPositionList: FC = () => {
 					Total amount:
 				</label>
 				<label className='col-span-3 uppercase font-bold text-center'>
-					Recived amount:
+					Received amount:
 				</label>
 				<label className='col-span-3 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-2xl'>
 					{orderList.totalAmount} UAH
@@ -34,9 +87,9 @@ const OrderPositionList: FC = () => {
 				<input
 					type='number'
 					min={0}
-					disabled={paymentMethod == 'card'}
-					value={recivedAmount}
-					onChange={recivedAmountChangeHandler}
+					disabled={paymentMethod == 'By Card'}
+					value={receivedAmount}
+					onChange={receivedAmountChangeHandler}
 					className='col-span-3 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl  placeholder:text-black/50 placeholder:text-lg text-2xl'
 				/>
 
@@ -45,8 +98,8 @@ const OrderPositionList: FC = () => {
 					<input
 						type='radio'
 						name='paymentMethod'
-						value='card'
-						checked={paymentMethod === 'card'}
+						value='By Card'
+						checked={paymentMethod === 'By Card'}
 						onChange={paymentChangeHandler}
 					/>
 					By card
@@ -56,8 +109,8 @@ const OrderPositionList: FC = () => {
 					<input
 						type='radio'
 						name='paymentMethod'
-						value='cash'
-						checked={paymentMethod === 'cash'}
+						value='By Cash'
+						checked={paymentMethod === 'By Cash'}
 						onChange={paymentChangeHandler}
 					/>
 					By cash
@@ -66,7 +119,9 @@ const OrderPositionList: FC = () => {
 					className='border-2 w-[200px] h-[70px] rounded-2xl bg-zinc-900 uppercase font-bold hover:text-black hover:bg-zinc-300 disabled:hover:bg-zinc-900 disabled:hover:text-white disabled:hover:cursor-not-allowed'
 					onClick={submitHandler}
 					disabled={
-						+recivedAmount < orderList.totalAmount && paymentMethod == 'cash'
+						(+receivedAmount < orderList.totalAmount &&
+							paymentMethod == 'By Cash') ||
+						!orderList.selectedMenuPositions.length
 					}
 				>
 					Submit order

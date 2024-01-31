@@ -30,10 +30,22 @@ export const baristaSlice = createSlice({
 			state.point = action.payload
 			state.IsAuth = true
 		},
+		putMoneyOnPointBalance: (state, action) => {
+			if (!state.point) return
+			const updateInfoPoint = {
+				...state.point,
+				pointMoney: state.point.pointMoney + action.payload,
+			}
+			state.point = updateInfoPoint
+		},
 	},
 })
 
-export const { loginBarista, logoutBarista, setPointData } =
-	baristaSlice.actions
+export const {
+	loginBarista,
+	logoutBarista,
+	setPointData,
+	putMoneyOnPointBalance,
+} = baristaSlice.actions
 
 export default baristaSlice.reducer

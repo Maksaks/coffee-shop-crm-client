@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../helper/localstorage.helper'
 import { IBaristaUpdateData } from '../types/IBaristaUpdateData'
+import { ICreateOrderData } from '../types/ICreateOrderData'
+import { ICreatedOrderResultData } from '../types/ICreatedOrderResultData'
 import { IIngredientQuantityUpdate } from '../types/IIngredientQuantityUpdate'
 import { ITakeMoneyAmount } from '../types/ITakeMoneyAmount'
 
@@ -41,5 +43,17 @@ export const BaristaService = {
 				},
 			}
 		)
+	},
+	async createOrder(orderData: ICreateOrderData) {
+		const { data } = await axios.post<ICreatedOrderResultData>(
+			`http://localhost:3000/api/barista/orders`,
+			orderData,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+		return data
 	},
 }
