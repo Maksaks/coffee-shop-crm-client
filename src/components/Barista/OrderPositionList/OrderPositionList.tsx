@@ -53,7 +53,8 @@ const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 						}
 					})
 				const newOrder: ICreateOrderData = {
-					receivedAmount: +receivedAmount,
+					receivedAmount:
+						+receivedAmount > 0 ? +receivedAmount : orderList.totalAmount,
 					paymentMethod: paymentMethod,
 					point: { id: point?.id },
 					totalAmount: orderList.totalAmount,

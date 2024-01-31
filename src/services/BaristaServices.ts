@@ -56,4 +56,14 @@ export const BaristaService = {
 		)
 		return data
 	},
+	async completeOrder(orderID: number) {
+		await axios.get(
+			`http://localhost:3000/api/barista/orders/${orderID}/ready`,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+	},
 }
