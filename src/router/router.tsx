@@ -13,6 +13,7 @@ import RefreshPage from '../pages/Admin/RefreshPage'
 import Shifts from '../pages/Admin/Shifts'
 import Statistics from '../pages/Admin/Statistics'
 import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
+import { positionLoader } from '../pages/Admin/loaders/positionsLoader'
 import AuthLayout from '../pages/Auth/AuthLayout'
 import ChangePassword from '../pages/Auth/ChangePassword'
 import ConfirmingEmail from '../pages/Auth/ConfirmingEmail'
@@ -131,6 +132,7 @@ export const router = createBrowserRouter([
 			{
 				path: 'positions',
 				element: <MenuPositions />,
+				loader: positionLoader,
 			},
 			{
 				path: 'orders',

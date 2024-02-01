@@ -57,7 +57,6 @@ const Baristas: FC = () => {
 		setSearchedBaristas(
 			baristas?.filter(item => {
 				const nameSurname = item.name + ' ' + item.surname
-				console.log(nameSurname.toLowerCase())
 				return nameSurname.toLowerCase().includes(e.target.value.toLowerCase())
 			})
 		)
