@@ -23,7 +23,6 @@ const UpdateStepsMenuPositionModal: FC<Props> = ({
 	const [newStep, setNewStep] = useState<string>('')
 
 	useEffect(() => {
-		console.log('1')
 		setSteps(stepsToReproduce)
 	}, [stepsToReproduce])
 

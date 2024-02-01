@@ -5,6 +5,7 @@ import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import CreateMenuPositionModal from '../../components/Modals/CreateMenuPositionModal'
+import UpdateIngredientsModal from '../../components/Modals/UpdateIngredientsModal'
 import UpdateStepsMenuPositionModal from '../../components/Modals/UpdateStepsMenuPositionModal'
 import { MenuPositionsService } from '../../services/Admin/MenuPositionsService'
 import { ICategoryData } from '../../types/ICategory'
@@ -33,6 +34,10 @@ const MenuPositions: FC = () => {
 	const [isCreatingModalVisible, setIsCreatingModalVisible] = useState(false)
 	const [isUpdatingStepsModalVisible, setIsUpdatingStepsModalVisible] =
 		useState(false)
+	const [
+		isUpdatingIngredientsModalVisible,
+		setIsUpdatingIngredientsModalVisible,
+	] = useState(false)
 
 	const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {
@@ -160,6 +165,18 @@ const MenuPositions: FC = () => {
 
 	return (
 		<>
+			{isUpdatingIngredientsModalVisible &&
+				selectedPosition &&
+				selectedPositionWithRecipe &&
+				selectedPoint && (
+					<UpdateIngredientsModal
+						currentIngredients={selectedPositionWithRecipe?.recipe.ingredients}
+						pointID={selectedPoint.id}
+						pointIngredients={selectedPoint.ingredients}
+						positionID={selectedPosition?.id}
+						setVisibleModal={setIsUpdatingIngredientsModalVisible}
+					/>
+				)}
 			{isUpdatingStepsModalVisible &&
 				selectedPoint &&
 				selectedPositionWithRecipe && (
@@ -352,7 +369,7 @@ const MenuPositions: FC = () => {
 					<div className='w-full h-[60%] p-5 flex gap-5'>
 						<div className='w-[50%] flex flex-col gap-3 h-full bg-zinc-600 rounded-2xl relative'>
 							<button
-								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600'
+								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
 								onClick={() => setIsUpdatingStepsModalVisible(true)}
 								disabled={!selectedPoint || !selectedPositionWithRecipe}
 							>
@@ -383,8 +400,9 @@ const MenuPositions: FC = () => {
 								ingredients
 							</h2>
 							<button
-								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black'
+								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
 								disabled={!selectedPoint || !selectedPositionWithRecipe}
+								onClick={() => setIsUpdatingIngredientsModalVisible(true)}
 							>
 								<Pencil className='w-7 h-7' />
 							</button>
