@@ -4,6 +4,10 @@ import { ICategoryData } from '../../types/ICategory'
 import { ICreateMenuPosition } from '../../types/ICreateMenuPosition'
 import { IMenuPositionWithRecipeData } from '../../types/IMenuPositionWithRecipe'
 import { IPointAllData } from '../../types/IPointAllData'
+import {
+	IUpdateRecipeIngredients,
+	IUpdateRecipeSteps,
+} from '../../types/IUpdateRecipe'
 
 export const MenuPositionsService = {
 	async getPointsWithPositions() {
@@ -61,5 +65,50 @@ export const MenuPositionsService = {
 			}
 		)
 		return pos.data
+	},
+	async updateMenuPosition(
+		pointID: number,
+		positionID: number,
+		updateData: ICreateMenuPosition
+	) {
+		await axios.patch(
+			`http://localhost:3000/api/admin/positions/${pointID}/update/${positionID}`,
+			updateData,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+	},
+	async updateMenuPositionSteps(
+		pointID: number,
+		positionID: number,
+		updateData: IUpdateRecipeSteps
+	) {
+		await axios.patch(
+			`http://localhost:3000/api/admin/positions/${pointID}/update/${positionID}`,
+			updateData,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+	},
+	async updateMenuPositionIngredients(
+		pointID: number,
+		positionID: number,
+		updateData: IUpdateRecipeIngredients
+	) {
+		await axios.patch(
+			`http://localhost:3000/api/admin/positions/${pointID}/update/${positionID}`,
+			updateData,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
 	},
 }

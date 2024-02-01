@@ -6,9 +6,9 @@ export interface IPositionAllDataLoader {
 	points: IPointAllData[]
 }
 
-export const positionLoader = async () => {
+export const positionsLoader = async () => {
 	const pointsWithPositionsData = await axios.get<IPointAllData[]>(
-		`http://localhost:3000/api/admin/points`,
+		`http://localhost:3000/api/admin/positions/points`,
 		{
 			headers: {
 				Authorization: 'Bearer ' + getTokenFromLocalStorage(),

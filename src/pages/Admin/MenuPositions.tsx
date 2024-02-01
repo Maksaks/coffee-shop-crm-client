@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion'
-import { ListPlus, Trash2 } from 'lucide-react'
+import { Footprints, ListPlus, Pencil, Trash2 } from 'lucide-react'
 import { FC, useEffect, useState } from 'react'
 import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import CreateMenuPositionModal from '../../components/Modals/CreateMenuPositionModal'
+import UpdateStepsMenuPositionModal from '../../components/Modals/UpdateStepsMenuPositionModal'
 import { MenuPositionsService } from '../../services/Admin/MenuPositionsService'
 import { ICategoryData } from '../../types/ICategory'
+import { ICreateMenuPosition } from '../../types/ICreateMenuPosition'
 import { IMenuPosition } from '../../types/IMenuPosition'
 import { IMenuPositionWithRecipeData } from '../../types/IMenuPositionWithRecipe'
 import { IPointAllData } from '../../types/IPointAllData'
@@ -14,7 +16,6 @@ import { IPositionAllDataLoader } from './loaders/positionsLoader'
 
 const MenuPositions: FC = () => {
 	const { points } = useLoaderData() as IPositionAllDataLoader
-	// const [points, setPoints] = useState<IPointAllData[]>([])
 	const [categories, setCategories] = useState<ICategoryData[]>([])
 	const [selectedPoint, setSelectedPoint] = useState<IPointAllData>()
 	const [selectedPosition, setSelectedPosition] = useState<IMenuPosition>()
@@ -30,22 +31,46 @@ const MenuPositions: FC = () => {
 	const [description, setDescription] = useState('')
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [isCreatingModalVisible, setIsCreatingModalVisible] = useState(false)
+	const [isUpdatingStepsModalVisible, setIsUpdatingStepsModalVisible] =
+		useState(false)
 
-	const submitHandler = e => {}
+	const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+		try {
+			e.preventDefault()
+			let dataToUpdate: ICreateMenuPosition = {}
+			if (!selectedPositionWithRecipe || !category || !selectedPoint) return
+			if (name !== selectedPositionWithRecipe.name) {
+				dataToUpdate = { ...dataToUpdate, name }
+			}
+			if (category !== selectedPositionWithRecipe.category.id) {
+				dataToUpdate = { ...dataToUpdate, category }
+			}
+			if (price !== selectedPositionWithRecipe.price) {
+				dataToUpdate = { ...dataToUpdate, price }
+			}
+			if (description !== selectedPositionWithRecipe.description) {
+				dataToUpdate = { ...dataToUpdate, description }
+			}
+
+			await MenuPositionsService.updateMenuPosition(
+				selectedPoint.id,
+				selectedPositionWithRecipe.id,
+				dataToUpdate
+			)
+			navigate('/admin/refresh')
+			navigate(
+				`/admin/positions?point=${selectedPoint.id}&position=${selectedPositionWithRecipe.id}`
+			)
+			toast.success(
+				`Menu Position #${selectedPositionWithRecipe.id} data was successfully updated`
+			)
+		} catch (err: any) {
+			const error = err.response?.data.message
+			toast.error(error.toString())
+		}
+	}
 
 	useEffect(() => {
-		// const getPointsWithPositions = async () => {
-		// 	try {
-		// 		const pointsWithPositionsData =
-		// 			await MenuPositionsService.getPointsWithPositions()
-		// 		if (pointsWithPositionsData) {
-		// 			setPoints(pointsWithPositionsData)
-		// 		}
-		// 	} catch (err: any) {
-		// 		const error = err.response?.data.message
-		// 		toast.error(error.toString())
-		// 	}
-		// }
 		const getAllCategories = async () => {
 			try {
 				const categoriesData = await MenuPositionsService.getCategories()
@@ -57,12 +82,9 @@ const MenuPositions: FC = () => {
 				toast.error(error.toString())
 			}
 		}
-
-		// getPointsWithPositions()
 		getAllCategories()
 		const pointID = searchParams.get('point')
 		const positionID = searchParams.get('position')
-		console.log(pointID, positionID)
 		if (pointID) {
 			const point = points.find(item => item.id == +pointID)
 			if (!point) return
@@ -138,6 +160,18 @@ const MenuPositions: FC = () => {
 
 	return (
 		<>
+			{isUpdatingStepsModalVisible &&
+				selectedPoint &&
+				selectedPositionWithRecipe && (
+					<UpdateStepsMenuPositionModal
+						pointID={selectedPoint.id}
+						positionID={selectedPositionWithRecipe.id}
+						stepsToReproduce={
+							selectedPositionWithRecipe.recipe.stepsToReproduce
+						}
+						setVisibleModal={setIsUpdatingStepsModalVisible}
+					/>
+				)}
 			{isCreatingModalVisible && categories && selectedPoint && (
 				<CreateMenuPositionModal
 					pointID={selectedPoint.id}
@@ -163,12 +197,12 @@ const MenuPositions: FC = () => {
 					>
 						<ListPlus className='w-10 h-10' />
 					</button>
-					<small className='w-[85%] text-sm uppercase font-bold mt-2 text-left'>
+					<small className='w-[80%] text-sm uppercase font-bold mt-2 text-left'>
 						positions for point:
 					</small>
 					<select
 						id='selectPoint'
-						className='p-3 text-black h-[5%] rounded-xl text-xl  w-[90%] mb-3 font-roboto hover:cursor-pointer'
+						className='p-3 text-black h-[5%] rounded-xl text-xl  w-[85%] mb-3 font-roboto hover:cursor-pointer'
 						value={selectedPoint?.id}
 						onChange={e => {
 							setName('')
@@ -232,7 +266,7 @@ const MenuPositions: FC = () => {
 				</div>
 				<div className='h-[100%] w-[75%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
 					<form
-						className='grid grid-cols-6 px-12 pt-10 grid-rows-3 w-full h-[30%] items-center border-b-4 relative'
+						className='grid grid-cols-6 px-12 pt-10 grid-rows-3 w-full h-[35%] items-center border-b-4 relative'
 						onSubmit={submitHandler}
 					>
 						<button
@@ -312,7 +346,64 @@ const MenuPositions: FC = () => {
 							type='submit'
 						/>
 					</form>
-					<div className='w-full h-[60%] border-2'></div>
+					<h2 className='w-full h-[4%] text-center uppercase text-2xl font-bold p-2'>
+						Recipe
+					</h2>
+					<div className='w-full h-[60%] p-5 flex gap-5'>
+						<div className='w-[50%] flex flex-col gap-3 h-full bg-zinc-600 rounded-2xl relative'>
+							<button
+								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600'
+								onClick={() => setIsUpdatingStepsModalVisible(true)}
+								disabled={!selectedPoint || !selectedPositionWithRecipe}
+							>
+								<Pencil className='w-7 h-7' />
+							</button>
+							<h2 className='w-full border-b-4 uppercase text-center p-3 font-bold text-xl'>
+								steps to reproduce
+							</h2>
+							<div className='w-[90%] mx-auto h-[80%] rounded-2xl overflow-auto flex flex-col gap-2'>
+								{selectedPositionWithRecipe &&
+									selectedPositionWithRecipe.recipe.stepsToReproduce.map(
+										(item, indx) => {
+											return (
+												<label
+													key={indx}
+													className='w-full p-3 bg-zinc-500 min-h-10 rounded-2xl flex gap-2'
+												>
+													<Footprints />
+													{item}
+												</label>
+											)
+										}
+									)}
+							</div>
+						</div>
+						<div className='w-[50%] flex flex-col gap-3 h-full bg-zinc-600 rounded-2xl relative'>
+							<h2 className='w-full border-b-4 uppercase text-center p-3 font-bold text-xl'>
+								ingredients
+							</h2>
+							<button
+								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black'
+								disabled={!selectedPoint || !selectedPositionWithRecipe}
+							>
+								<Pencil className='w-7 h-7' />
+							</button>
+							<div className='w-[90%] mx-auto h-[80%] rounded-2xl overflow-auto flex flex-col gap-2'>
+								{selectedPositionWithRecipe &&
+									selectedPositionWithRecipe.recipe.ingredients.map(item => {
+										return (
+											<label
+												key={item.id}
+												className='w-full p-3 bg-zinc-500 min-h-10 rounded-2xl flex gap-2'
+											>
+												<Footprints />
+												{item.name}
+											</label>
+										)
+									})}
+							</div>
+						</div>
+					</div>
 				</div>
 			</motion.div>
 		</>
