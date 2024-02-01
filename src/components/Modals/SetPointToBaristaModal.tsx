@@ -44,7 +44,8 @@ const SetPointToBaristaModal: FC<Props> = ({
 			)
 			toast.success(`Point ${selectedPointID} was successfully updated`)
 			setVisibleModal(false)
-			navigate('/admin/baristas')
+			navigate(`/admin/refresh`)
+			navigate(`/admin/baristas?id=${selectedBaristas.id}`)
 		} catch (err: any) {
 			const error = err.response?.data.message
 			toast.error(error.toString())
@@ -62,7 +63,7 @@ const SetPointToBaristaModal: FC<Props> = ({
 				className='w-[20%] h-[300px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
 				onSubmit={submitHandler}
 			>
-				<h2 className='uppercase w-full text-center text-2xl border-b-2 py-3 px-10'>
+				<h2 className='uppercase w-full text-center text-2xl border-b-2 py-3 px-10 bg-zinc-600 text-white rounded-t-2xl'>
 					<b>Set point to barista:</b>
 					<br />
 					{selectedBaristas.surname + ' ' + selectedBaristas.name}
@@ -87,7 +88,7 @@ const SetPointToBaristaModal: FC<Props> = ({
 				</div>
 				<div className='flex items-center justify-end gap-5 w-full p-5'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						type='submit'
 						disabled={selectedPointID < 0}
 					>
@@ -96,7 +97,7 @@ const SetPointToBaristaModal: FC<Props> = ({
 					<button
 						onClick={() => setVisibleModal(false)}
 						type='button'
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

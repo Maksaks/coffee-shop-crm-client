@@ -9,6 +9,7 @@ import Ingredients from '../pages/Admin/Ingredients'
 import MenuPositions from '../pages/Admin/MenuPositions'
 import Orders from '../pages/Admin/Orders'
 import Points from '../pages/Admin/Points'
+import RefreshPage from '../pages/Admin/RefreshPage'
 import Shifts from '../pages/Admin/Shifts'
 import Statistics from '../pages/Admin/Statistics'
 import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
@@ -143,10 +144,13 @@ export const router = createBrowserRouter([
 				path: 'shifts',
 				element: <Shifts />,
 			},
-
 			{
 				path: 'statistics',
 				element: <Statistics />,
+			},
+			{
+				path: 'refresh',
+				element: <RefreshPage />,
 			},
 		],
 	},

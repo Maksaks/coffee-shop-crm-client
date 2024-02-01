@@ -67,7 +67,7 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 				</div>
 				<div className='flex items-center justify-end gap-5 w-full p-5'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						disabled={+quantity <= 0}
 						type='submit'
 					>
@@ -76,7 +76,7 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 					<button
 						type='button'
 						onClick={() => setVisibleModal(false)}
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

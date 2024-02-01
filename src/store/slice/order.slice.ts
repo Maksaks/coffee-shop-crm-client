@@ -27,7 +27,10 @@ export const orderSlice = createSlice({
 				...state.selectedMenuPositions,
 				{ position: action.payload, amount: 1 },
 			]
-			if (action.payload.discount) {
+			if (
+				action.payload.discount &&
+				new Date(action.payload.discount.endAt) > new Date()
+			) {
 				state.totalAmount += Math.round(
 					(action.payload.price * (100 - action.payload.discount.amount)) / 100
 				)
@@ -39,7 +42,10 @@ export const orderSlice = createSlice({
 			state.selectedMenuPositions = state.selectedMenuPositions.filter(
 				item => item.position.id != action.payload.position.id
 			)
-			if (action.payload.position.discount) {
+			if (
+				action.payload.position.discount &&
+				new Date(action.payload.position.discount.endAt) > new Date()
+			) {
 				state.totalAmount -=
 					Math.round(
 						(action.payload.position.price *
@@ -60,7 +66,10 @@ export const orderSlice = createSlice({
 			if (
 				state.selectedMenuPositions[positionID].amount > action.payload.amount
 			) {
-				if (action.payload.position.discount) {
+				if (
+					action.payload.position.discount &&
+					new Date(action.payload.position.discount.endAt) > new Date()
+				) {
 					state.totalAmount -= Math.round(
 						(action.payload.position.price *
 							(100 - action.payload.position.discount.amount)) /
@@ -70,7 +79,10 @@ export const orderSlice = createSlice({
 					state.totalAmount -= action.payload.position.price
 				}
 			} else {
-				if (action.payload.position.discount) {
+				if (
+					action.payload.position.discount &&
+					new Date(action.payload.position.discount.endAt) > new Date()
+				) {
 					state.totalAmount += Math.round(
 						(action.payload.position.price *
 							(100 - action.payload.position.discount.amount)) /

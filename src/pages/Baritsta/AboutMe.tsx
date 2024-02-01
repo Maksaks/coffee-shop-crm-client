@@ -6,6 +6,7 @@ import { useLoaderData } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import { dateFormater } from '../../helper/date-formater.helper'
+import { isEmailValid } from '../../helper/validate-email.helper'
 import { BaristaService } from '../../services/BaristaServices'
 import { IBaristaUpdateData } from '../../types/IBaristaUpdateData'
 import { IAboutMeDataLoader } from './loaders/aboutMeLoader'
@@ -20,6 +21,7 @@ const AboutMe: FC = () => {
 	const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {
 			e.preventDefault()
+			if (!isEmailValid(email)) return
 			let dataToUpdate: IBaristaUpdateData = {}
 			if (name !== aboutMe.name) {
 				dataToUpdate = { ...dataToUpdate, name }
@@ -110,7 +112,7 @@ const AboutMe: FC = () => {
 						name='email'
 						value={email}
 						onChange={e => setEmail(e.target.value)}
-						className='w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl'
+						className={`w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl ${email.length && !isEmailValid(email) ? 'border-red-700 border-2' : ''}`}
 						placeholder='Enter your email...'
 					/>
 					<label className='text-2xl font-bold p-3'>Phone number:</label>

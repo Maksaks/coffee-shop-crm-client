@@ -30,7 +30,8 @@ const OrderPositionItem: FC<Props> = ({ orderPosition }) => {
 
 			<div className='flex h-[50%] items-center justify-between gap-1 px-5'>
 				<label className='text-end'>
-					{orderPosition.position.discount
+					{orderPosition.position.discount &&
+					new Date(orderPosition.position.discount.endAt) > new Date()
 						? (
 								Math.round(
 									(orderPosition.position.price *

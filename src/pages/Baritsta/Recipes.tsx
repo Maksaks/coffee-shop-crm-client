@@ -118,17 +118,19 @@ const Recipes: FC = () => {
 									? `${selectedPosition.price} UAH`
 									: 'NOT FOUND'}
 							</label>
-							{selectedPosition && selectedPosition.discount && (
-								<>
-									{' '}
-									<label className='flex items-center h-[55px]'>
-										Discount:
-									</label>
-									<label className='col-span-4 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
-										{selectedPosition.discount?.amount} %
-									</label>
-								</>
-							)}
+							{selectedPosition &&
+								selectedPosition.discount &&
+								new Date(selectedPosition.discount.endAt) > new Date() && (
+									<>
+										{' '}
+										<label className='flex items-center h-[55px]'>
+											Discount:
+										</label>
+										<label className='col-span-4 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
+											{selectedPosition.discount?.amount} %
+										</label>
+									</>
+								)}
 							<label className='flex items-center h-[55px]'>Description:</label>
 							<label className='col-span-4 max-h-[50%] min-h-[55px]  overflow-auto bg-gradient-to-r from-zinc-500 to-zinc-400 px-3 py-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-xl'>
 								{selectedPosition ? selectedPosition.description : 'NOT FOUND'}

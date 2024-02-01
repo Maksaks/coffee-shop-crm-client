@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../../helper/localstorage.helper'
+import { IBaristaAllData } from '../../types/IBaristaAllData'
 import { IBaristaUpdateData } from '../../types/IBaristaUpdateData'
+import { ICreateBaristasData } from '../../types/ICreateBaristaData'
 import { IPointAllData } from '../../types/IPointAllData'
 
 export const BaristasManagementService = {
@@ -50,5 +52,27 @@ export const BaristasManagementService = {
 				},
 			}
 		)
+	},
+	async deleteBarista(baristaID: number) {
+		await axios.delete(
+			`http://localhost:3000/api/admin/baristas/${baristaID}`,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+	},
+	async createBarista(createBaristaData: ICreateBaristasData) {
+		const { data } = await axios.post<IBaristaAllData>(
+			`http://localhost:3000/api/admin/baristas`,
+			createBaristaData,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+		return data
 	},
 }

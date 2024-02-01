@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from 'framer-motion'
-import { Plus, Trash2 } from 'lucide-react'
+import { Plus, Trash2, UserPlus } from 'lucide-react'
 import { FC, useEffect, useState } from 'react'
-import { useLoaderData, useNavigate } from 'react-router-dom'
+import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
+import CreateBaristaModal from '../../components/Modals/CreateBaristaModal'
 import SetPointToBaristaModal from '../../components/Modals/SetPointToBaristaModal'
+import { isEmailValid } from '../../helper/validate-email.helper'
 import { BaristasManagementService } from '../../services/Admin/BaristasManagementService'
 import { IBaristaAllData } from '../../types/IBaristaAllData'
 import { IBaristaUpdateData } from '../../types/IBaristaUpdateData'
@@ -15,6 +17,8 @@ const Baristas: FC = () => {
 	const navigate = useNavigate()
 	const { baristas } = useLoaderData() as IBaristaAllDataLoader
 	const [isSetPointModalVisible, setIsSetPointModalVisible] = useState(false)
+	const [isCreateBaristasModalVisible, setIsCreateBaristasModalVisible] =
+		useState(false)
 	const [selectedBarista, setSelectedBarista] = useState<IBaristaAllData>()
 	const [searchedBaristas, setSearchedBaristas] = useState<IBaristaAllData[]>()
 	const [name, setName] = useState('No selected')
@@ -24,9 +28,13 @@ const Baristas: FC = () => {
 	const [fixedHourRate, setFixedHourRate] = useState(0)
 	const [percentFromEarnings, setPercentFromEarnings] = useState(0)
 	const [password, setPassword] = useState('')
-
+	const [searchParams, setSearchParams] = useSearchParams()
 	useEffect(() => {
 		setSearchedBaristas(baristas)
+		const id = searchParams.get('id')
+		if (id) {
+			setSelectedBarista(baristas.find(item => item.id == +id))
+		}
 	}, [])
 
 	useEffect(() => {
@@ -58,6 +66,7 @@ const Baristas: FC = () => {
 		try {
 			e.preventDefault()
 			if (!selectedBarista) return
+			if (!isEmailValid(email)) return
 			let dataToUpdate: IBaristaUpdateData = {}
 			if (name !== selectedBarista.name) {
 				dataToUpdate = { ...dataToUpdate, name }
@@ -84,7 +93,8 @@ const Baristas: FC = () => {
 				selectedBarista.id,
 				dataToUpdate
 			)
-			navigate('/admin/baristas')
+			navigate('/admin/refresh')
+			navigate(`/admin/baristas?id=${selectedBarista.id}`)
 			toast.success(
 				`Barista #${selectedBarista.id} data was successfully updated`
 			)
@@ -102,7 +112,22 @@ const Baristas: FC = () => {
 				pointID
 			)
 			toast.success(`Point ${pointID} was removed`)
-			navigate('/admin/baristas')
+			navigate('/admin/refresh')
+			navigate(`/admin/baristas?id=${selectedBarista.id}`)
+		} catch (err: any) {
+			const error = err.response?.data.message
+			toast.error(error.toString())
+		}
+	}
+
+	const deleteBaristasHandler = async () => {
+		try {
+			if (!selectedBarista) return
+			await BaristasManagementService.deleteBarista(selectedBarista.id)
+			toast.success(`Barista ${selectedBarista.id} was removed`)
+			setSelectedBarista(undefined)
+			navigate('/admin/refresh')
+			navigate(`/admin/baristas`)
 		} catch (err: any) {
 			const error = err.response?.data.message
 			toast.error(error.toString())
@@ -111,20 +136,40 @@ const Baristas: FC = () => {
 
 	return (
 		<>
-			{isSetPointModalVisible && selectedBarista && (
-				<SetPointToBaristaModal
-					selectedBaristas={selectedBarista}
-					setVisibleModal={setIsSetPointModalVisible}
-				/>
+			{isCreateBaristasModalVisible && !isSetPointModalVisible && (
+				<CreateBaristaModal setVisibleModal={setIsCreateBaristasModalVisible} />
 			)}
+			{isSetPointModalVisible &&
+				!isCreateBaristasModalVisible &&
+				selectedBarista && (
+					<SetPointToBaristaModal
+						selectedBaristas={selectedBarista}
+						setVisibleModal={setIsSetPointModalVisible}
+					/>
+				)}
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[70%] h-[1000px] mt-20 mx-auto p-5 text-white font-roboto flex items-center gap-5'
+				className='w-[70%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 relative'
 			>
-				<div className='h-[100%] w-[23%] bg-zinc-700 rounded-3xl flex items-center flex-col'>
+				<button
+					className='absolute top-3 right-3'
+					onClick={deleteBaristasHandler}
+					disabled={!selectedBarista}
+				>
+					<Trash2
+						className={`w-16 h-16 p-2 rounded-full ${selectedBarista ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
+					/>
+				</button>
+				<div className='h-[100%] w-[23%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
+					<button
+						className='absolute right-5 top-1 py-1 px-2 bg-zinc-900 font-bold hover:bg-zinc-400 rounded-xl hover:text-black'
+						onClick={() => setIsCreateBaristasModalVisible(true)}
+					>
+						<UserPlus className='w-10 h-10' />
+					</button>
 					<h2 className='w-full p-3 border-b-4 uppercase text-center text-2xl font-bold'>
 						Baristas
 					</h2>
@@ -188,7 +233,7 @@ const Baristas: FC = () => {
 							name='email'
 							value={email}
 							onChange={e => setEmail(e.target.value)}
-							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl'
+							className={`w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl ${email.length && selectedBarista && !isEmailValid(email) ? 'border-red-700 border-2' : ''}`}
 							placeholder='Enter email...'
 						/>
 						<label className='text-2xl font-bold p-3  flex items-center'>
@@ -230,8 +275,9 @@ const Baristas: FC = () => {
 						<input
 							name='percentFromEarnings'
 							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl'
+							type='password'
 							onChange={e => setPassword(e.target.value)}
-							placeholder='Enter percent from earnings...'
+							placeholder='Enter password...'
 						/>
 						<Button
 							className='col-start-5 px-10 uppercase disabled:hover:text-white disabled:hover:bg-zinc-800'
@@ -245,7 +291,7 @@ const Baristas: FC = () => {
 							Points
 						</h2>
 						<div className='w-full p-5 h-[100%] flex items-center justify-center gap-5'>
-							<div className='w-[90%] h-[100%] bg-zinc-400 overflow-auto rounded-2xl p-3 flex flex-col gap-3 items-center'>
+							<div className='w-[90%] h-[100%] bg-zinc-400 overflow-auto rounded-2xl p-3 flex flex-col gap-3 items-center font-bold'>
 								{selectedBarista &&
 									selectedBarista.points.map(item => {
 										return (

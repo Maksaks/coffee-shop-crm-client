@@ -39,17 +39,17 @@ const MenuPositionItem: FC<Props> = ({ menuPosition }) => {
 			className='w-full h-[200px] border-2 rounded-xl bg-zinc-600 flex flex-col items-center justify-center hover:bg-zinc-500 relative'
 			onClick={() => dispatch(addToOrder(menuPosition))}
 		>
-			{menuPosition.discount && (
-				<span className='absolute top-1 right-1 border-2 rounded-full p-1 bg-zinc-200 text-black'>
-					{menuPosition.discount?.amount} %
-				</span>
-			)}
+			{menuPosition.discount &&
+				new Date(menuPosition.discount.endAt) > new Date() && (
+					<span className='absolute top-1 right-1 border-2 rounded-full p-1 bg-zinc-200 text-black'>
+						{menuPosition.discount?.amount} %
+					</span>
+				)}
 			<span
-				className={`absolute font-bold top-1 left-1 border-2 rounded-full p-1 ${menuPosition.discount ? 'bg-red-600 text-white border-black' : 'bg-zinc-200 text-black'}`}
+				className={`absolute font-bold top-1 left-1 border-2 rounded-full p-1 ${menuPosition.discount && new Date(menuPosition.discount.endAt) > new Date() ? 'bg-red-600 text-white border-black' : 'bg-zinc-200 text-black'}`}
 			>
-				{!menuPosition.discount ? (
-					<>{menuPosition.price} UAH</>
-				) : (
+				{menuPosition.discount &&
+				new Date(menuPosition.discount.endAt) > new Date() ? (
 					<>
 						<span className='line-through mr-4'>{menuPosition.price}</span>
 						<span>
@@ -60,6 +60,8 @@ const MenuPositionItem: FC<Props> = ({ menuPosition }) => {
 							UAH
 						</span>
 					</>
+				) : (
+					<>{menuPosition.price} UAH</>
 				)}
 			</span>
 			<label className='h-[70%] w-full flex items-end justify-center border-b-2  hover:cursor-pointer'>
