@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { getTokenFromLocalStorage } from '../../helper/localstorage.helper'
 import { ICategoryData } from '../../types/ICategory'
+import { ICreateDiscountData } from '../../types/ICreateDiscountData'
 import { ICreateMenuPosition } from '../../types/ICreateMenuPosition'
 import { IMenuPositionWithRecipeData } from '../../types/IMenuPositionWithRecipe'
 import { IPointAllData } from '../../types/IPointAllData'
@@ -104,6 +105,20 @@ export const MenuPositionsService = {
 		await axios.patch(
 			`http://localhost:3000/api/admin/positions/${pointID}/update/${positionID}`,
 			updateData,
+			{
+				headers: {
+					Authorization: 'Bearer ' + getTokenFromLocalStorage(),
+				},
+			}
+		)
+	},
+	async createDiscountForPosition(
+		positionID: number,
+		discountData: ICreateDiscountData
+	) {
+		await axios.post(
+			`http://localhost:3000/api/admin/discounts/${positionID}`,
+			discountData,
 			{
 				headers: {
 					Authorization: 'Bearer ' + getTokenFromLocalStorage(),

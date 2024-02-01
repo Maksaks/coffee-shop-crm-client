@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion'
-import { Footprints, ListPlus, Pencil, Trash2 } from 'lucide-react'
+import { Footprints, ListPlus, Pencil, Percent, Trash2 } from 'lucide-react'
 import { FC, useEffect, useState } from 'react'
 import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
+import CreateDiscountForPositionModal from '../../components/Modals/CreateDiscountForPositionModal'
 import CreateMenuPositionModal from '../../components/Modals/CreateMenuPositionModal'
 import UpdateIngredientsModal from '../../components/Modals/UpdateIngredientsModal'
 import UpdateStepsMenuPositionModal from '../../components/Modals/UpdateStepsMenuPositionModal'
+import { dateTimeFormatter } from '../../helper/date-formater.helper'
 import { MenuPositionsService } from '../../services/Admin/MenuPositionsService'
 import { ICategoryData } from '../../types/ICategory'
 import { ICreateMenuPosition } from '../../types/ICreateMenuPosition'
@@ -33,6 +35,8 @@ const MenuPositions: FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [isCreatingModalVisible, setIsCreatingModalVisible] = useState(false)
 	const [isUpdatingStepsModalVisible, setIsUpdatingStepsModalVisible] =
+		useState(false)
+	const [isCreatingDiscountModalVisible, setIsCreatingDiscountModalVisible] =
 		useState(false)
 	const [
 		isUpdatingIngredientsModalVisible,
@@ -165,6 +169,13 @@ const MenuPositions: FC = () => {
 
 	return (
 		<>
+			{isCreatingDiscountModalVisible && selectedPosition && selectedPoint && (
+				<CreateDiscountForPositionModal
+					pointID={selectedPoint.id}
+					positionID={selectedPosition?.id}
+					setVisibleModal={setIsCreatingDiscountModalVisible}
+				/>
+			)}
 			{isUpdatingIngredientsModalVisible &&
 				selectedPosition &&
 				selectedPositionWithRecipe &&
@@ -172,8 +183,8 @@ const MenuPositions: FC = () => {
 					<UpdateIngredientsModal
 						currentIngredients={selectedPositionWithRecipe?.recipe.ingredients}
 						pointID={selectedPoint.id}
-						pointIngredients={selectedPoint.ingredients}
 						positionID={selectedPosition?.id}
+						pointIngredients={selectedPoint.ingredients}
 						setVisibleModal={setIsUpdatingIngredientsModalVisible}
 					/>
 				)}
@@ -283,9 +294,33 @@ const MenuPositions: FC = () => {
 				</div>
 				<div className='h-[100%] w-[75%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
 					<form
-						className='grid grid-cols-6 px-12 pt-10 grid-rows-3 w-full h-[35%] items-center border-b-4 relative'
+						className='grid grid-cols-6 px-12 pt-10 grid-rows-4 w-full h-[35%] items-center border-b-4 relative'
 						onSubmit={submitHandler}
 					>
+						{selectedPositionWithRecipe?.discount &&
+							new Date(selectedPositionWithRecipe?.discount.endAt) >
+								new Date() && (
+								<label className='absolute top-[260px] left-[290px] text-red-600/70'>
+									-{selectedPositionWithRecipe.discount.amount}% discount on
+									this item until{' '}
+									{dateTimeFormatter(selectedPositionWithRecipe.discount.endAt)}
+								</label>
+							)}
+						{!selectedPositionWithRecipe?.discount ||
+							(selectedPositionWithRecipe.discount &&
+								new Date(selectedPositionWithRecipe.discount.endAt) <
+									new Date() && (
+									<button
+										className='absolute top-[210px] left-[670px]'
+										disabled={!selectedPositionWithRecipe}
+										onClick={() => setIsCreatingDiscountModalVisible(true)}
+										type='button'
+									>
+										<Percent
+											className={`w-12 h-12 p-1 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
+										/>
+									</button>
+								))}
 						<button
 							className='absolute top-3 right-3'
 							disabled={!selectedPositionWithRecipe}
@@ -296,6 +331,7 @@ const MenuPositions: FC = () => {
 								className={`w-16 h-16 p-2 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
 							/>
 						</button>
+
 						<label className='text-2xl font-bold p-3 flex items-center'>
 							Name:
 						</label>
