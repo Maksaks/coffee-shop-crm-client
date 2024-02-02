@@ -16,6 +16,7 @@ import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
 import { categoriesLoader } from '../pages/Admin/loaders/categoriesLoader'
 import { discountsLoader } from '../pages/Admin/loaders/discountsLoader'
 import { positionsLoader } from '../pages/Admin/loaders/positionsLoader'
+import { shiftsLoader } from '../pages/Admin/loaders/shiftsLoader'
 import AuthLayout from '../pages/Auth/AuthLayout'
 import ChangePassword from '../pages/Auth/ChangePassword'
 import ConfirmingEmail from '../pages/Auth/ConfirmingEmail'
@@ -149,6 +150,7 @@ export const router = createBrowserRouter([
 			{
 				path: 'shifts',
 				element: <Shifts />,
+				loader: shiftsLoader,
 			},
 			{
 				path: 'statistics',
