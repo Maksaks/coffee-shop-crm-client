@@ -51,9 +51,14 @@ const MenuPositions: FC = () => {
 			if (name !== selectedPositionWithRecipe.name) {
 				dataToUpdate = { ...dataToUpdate, name }
 			}
-			if (category !== selectedPositionWithRecipe.category.id) {
+			if (selectedPositionWithRecipe.category) {
+				if (category !== selectedPositionWithRecipe.category.id) {
+					dataToUpdate = { ...dataToUpdate, category }
+				}
+			} else {
 				dataToUpdate = { ...dataToUpdate, category }
 			}
+
 			if (price !== selectedPositionWithRecipe.price) {
 				dataToUpdate = { ...dataToUpdate, price }
 			}
@@ -118,7 +123,7 @@ const MenuPositions: FC = () => {
 				if (menuPosition) {
 					setSelectedPositionWithRecipe(menuPosition)
 					setName(menuPosition.name)
-					setCategory(menuPosition.category.id)
+					setCategory(menuPosition.category ? menuPosition.category.id : -1)
 					setPrice(menuPosition.price)
 					setDescription(menuPosition.description)
 				}
@@ -163,7 +168,7 @@ const MenuPositions: FC = () => {
 			navigate(`/admin/positions?point=${selectedPoint.id}`)
 		} catch (err: any) {
 			const error = err.response?.data.message
-			toast.error(error.toString())
+			toast.error(error?.toString())
 		}
 	}
 
