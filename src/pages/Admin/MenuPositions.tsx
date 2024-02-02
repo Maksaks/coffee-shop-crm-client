@@ -212,7 +212,7 @@ const MenuPositions: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[80%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5'
+				className='w-[80%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 shadow-2xl'
 			>
 				<div className='h-[100%] w-[25%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
 					<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-2xl font-bold'>

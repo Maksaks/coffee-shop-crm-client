@@ -13,6 +13,8 @@ import RefreshPage from '../pages/Admin/RefreshPage'
 import Shifts from '../pages/Admin/Shifts'
 import Statistics from '../pages/Admin/Statistics'
 import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
+import { categoriesLoader } from '../pages/Admin/loaders/categoriesLoader'
+import { discountsLoader } from '../pages/Admin/loaders/discountsLoader'
 import { positionsLoader } from '../pages/Admin/loaders/positionsLoader'
 import AuthLayout from '../pages/Auth/AuthLayout'
 import ChangePassword from '../pages/Auth/ChangePassword'
@@ -120,10 +122,12 @@ export const router = createBrowserRouter([
 			{
 				path: 'categories',
 				element: <Categories />,
+				loader: categoriesLoader,
 			},
 			{
 				path: 'discounts',
 				element: <Discounts />,
+				loader: discountsLoader,
 			},
 			{
 				path: 'ingredients',

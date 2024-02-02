@@ -50,7 +50,7 @@ const AboutMe: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 w-[30%] rounded-3xl flex flex-col items-center h-[1100px]'
+				className='bg-zinc-700 w-[30%] rounded-3xl flex flex-col items-center h-[1100px] shadow-2xl'
 			>
 				<User className='w-[100%] h-[40%]' color='white' />
 				<h2 className=' text-3xl font-bold pt-5 pb-12 border-t-4 w-full text-center'>
@@ -79,7 +79,7 @@ const AboutMe: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 w-[70%] h-[1100px] rounded-3xl pb-10'
+				className='bg-zinc-700 w-[70%] h-[1100px] rounded-3xl pb-10 shadow-2xl'
 			>
 				<h1 className='w-full text-center text-white uppercase text-4xl font-bold p-5 border-b-4'>
 					Profile info

@@ -152,7 +152,7 @@ const Baristas: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[70%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 relative'
+				className='w-[70%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 relative shadow-2xl'
 			>
 				<button
 					className='absolute top-3 right-3'
@@ -293,9 +293,12 @@ const Baristas: FC = () => {
 						<div className='w-full p-5 h-[100%] flex items-center justify-center gap-5'>
 							<div className='w-[90%] h-[100%] bg-zinc-400 overflow-auto rounded-2xl p-3 flex flex-col gap-3 items-center font-bold'>
 								{selectedBarista &&
-									selectedBarista.points.map(item => {
+									selectedBarista.points.map((item, indx) => {
 										return (
-											<div className='w-[95%] text-black bg-zinc-500 rounded-2xl grid grid-cols-12 border-2 border-black'>
+											<div
+												key={indx}
+												className='w-[95%] text-black bg-zinc-500 rounded-2xl grid grid-cols-12 border-2 border-black'
+											>
 												<span className='p-3'>{item.id}</span>
 												<span className='col-span-5 p-3 border-x-2 text-center border-black'>
 													{item.name}

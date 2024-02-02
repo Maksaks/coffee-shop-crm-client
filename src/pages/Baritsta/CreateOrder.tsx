@@ -47,7 +47,7 @@ const CreateOrder: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[80%] h-[1100px] mt-20 mx-auto text-white font-roboto flex flex-row gap-20'
+				className='w-[80%] h-[1100px] mt-20 mx-auto text-white font-roboto flex flex-row gap-20 shadow-2xl'
 			>
 				<div className='w-[60%] bg-zinc-700 rounded-3xl flex items-center flex-col'>
 					<h2 className='h-[5%] p-4 uppercase w-full text-center text-2xl font-bold border-b-4'>

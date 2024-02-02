@@ -45,7 +45,7 @@ const Recipes: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 rounded-3xl py-5 w-[30%] flex flex-col items-center gap-8'
+				className='bg-zinc-700 rounded-3xl py-5 w-[30%] flex flex-col items-center gap-8 shadow-2xl'
 			>
 				<h2 className='h-[5%] w-full uppercase border-b-4 text-center pb-3 text-2xl font-bold'>
 					Menu positions
@@ -90,7 +90,7 @@ const Recipes: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 rounded-3xl py-5 w-[69%] h-full'
+				className='bg-zinc-700 rounded-3xl py-5 w-[69%] h-full shadow-2xl'
 			>
 				<h2 className='w-full uppercase border-b-4 text-center pb-3 text-2xl font-bold flex gap-5 items-center justify-center'>
 					recipe for{' '}
