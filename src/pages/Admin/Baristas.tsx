@@ -158,6 +158,7 @@ const Baristas: FC = () => {
 					className='absolute top-3 right-3'
 					onClick={deleteBaristasHandler}
 					disabled={!selectedBarista}
+					title='Remove this barista'
 				>
 					<Trash2
 						className={`w-16 h-16 p-2 rounded-full ${selectedBarista ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
@@ -167,6 +168,7 @@ const Baristas: FC = () => {
 					<button
 						className='absolute right-5 top-1 py-1 px-2 bg-zinc-900 font-bold hover:bg-zinc-400 rounded-xl hover:text-black'
 						onClick={() => setIsCreateBaristasModalVisible(true)}
+						title='Add new barista'
 					>
 						<UserPlus className='w-10 h-10' />
 					</button>
@@ -187,7 +189,8 @@ const Baristas: FC = () => {
 										onClick={() => {
 											setSelectedBarista(item)
 										}}
-										className='p-4 w-[90%] bg-zinc-500 rounded-2xl hover:bg-zinc-400 text-xl'
+										title='Select this barista'
+										className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-xl ${selectedBarista?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
 									>
 										{item.surname + ' ' + item.name}
 									</button>

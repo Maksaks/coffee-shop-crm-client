@@ -98,7 +98,7 @@ const Shifts: FC = () => {
 									onClick={() => {
 										setSelectedBarista(item)
 									}}
-									className='p-4 w-[90%] bg-zinc-500 rounded-2xl hover:bg-zinc-400 text-xl'
+									className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-xl ${selectedBarista?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
 								>
 									{item.surname + ' ' + item.name}
 								</button>
@@ -111,7 +111,9 @@ const Shifts: FC = () => {
 			</div>
 			<div className='h-[100%] w-[70%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
 				<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-2xl font-bold'>
-					BARISTA`S SHIFTS
+					{!selectedBarista
+						? 'BARISTA`S SHIFTS'
+						: `SHIFTS FOR BARISTA ${selectedBarista.name + ' ' + selectedBarista.surname}`}
 				</h2>
 				{baristaShifts?.length ? (
 					<div className='w-[90%] bg-zinc-800/80 h-[70px] rounded-t-2xl grid grid-cols-10 items-center px-5 py-2 font-bold text-xl'>

@@ -15,6 +15,7 @@ import Statistics from '../pages/Admin/Statistics'
 import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
 import { categoriesLoader } from '../pages/Admin/loaders/categoriesLoader'
 import { discountsLoader } from '../pages/Admin/loaders/discountsLoader'
+import { ordersPointsLoader } from '../pages/Admin/loaders/ordersLoader'
 import { positionsLoader } from '../pages/Admin/loaders/positionsLoader'
 import { shiftsLoader } from '../pages/Admin/loaders/shiftsLoader'
 import AuthLayout from '../pages/Auth/AuthLayout'
@@ -142,6 +143,7 @@ export const router = createBrowserRouter([
 			{
 				path: 'orders',
 				element: <Orders />,
+				loader: ordersPointsLoader,
 			},
 			{
 				path: 'points',

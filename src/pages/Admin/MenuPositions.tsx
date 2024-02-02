@@ -227,6 +227,7 @@ const MenuPositions: FC = () => {
 						className='absolute right-5 top-1 py-1 px-2 bg-zinc-900 font-bold hover:bg-zinc-400 rounded-xl hover:text-black disabled:hover:bg-zinc-900 disabled:hover:text-white'
 						disabled={!selectedPoint}
 						onClick={() => setIsCreatingModalVisible(true)}
+						title='Create new position to this point'
 					>
 						<ListPlus className='w-10 h-10' />
 					</button>
@@ -277,8 +278,9 @@ const MenuPositions: FC = () => {
 									return (
 										<button
 											key={indx}
-											className='p-3 w-[90%] bg-zinc-500 uppercase font-bold text-xl rounded-2xl hover:bg-zinc-300 hover:text-black'
+											className={`p-3 w-[90%] uppercase font-bold text-xl rounded-2xl hover:bg-zinc-300 hover:text-black ${selectedPosition?.id == item.id ? 'bg-zinc-300 text-black underline' : 'bg-zinc-500'}`}
 											onClick={() => setSelectedPosition(item)}
+											title='Select this position'
 										>
 											{item.name}
 										</button>
@@ -320,6 +322,7 @@ const MenuPositions: FC = () => {
 										disabled={!selectedPositionWithRecipe}
 										onClick={() => setIsCreatingDiscountModalVisible(true)}
 										type='button'
+										title='Create discount to this position'
 									>
 										<Percent
 											className={`w-12 h-12 p-1 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
@@ -331,6 +334,7 @@ const MenuPositions: FC = () => {
 							disabled={!selectedPositionWithRecipe}
 							onClick={deletePositionHandler}
 							type='button'
+							title='Delete this position'
 						>
 							<Trash2
 								className={`w-16 h-16 p-2 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
@@ -413,6 +417,7 @@ const MenuPositions: FC = () => {
 								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
 								onClick={() => setIsUpdatingStepsModalVisible(true)}
 								disabled={!selectedPoint || !selectedPositionWithRecipe}
+								title='Update steps to reproduce to this position'
 							>
 								<Pencil className='w-7 h-7' />
 							</button>
@@ -444,6 +449,7 @@ const MenuPositions: FC = () => {
 								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
 								disabled={!selectedPoint || !selectedPositionWithRecipe}
 								onClick={() => setIsUpdatingIngredientsModalVisible(true)}
+								title='Update ingredients to this position'
 							>
 								<Pencil className='w-7 h-7' />
 							</button>

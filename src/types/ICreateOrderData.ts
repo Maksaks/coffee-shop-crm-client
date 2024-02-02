@@ -1,5 +1,5 @@
 export interface IOrderPositionData {
-	menuPosition: { id: number }
+	menuPosition: { id: number; name?: string; price?: number }
 	quantity: number
 }
 
