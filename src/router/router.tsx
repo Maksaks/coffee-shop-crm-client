@@ -50,6 +50,7 @@ import { ingredientsLoader } from '../pages/Baritsta/loaders/ingredientsLoader'
 import { menuLoader } from '../pages/Baritsta/loaders/menuLoader'
 import { ordersLoader } from '../pages/Baritsta/loaders/ordersLoader'
 import ErrorPage from '../pages/Error/ErrorPage'
+import MainPage from '../pages/MainPage/MainPage'
 
 export const router = createBrowserRouter([
 	{
@@ -214,6 +215,6 @@ export const router = createBrowserRouter([
 	},
 	{
 		index: true,
-		element: <ErrorPage />,
+		element: <MainPage />,
 	},
 ])
