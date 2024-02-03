@@ -182,7 +182,11 @@ export const router = createBrowserRouter([
 						loader: pointsShortLoader,
 					},
 					{ path: 'common', element: <Common />, loader: commonLoader },
-					{ path: 'barista', element: <BaristaSalaryShifts /> },
+					{
+						path: 'barista',
+						element: <BaristaSalaryShifts />,
+						loader: shiftsLoader,
+					},
 					{ path: 'allBarista', element: <AllBarista /> },
 					{
 						path: 'consumption',
