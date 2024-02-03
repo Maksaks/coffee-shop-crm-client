@@ -19,6 +19,8 @@ import Common from '../pages/Admin/Statistics/Common'
 import Consumption from '../pages/Admin/Statistics/Consumption'
 import Expenses from '../pages/Admin/Statistics/Expenses'
 import Popularity from '../pages/Admin/Statistics/Popularity'
+import { allBaristasSalaryLoader } from '../pages/Admin/loaders/allBaristasSalaryLoader'
+import { allCategoriesLoader } from '../pages/Admin/loaders/allCategoriesLoader'
 import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
 import { categoriesLoader } from '../pages/Admin/loaders/categoriesLoader'
 import { commonLoader } from '../pages/Admin/loaders/commonLoader'
@@ -187,13 +189,21 @@ export const router = createBrowserRouter([
 						element: <BaristaSalaryShifts />,
 						loader: shiftsLoader,
 					},
-					{ path: 'allBarista', element: <AllBarista /> },
+					{
+						path: 'allBarista',
+						element: <AllBarista />,
+						loader: allBaristasSalaryLoader,
+					},
 					{
 						path: 'consumption',
 						element: <Consumption />,
 						loader: pointsShortLoader,
 					},
-					{ path: 'categories', element: <CategoriesIncomes /> },
+					{
+						path: 'categories',
+						element: <CategoriesIncomes />,
+						loader: allCategoriesLoader,
+					},
 				],
 			},
 			{

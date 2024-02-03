@@ -87,7 +87,7 @@ export const StatisticsService = {
 	},
 	async getCountOrdersAndIncomesAllCategories(period: IPeriodData) {
 		const { data } = await axios.post<ICategoriesOrdersIncomesData[]>(
-			`http://localhost:3000/apis/statistics/categories`,
+			`http://localhost:3000/api/statistics/categories`,
 			period,
 			{
 				headers: {

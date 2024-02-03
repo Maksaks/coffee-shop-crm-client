@@ -173,7 +173,7 @@ const Orders: FC = () => {
 									return (
 										<div
 											key={indx}
-											className='w-full bg-zinc-600/90 h-[60px] rounded-2xl grid grid-cols-8 items-center px-5 py-2 text-lg hover:bg-zinc-400 hover:cursor-pointer'
+											className={`w-full h-[60px] rounded-2xl grid grid-cols-8 items-center px-5 py-2 text-lg hover:bg-zinc-400 hover:cursor-pointer ${item.id == selectedOrder?.id ? 'bg-zinc-400 text-black' : 'bg-zinc-600/90'}`}
 											onClick={() => setSelectedOrder(item)}
 										>
 											<label>{item.id}</label>
@@ -213,29 +213,37 @@ const Orders: FC = () => {
 								<label className='col-span-2'>PRICE</label>
 								<label className='col-span-2'>QUANTITY</label>
 							</div>
-							{selectedOrderList?.length ? (
-								selectedOrderList.map((item, indx) => {
-									return (
-										<div
-											key={indx}
-											className='grid grid-cols-7 py-2 items-center text-center font-bold text-lg'
-										>
-											<label>{indx + 1}</label>
-											<label className='col-span-2'>
-												{item.menuPosition.name}
-											</label>
-											<label className='col-span-2'>
-												{item.menuPosition.price?.toFixed(2)} UAH
-											</label>
-											<label className='col-span-2'>x{item.quantity}</label>
-										</div>
-									)
-								})
-							) : (
-								<h2 className='uppercase font-bold text-xl w-full text-center p-10 text-white/60'>
-									List of positions is empty
-								</h2>
-							)}
+							<div className='w-full h-[90%] overflow-auto'>
+								{selectedOrderList?.length ? (
+									selectedOrderList.map((item, indx) => {
+										return (
+											<div
+												key={indx}
+												className='grid grid-cols-7 py-2 items-center text-center font-bold text-lg'
+											>
+												<label>{indx + 1}</label>
+												<label className='col-span-2'>
+													{item.menuPosition.name}
+												</label>
+												<label className='col-span-2'>
+													{item.menuPosition.price?.toFixed(2)} UAH
+												</label>
+												<label className='col-span-2'>x{item.quantity}</label>
+											</div>
+										)
+									})
+								) : (
+									<h2 className='uppercase font-bold text-xl w-full text-center p-10 text-white/60'>
+										List of positions is empty
+									</h2>
+								)}
+							</div>
+							<div className='w-full h-[5%] border-t-4 flex flex-col items-center'>
+								<label className='p-3 text-lg'>
+									<b>TOTAL AMOUNT(WITH DISCOUNTS):</b>{' '}
+									{selectedOrder?.totalAmount.toFixed(2)} UAH
+								</label>
+							</div>
 						</div>
 					</div>
 				</div>

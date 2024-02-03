@@ -20,7 +20,9 @@ const Common: FC = () => {
 
 	useEffect(() => {
 		if (common) {
-			setExpensesAndIncomes(common)
+			setExpensesAndIncomes(
+				common.sort((a, b) => b.incomes - b.expenses - (a.incomes - a.expenses))
+			)
 			const currentDate = new Date()
 			const lastMonthDate = new Date()
 			lastMonthDate.setMonth(currentDate.getMonth() - 1)
