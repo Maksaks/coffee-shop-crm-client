@@ -67,7 +67,7 @@ const Ingredients: FC = () => {
 	const removeIngredientHandler = async (item: IIngredientData) => {
 		try {
 			await IngredientsService.deleteIngredientByID(item.id)
-			toast.success(`Order #${item.id} was successfully removed`)
+			toast.success(`Ingredient #${item.id} was successfully removed`)
 			navigate('/admin/refresh')
 			navigate(`/admin/ingredients?point=${selectedPoint?.id}`)
 		} catch (err: any) {

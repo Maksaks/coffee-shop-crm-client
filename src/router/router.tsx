@@ -17,6 +17,7 @@ import { categoriesLoader } from '../pages/Admin/loaders/categoriesLoader'
 import { discountsLoader } from '../pages/Admin/loaders/discountsLoader'
 import { ingredientsWithPointsLoader } from '../pages/Admin/loaders/ingredientsWithPointsLoader'
 import { ordersPointsLoader } from '../pages/Admin/loaders/ordersLoader'
+import { pointsLoader } from '../pages/Admin/loaders/pointsLoader'
 import { positionsLoader } from '../pages/Admin/loaders/positionsLoader'
 import { shiftsLoader } from '../pages/Admin/loaders/shiftsLoader'
 import AuthLayout from '../pages/Auth/AuthLayout'
@@ -150,6 +151,7 @@ export const router = createBrowserRouter([
 			{
 				path: 'points',
 				element: <Points />,
+				loader: pointsLoader,
 			},
 			{
 				path: 'shifts',
