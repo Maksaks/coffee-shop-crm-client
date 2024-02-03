@@ -198,10 +198,14 @@ const Expenses: FC = () => {
 						<label className='col-span-4 p-2 border-l-2 border-b-2'>
 							{expensesIncomesData?.shifts.shifts_sum} UAH
 						</label>
-						<label className='col-span-2 p-2 border-b-2 font-bold'>
+						<label
+							className={`col-span-2 p-2 border-b-2 font-bold ${expensesIncomesData && expensesIncomesData?.profit >= 0 ? 'bg-green-300 text-black' : 'bg-red-300 text-black'}`}
+						>
 							PROFIT:
 						</label>
-						<label className='col-span-4 p-2 border-l-2 border-b-2'>
+						<label
+							className={`col-span-4 p-2 border-l-2 border-b-2 ${expensesIncomesData && expensesIncomesData?.profit >= 0 ? 'bg-green-300 text-black' : 'bg-red-300 text-black'}`}
+						>
 							{expensesIncomesData?.profit} UAH
 						</label>
 					</div>
