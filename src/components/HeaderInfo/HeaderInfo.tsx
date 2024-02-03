@@ -52,7 +52,7 @@ const HeaderInfo: FC = () => {
 	}
 
 	return (
-		<div className='flex flex-row max-w-[15%] text-sm gap-2 h-full items-center'>
+		<div className='flex flex-row max-w-[15%] text-base gap-2 h-full items-center'>
 			<div className='grid grid-cols-3 border-r-[1px] pr-2 items-center w-full h-full py-2'>
 				{whoAuth === 'barista' ? (
 					<>

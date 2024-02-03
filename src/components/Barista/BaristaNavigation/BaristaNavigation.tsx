@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const BaristaNavigation: FC = () => {
 	return (
-		<nav className='flex flex-row gap-20 font-roboto text-xl uppercase h-full'>
+		<nav className='flex flex-row gap-20 font-roboto text-2xl font-bold uppercase h-full'>
 			<NavLink
 				className={({ isActive, isPending }) =>
 					isPending

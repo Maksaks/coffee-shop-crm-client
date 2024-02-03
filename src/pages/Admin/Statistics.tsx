@@ -9,7 +9,7 @@ const Statistics: FC = () => {
 					to={'popularity'}
 					className={({ isActive, isPending }) =>
 						isPending
-							? 'pending'
+							? ''
 							: isActive
 								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
 								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
@@ -21,7 +21,7 @@ const Statistics: FC = () => {
 					to={'expenses'}
 					className={({ isActive, isPending }) =>
 						isPending
-							? 'pending'
+							? ''
 							: isActive
 								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
 								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
@@ -33,7 +33,7 @@ const Statistics: FC = () => {
 					to={'common'}
 					className={({ isActive, isPending }) =>
 						isPending
-							? 'pending'
+							? ''
 							: isActive
 								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
 								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
@@ -45,7 +45,7 @@ const Statistics: FC = () => {
 					to={'barista'}
 					className={({ isActive, isPending }) =>
 						isPending
-							? 'pending'
+							? ''
 							: isActive
 								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
 								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
@@ -57,7 +57,7 @@ const Statistics: FC = () => {
 					to={'allBarista'}
 					className={({ isActive, isPending }) =>
 						isPending
-							? 'pending'
+							? ''
 							: isActive
 								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
 								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
@@ -69,7 +69,7 @@ const Statistics: FC = () => {
 					to={'consumption'}
 					className={({ isActive, isPending }) =>
 						isPending
-							? 'pending'
+							? ''
 							: isActive
 								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
 								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
@@ -81,7 +81,7 @@ const Statistics: FC = () => {
 					to={'categories'}
 					className={({ isActive, isPending }) =>
 						isPending
-							? 'pending'
+							? ''
 							: isActive
 								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
 								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'

@@ -135,7 +135,7 @@ const Points: FC = () => {
 							searchedPoints.map((item, indx) => {
 								return (
 									<button
-										title='Select this barista'
+										title='Select this point'
 										key={indx}
 										onClick={() => {
 											setSelectedPoint(item)

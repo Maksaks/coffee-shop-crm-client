@@ -12,7 +12,7 @@ import { IPositionPopularityByPointData } from '../../types/IPositionPopularityB
 export const StatisticsService = {
 	async getPositionsPopularityByPoint(pointID: number, period: IPeriodData) {
 		const { data } = await axios.post<IPositionPopularityByPointData[]>(
-			`http://localhost:3000/api/admin/statistics/positions/${pointID}`,
+			`http://localhost:3000/api/statistics/positions/${pointID}`,
 			period,
 			{
 				headers: {
@@ -24,7 +24,7 @@ export const StatisticsService = {
 	},
 	async getExpensesAndIncomesByPoint(pointID: number, period: IPeriodData) {
 		const { data } = await axios.post<IExpensesAndIncomesByPointData[]>(
-			`http://localhost:3000/api/admin/statistics/points/${pointID}`,
+			`http://localhost:3000/api/statistics/points/${pointID}`,
 			period,
 			{
 				headers: {
@@ -36,7 +36,7 @@ export const StatisticsService = {
 	},
 	async getExpensesAndIncomesAllPoints(period: IPeriodData) {
 		const { data } = await axios.post<IExpenseIncomesAllPointsData[]>(
-			`http://localhost:3000/api/admin/statistics/points`,
+			`http://localhost:3000/api/statistics/points`,
 			period,
 			{
 				headers: {
@@ -48,7 +48,7 @@ export const StatisticsService = {
 	},
 	async getBaristaShiftsAndSalaryByID(baristaID: number, period: IPeriodData) {
 		const { data } = await axios.post<IBaristaShiftsAndSalaryData>(
-			`http://localhost:3000/api/admin/statistics/baristas/${baristaID}`,
+			`http://localhost:3000/api/statistics/baristas/${baristaID}`,
 			period,
 			{
 				headers: {
@@ -60,7 +60,7 @@ export const StatisticsService = {
 	},
 	async getAllBaristasShiftsAndSalary(period: IPeriodData) {
 		const { data } = await axios.post<IAllBaristaShiftsAndSalaryData[]>(
-			`http://localhost:3000/api/admin/statistics/baristas`,
+			`http://localhost:3000/api/statistics/baristas`,
 			period,
 			{
 				headers: {
@@ -75,7 +75,7 @@ export const StatisticsService = {
 		period: IPeriodData
 	) {
 		const { data } = await axios.post<IConsumptionIngredientsData[]>(
-			`http://localhost:3000/api/admin/statistics/ingredients/${pointID}`,
+			`http://localhost:3000/api/statistics/ingredients/${pointID}`,
 			period,
 			{
 				headers: {
@@ -87,7 +87,7 @@ export const StatisticsService = {
 	},
 	async getCountOrdersAndIncomesAllCategories(period: IPeriodData) {
 		const { data } = await axios.post<ICategoriesOrdersIncomesData[]>(
-			`http://localhost:3000/api/admin/statistics/categories`,
+			`http://localhost:3000/apis/statistics/categories`,
 			period,
 			{
 				headers: {
