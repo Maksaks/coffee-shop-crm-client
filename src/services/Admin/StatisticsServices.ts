@@ -23,7 +23,7 @@ export const StatisticsService = {
 		return data
 	},
 	async getExpensesAndIncomesByPoint(pointID: number, period: IPeriodData) {
-		const { data } = await axios.post<IExpensesAndIncomesByPointData[]>(
+		const { data } = await axios.post<IExpensesAndIncomesByPointData>(
 			`http://localhost:3000/api/statistics/points/${pointID}`,
 			period,
 			{

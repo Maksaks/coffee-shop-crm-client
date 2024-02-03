@@ -48,7 +48,7 @@ const Consumption: FC = () => {
 					onChange={searchHandler}
 					disabled={!points.length}
 				/>
-				<div className='w-full h-[80%] flex flex-col items-center gap-2'>
+				<div className='w-full h-[80%] flex flex-col items-center gap-2  overflow-auto'>
 					{searchedPoints?.length ? (
 						searchedPoints.map((item, indx) => {
 							return (

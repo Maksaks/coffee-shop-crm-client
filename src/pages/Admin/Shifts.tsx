@@ -88,7 +88,7 @@ const Shifts: FC = () => {
 					placeholder='Search barista by surname or name...'
 					onChange={searchHandler}
 				/>
-				<div className='w-full h-[80%] flex flex-col items-center gap-2'>
+				<div className='w-full h-[80%] flex flex-col items-center gap-2  overflow-auto'>
 					{searchedBaristas?.length ? (
 						searchedBaristas.map((item, indx) => {
 							return (

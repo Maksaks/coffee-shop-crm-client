@@ -123,7 +123,7 @@ const Popularity: FC = () => {
 					onChange={searchHandler}
 					disabled={!points.length}
 				/>
-				<div className='w-full h-[80%] flex flex-col items-center gap-2'>
+				<div className='w-full h-[80%] flex flex-col items-center gap-2 overflow-auto'>
 					{searchedPoints?.length ? (
 						searchedPoints.map((item, indx) => {
 							return (
@@ -180,29 +180,31 @@ const Popularity: FC = () => {
 				) : (
 					<></>
 				)}
-				{positionsPopularity?.length ? (
-					positionsPopularity.map((item, indx) => {
-						return (
-							<div
-								key={indx}
-								className='w-[90%] bg-zinc-600/90 h-[60px] rounded-2xl grid grid-cols-10 items-center px-5 py-2 text-lg'
-							>
-								<label>{item.id}</label>
-								<label className='col-span-4 text-center'>{item.name}</label>
-								<label className='col-span-3 text-center'>
-									{item.category}
-								</label>
-								<label className='col-span-2 text-center'>
-									{item.number_of_ordering}
-								</label>
-							</div>
-						)
-					})
-				) : (
-					<h2 className='uppercase text-white/70 font-bold text-xl w-full text-center'>
-						No data
-					</h2>
-				)}
+				<div className='w-full h-[80%] flex flex-col items-center gap-3 py-3 overflow-auto'>
+					{positionsPopularity?.length ? (
+						positionsPopularity.map((item, indx) => {
+							return (
+								<div
+									key={indx}
+									className='w-[90%] bg-zinc-400 h-[60px] rounded-2xl grid grid-cols-10 items-center px-5 py-2 text-lg text-black/80'
+								>
+									<label>{item.id}</label>
+									<label className='col-span-4 text-center'>{item.name}</label>
+									<label className='col-span-3 text-center'>
+										{item.category}
+									</label>
+									<label className='col-span-2 text-center'>
+										{item.number_of_ordering}
+									</label>
+								</div>
+							)
+						})
+					) : (
+						<h2 className='uppercase text-white/70 font-bold text-xl w-full text-center'>
+							No data
+						</h2>
+					)}
+				</div>
 			</div>
 		</motion.div>
 	)
