@@ -93,7 +93,7 @@ export const CreatingPointModal: FC<Props> = ({ setVisibleModal }) => {
 							name='workingHours'
 							value={workingHours}
 							onChange={e => setWorkingHours(e.target.value)}
-							placeholder='Email...'
+							placeholder='Working hours...'
 							className={`text-xl w-full p-2 rounded-xl`}
 						/>
 					</label>

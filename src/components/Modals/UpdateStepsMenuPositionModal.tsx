@@ -112,7 +112,7 @@ const UpdateStepsMenuPositionModal: FC<Props> = ({
 									return (
 										<div
 											key={indx}
-											className='w-full rounded-xl p-2 bg-zinc-400 flex justify-between'
+											className='w-full rounded-xl p-2 bg-zinc-400 flex justify-between text-xl'
 										>
 											{item}
 											<div className='flex flex-col gap-1'>

@@ -75,7 +75,7 @@ const Points: FC = () => {
 				dataToUpdate = { ...dataToUpdate, description }
 			}
 			if (selectedPoint.pointMoney != +pointMoney) {
-				dataToUpdate = { ...dataToUpdate, name }
+				dataToUpdate = { ...dataToUpdate, pointMoney: +pointMoney }
 			}
 			await PointsService.updatePoint(selectedPoint.id, dataToUpdate)
 			navigate('/admin/refresh')

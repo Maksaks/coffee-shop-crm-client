@@ -77,9 +77,9 @@ const Shifts: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='w-[70%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 shadow-2xl'
+			className='w-[70%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5'
 		>
-			<div className='h-[100%] w-[30%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
+			<div className='h-[100%] w-[30%] bg-zinc-700 rounded-3xl flex items-center flex-col relative  shadow-2xl'>
 				<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-2xl font-bold'>
 					Baristas
 				</h2>
@@ -126,7 +126,7 @@ const Shifts: FC = () => {
 				) : (
 					<></>
 				)}
-				<div className='w-[90%] flex flex-col items-center h-[88%] overflow-auto'>
+				<div className='w-[90%] flex flex-col items-center h-[85%] overflow-auto gap-2 pt-2'>
 					{baristaShifts?.length ? (
 						baristaShifts.map((item, indx) => {
 							return (

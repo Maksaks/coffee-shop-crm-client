@@ -300,13 +300,13 @@ const Baristas: FC = () => {
 										return (
 											<div
 												key={indx}
-												className='w-[95%] text-black bg-zinc-500 rounded-2xl grid grid-cols-12 border-2 border-black'
+												className='w-[95%] text-white bg-zinc-600 rounded-2xl grid grid-cols-12 border-2 border-white uppercase'
 											>
 												<span className='p-3'>{item.id}</span>
-												<span className='col-span-5 p-3 border-x-2 text-center border-black'>
+												<span className='col-span-5 p-3 border-x-2 text-center border-white'>
 													{item.name}
 												</span>
-												<span className='p-3 col-span-5 text-center border-r-2 border-black'>
+												<span className='p-3 col-span-5 text-center border-r-2 border-white'>
 													{item.address}
 												</span>
 												<button

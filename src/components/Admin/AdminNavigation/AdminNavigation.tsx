@@ -108,7 +108,7 @@ const AdminNavigation: FC = () => {
 							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
 							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
-				to={'statistics'}
+				to={'statistics/popularity'}
 			>
 				Statistics
 			</NavLink>

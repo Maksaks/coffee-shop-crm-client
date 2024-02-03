@@ -12,6 +12,13 @@ import Points from '../pages/Admin/Points'
 import RefreshPage from '../pages/Admin/RefreshPage'
 import Shifts from '../pages/Admin/Shifts'
 import Statistics from '../pages/Admin/Statistics'
+import AllBarista from '../pages/Admin/Statistics/AllBarista'
+import BaristaSalaryShifts from '../pages/Admin/Statistics/BaristaSalaryShifts'
+import CategoriesIncomes from '../pages/Admin/Statistics/CategoriesIncomes'
+import Common from '../pages/Admin/Statistics/Common'
+import Consumption from '../pages/Admin/Statistics/Consumption'
+import Expenses from '../pages/Admin/Statistics/Expenses'
+import Popularity from '../pages/Admin/Statistics/Popularity'
 import { baristasLoader } from '../pages/Admin/loaders/baristasLoader'
 import { categoriesLoader } from '../pages/Admin/loaders/categoriesLoader'
 import { discountsLoader } from '../pages/Admin/loaders/discountsLoader'
@@ -161,6 +168,15 @@ export const router = createBrowserRouter([
 			{
 				path: 'statistics',
 				element: <Statistics />,
+				children: [
+					{ path: 'popularity', element: <Popularity /> },
+					{ path: 'expenses', element: <Expenses /> },
+					{ path: 'common', element: <Common /> },
+					{ path: 'barista', element: <BaristaSalaryShifts /> },
+					{ path: 'allBarista', element: <AllBarista /> },
+					{ path: 'consumption', element: <Consumption /> },
+					{ path: 'categories', element: <CategoriesIncomes /> },
+				],
 			},
 			{
 				path: 'refresh',
