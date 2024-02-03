@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
