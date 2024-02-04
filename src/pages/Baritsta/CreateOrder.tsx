@@ -47,9 +47,9 @@ const CreateOrder: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[95vw] h-[1100px] mt-20 mx-auto text-white font-roboto flex flex-row gap-[1vh] shadow-2xl'
+				className='w-[95vw] h-[85vh] mt-[3vh] mx-auto text-white font-roboto flex flex-row gap-[1vh]'
 			>
-				<div className='w-[60%] bg-zinc-700 rounded-3xl flex items-center flex-col'>
+				<div className='w-[60%] bg-zinc-700 rounded-3xl flex items-center flex-col  shadow-2xl'>
 					<h2 className='h-[6vh] p-[1vh] uppercase w-full text-center text-[3vh] font-bold border-b-4'>
 						menu positions
 					</h2>
@@ -70,7 +70,7 @@ const CreateOrder: FC = () => {
 						)}
 					</div>
 				</div>
-				<div className='w-[40%] bg-zinc-700 rounded-3xl'>
+				<div className='w-[40%] bg-zinc-700 rounded-3xl  shadow-2xl'>
 					<h2 className='h-[6vh] p-[1vh] uppercase w-full text-center text-[3vh] font-bold border-b-4'>
 						current order info
 					</h2>

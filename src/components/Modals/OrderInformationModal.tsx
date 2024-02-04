@@ -23,16 +23,16 @@ const OrderInformationModal: FC<Props> = ({ result, setVisibleModal }) => {
 			onClick={() => setVisibleModal(false)}
 		>
 			<div
-				className='w-[20%] h-[900px] bg-zinc-300 rounded-3xl relative flex flex-col items-center'
+				className='w-[30%] h-[70vh] bg-zinc-300 rounded-3xl relative flex flex-col items-center'
 				onClick={e => e.stopPropagation()}
 			>
 				<button
 					className='absolute top-1 right-1 rounded-full hover:bg-zinc-500'
 					onClick={() => setVisibleModal(false)}
 				>
-					<X className='w-10 h-10' />
+					<X className='w-[1.5vw] h-[3vh]' />
 				</button>
-				<h2 className='text-2xl h-[9%] uppercase py-3 px-10 font-bold w-full  border-b-4 text-center border-black bg-zinc-400 rounded-t-3xl flex items-center justify-center'>
+				<h2 className='text-[2vh] h-[9%] uppercase py-3 px-10 font-bold w-full  border-b-4 text-center border-black bg-zinc-400 rounded-t-3xl flex items-center justify-center'>
 					Order #{result.id} from {dateTimeFormatter(result.createdAt)}
 				</h2>
 				<div className='w-full h-[71%] flex flex-col items-center p-5 gap-2 overflow-auto'>
@@ -40,7 +40,7 @@ const OrderInformationModal: FC<Props> = ({ result, setVisibleModal }) => {
 						return (
 							<div
 								key={indx}
-								className='w-full h-[60px] rounded-xl bg-zinc-400 flex flex-row justify-between p-2 items-center text-xl'
+								className='w-full h-[60px] rounded-xl bg-zinc-400 flex flex-row justify-between p-2 items-center text-[2vh]'
 							>
 								<label>{item.menuPosition.name}</label>
 								<label>x {item.quantity}</label>
@@ -48,7 +48,7 @@ const OrderInformationModal: FC<Props> = ({ result, setVisibleModal }) => {
 						)
 					})}
 				</div>
-				<div className='w-full h-[20%] grid grid-cols-2 bg-zinc-400 rounded-b-3xl border-t-4 border-black py-5 px-2 text-xl'>
+				<div className='w-full h-[20%] grid grid-cols-2 bg-zinc-400 rounded-b-3xl border-t-4 border-black py-3 px-5 text-[2vh]'>
 					<label className='font-bold uppercase'>Total amount:</label>
 					<label className='text-right'>
 						{result.totalAmount.toFixed(2)} UAH

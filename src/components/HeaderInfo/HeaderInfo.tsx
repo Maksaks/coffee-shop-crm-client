@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { dateFormater } from '../../helper/date-formater.helper'
+import { removeTokenFromLocalStorage } from '../../helper/localstorage.helper'
 import { useCheckWhoAuth } from '../../hooks/useCheckWhoAuth.hook'
 import { AuthService } from '../../services/AuthService'
 import { useAppSelector } from '../../store/hooks'
@@ -49,6 +50,7 @@ const HeaderInfo: FC = () => {
 				toast.error(error.toString())
 			}
 		}
+		removeTokenFromLocalStorage()
 	}
 
 	return (

@@ -31,6 +31,7 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 			)
 			toast.success('Ingredients was successfully updated')
 			setVisibleModal(false)
+			navigate('/barista/refresh')
 			navigate('/barista/ingredients')
 		} catch (err: any) {
 			const error = err.response?.data.message
@@ -46,10 +47,10 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 			className='fixed w-full h-full bg-black/50 flex justify-center items-center'
 		>
 			<form
-				className='w-[20%] h-[300px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
+				className='w-[20%] h-[25vh] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
 				onSubmit={submitHandler}
 			>
-				<h2 className='font-bold uppercase w-full text-center text-2xl border-b-2 p-3'>
+				<h2 className='font-bold uppercase w-full text-center text-[2vh] border-b-2 p-3'>
 					Adding "{ingredient.name}" quantity
 				</h2>
 				<div className='w-[70%] mx-auto'>
@@ -61,13 +62,13 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 							value={quantity}
 							onChange={e => setQuantity(e.target.value)}
 							placeholder='Quantity...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='flex items-center justify-end gap-5 w-full p-5'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						disabled={+quantity <= 0}
 						type='submit'
 					>
@@ -76,7 +77,7 @@ const UpdateIngredientQuantityModal: FC<Props> = ({
 					<button
 						type='button'
 						onClick={() => setVisibleModal(false)}
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

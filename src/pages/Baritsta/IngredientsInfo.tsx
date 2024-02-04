@@ -53,7 +53,7 @@ const IngredientsInfo: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[50%] h-[1000px] mt-20 mx-auto bg-zinc-700 rounded-3xl text-white font-roboto flex flex-col items-center gap-5 shadow-2xl'
+				className='w-[50%] h-[80vh] mt-[5vh] mx-auto bg-zinc-700 rounded-3xl text-white font-roboto flex flex-col items-center gap-5 shadow-2xl'
 			>
 				<h1 className='h-[6vh] p-[1vh] uppercase w-full text-center text-[3vh] font-bold border-b-4'>
 					INGREDIENT ON CURRENT POINT
@@ -63,7 +63,7 @@ const IngredientsInfo: FC = () => {
 					placeholder='Search ingredients by name...'
 					onChange={searchHandler}
 				/>
-				<div className='h-[801px] overflow-auto w-[90%]'>
+				<div className='h-[80%] overflow-auto w-[90%]'>
 					<table className='table-auto w-full text-center border-collapse mx-auto'>
 						<thead>
 							<tr className='sticky top-0 text-[2vh] bg-zinc-800'>

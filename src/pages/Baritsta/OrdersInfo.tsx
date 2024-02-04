@@ -40,7 +40,7 @@ const OrdersInfo: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[60%] h-[1000px] mt-20 mx-auto bg-zinc-700 rounded-3xl text-white font-roboto flex flex-col items-center gap-5 shadow-2xl'
+				className='w-[60%] h-[80vh] mt-[5vh] mx-auto bg-zinc-700 rounded-3xl text-white font-roboto flex flex-col items-center gap-5 shadow-2xl'
 			>
 				<h1 className='p-4 w-full text-center text-[3vh] font-bold border-b-4'>
 					ORDERS FOR CURRENT SHIFT

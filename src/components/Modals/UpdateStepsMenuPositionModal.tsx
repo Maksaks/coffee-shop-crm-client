@@ -82,10 +82,10 @@ const UpdateStepsMenuPositionModal: FC<Props> = ({
 			className='fixed z-10 w-full h-full bg-black/50 flex justify-center items-center'
 		>
 			<form
-				className='w-[20%] h-[800px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
+				className='w-[30%] h-[75vh] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
 				onSubmit={submitHandler}
 			>
-				<h2 className='font-bold uppercase w-full text-center text-2xl border-b-2 p-3 h-[10%]'>
+				<h2 className='font-bold uppercase w-full text-center text-[2vh] border-b-2 p-3 h-[10%]'>
 					Update steps menu position #{positionID}
 				</h2>
 				<div className='w-full px-5 h-[80%] flex flex-col p-2'>
@@ -94,13 +94,13 @@ const UpdateStepsMenuPositionModal: FC<Props> = ({
 							type='text'
 							name='step'
 							placeholder='New step...'
-							className='text-xl w-[85%] p-2 rounded-l-xl'
+							className='text-[2vh] w-[85%] p-2 rounded-l-xl'
 							onChange={e => setNewStep(e.target.value)}
 							value={newStep}
 						/>
 						<button
 							type='button'
-							className='w-[15%] bg-zinc-900 text-white h-full rounded-r-xl uppercase font-bold hover:bg-green-500 hover:text-black'
+							className='w-[15%] bg-zinc-900 text-white h-full rounded-r-xl uppercase text-[1.5vh] font-bold hover:bg-green-500 hover:text-black'
 							onClick={addStepHandler}
 						>
 							Add
@@ -112,7 +112,7 @@ const UpdateStepsMenuPositionModal: FC<Props> = ({
 									return (
 										<div
 											key={indx}
-											className='w-full rounded-xl p-2 bg-zinc-400 flex justify-between text-xl'
+											className='w-full rounded-xl p-2 bg-zinc-400 flex justify-between text-[2vh]'
 										>
 											{item}
 											<div className='flex flex-col gap-1'>
@@ -148,7 +148,7 @@ const UpdateStepsMenuPositionModal: FC<Props> = ({
 				</div>
 				<div className='flex h-[10%] items-center justify-end gap-5 w-full p-5'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						type='submit'
 					>
 						UPDATE
@@ -156,7 +156,7 @@ const UpdateStepsMenuPositionModal: FC<Props> = ({
 					<button
 						type='button'
 						onClick={() => setVisibleModal(false)}
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

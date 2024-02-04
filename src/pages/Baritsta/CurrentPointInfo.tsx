@@ -33,7 +33,7 @@ const CurrentPointInfo: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='w-[70%] h-[1000px] mt-20 mx-auto text-white flex font-roboto bg-zinc-700 rounded-2xl py-5 flex-col shadow-2xl'
+			className='w-[70%] h-[80vh] mt-[5vh] mx-auto text-white flex font-roboto bg-zinc-700 rounded-2xl py-5 flex-col shadow-2xl'
 		>
 			<h2 className='h-[8%] w-full uppercase border-b-4 text-center pb-3 text-[3vh] font-bold'>
 				Current point

@@ -50,15 +50,15 @@ export const CreatingPointModal: FC<Props> = ({ setVisibleModal }) => {
 			className='fixed w-full h-full bg-black/50 flex justify-center items-center z-10'
 		>
 			<form
-				className='w-[20%] min-h-[300px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto gap-5'
+				className='w-[20%] h-[65vh] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto gap-[1vh]'
 				onSubmit={submitHandler}
 			>
-				<h2 className='font-bold uppercase w-full text-center text-2xl border-b-2 p-3 bg-zinc-600 text-white rounded-t-2xl'>
+				<h2 className='font-bold uppercase w-full text-center text-[2vh] border-b-2 p-3 bg-zinc-600 text-white rounded-t-2xl'>
 					ADDING NEW POINT
 				</h2>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='name'>
-						<small className='text-lg pl-2'>Name:</small>
+						<small className='text-[1.8vh] pl-2'>Name:</small>
 						<input
 							required
 							type='text'
@@ -66,13 +66,13 @@ export const CreatingPointModal: FC<Props> = ({ setVisibleModal }) => {
 							value={name}
 							onChange={e => setName(e.target.value)}
 							placeholder='Name...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='address'>
-						<small className='text-lg pl-2'>Address:</small>
+						<small className='text-[1.8vh] pl-2'>Address:</small>
 						<input
 							required
 							type='text'
@@ -80,13 +80,13 @@ export const CreatingPointModal: FC<Props> = ({ setVisibleModal }) => {
 							value={address}
 							onChange={e => setAddress(e.target.value)}
 							placeholder='Address...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='workingHours'>
-						<small className='text-lg pl-2'>Working hours:</small>
+						<small className='text-[1.8vh] pl-2'>Working hours:</small>
 						<input
 							required
 							type='text'
@@ -94,13 +94,13 @@ export const CreatingPointModal: FC<Props> = ({ setVisibleModal }) => {
 							value={workingHours}
 							onChange={e => setWorkingHours(e.target.value)}
 							placeholder='Working hours...'
-							className={`text-xl w-full p-2 rounded-xl`}
+							className={`text-[2vh] w-full p-2 rounded-xl`}
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='pointMoney'>
-						<small className='text-lg pl-2'>Point money:</small>
+						<small className='text-[1.8vh] pl-2'>Point money:</small>
 						<input
 							required
 							type='number'
@@ -108,26 +108,26 @@ export const CreatingPointModal: FC<Props> = ({ setVisibleModal }) => {
 							value={pointMoney}
 							onChange={e => setPointMoney(e.target.value)}
 							placeholder='Point money...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='description'>
-						<small className='text-lg pl-2'>Description:</small>
+						<small className='text-[1.8vh] pl-2'>Description:</small>
 						<textarea
 							required
 							name='description'
 							value={description}
 							onChange={e => setDescription(e.target.value)}
 							placeholder='Description...'
-							className='text-xl w-full p-2 rounded-xl min-h-28 max-h-28'
+							className='text-[2vh] w-full p-2 rounded-xl min-h-[10vh] max-h-[10vh]'
 						/>
 					</label>
 				</div>
-				<div className='flex items-center justify-end gap-5 w-full p-5'>
+				<div className='flex items-center justify-end gap-[1vh] w-full p-[1vh]'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						type='submit'
 						disabled={
 							!name.length ||
@@ -142,7 +142,7 @@ export const CreatingPointModal: FC<Props> = ({ setVisibleModal }) => {
 					<button
 						type='button'
 						onClick={() => setVisibleModal(false)}
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

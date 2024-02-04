@@ -60,10 +60,10 @@ const SetPointToBaristaModal: FC<Props> = ({
 			className='fixed w-full h-full bg-black/50 flex justify-center items-center z-10'
 		>
 			<form
-				className='w-[20%] h-[300px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
+				className='w-[20%] h-[25vh] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
 				onSubmit={submitHandler}
 			>
-				<h2 className='uppercase w-full text-center text-2xl border-b-2 py-3 px-10 bg-zinc-600 text-white rounded-t-2xl'>
+				<h2 className='uppercase w-full text-center text-[2vh] border-b-2 py-3 px-10 bg-zinc-600 text-white rounded-t-2xl'>
 					<b>Set point to barista:</b>
 					<br />
 					{selectedBaristas.surname + ' ' + selectedBaristas.name}
@@ -71,7 +71,7 @@ const SetPointToBaristaModal: FC<Props> = ({
 				<div className='w-[70%] mx-auto'>
 					<select
 						id='selectPoint'
-						className='p-3 rounded-xl text-xl  w-full font-roboto hover:cursor-pointer'
+						className='p-3 rounded-xl text-[2vh]  w-full font-roboto hover:cursor-pointer'
 						onChange={e => setSelectedPointID(+e.target.value)}
 						required
 						defaultValue={-1}
@@ -86,9 +86,9 @@ const SetPointToBaristaModal: FC<Props> = ({
 						})}
 					</select>
 				</div>
-				<div className='flex items-center justify-end gap-5 w-full p-5'>
+				<div className='flex items-center justify-end gap-[1vh] w-full p-[1vh]'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						type='submit'
 						disabled={selectedPointID < 0}
 					>
@@ -97,7 +97,7 @@ const SetPointToBaristaModal: FC<Props> = ({
 					<button
 						onClick={() => setVisibleModal(false)}
 						type='button'
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

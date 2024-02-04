@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 import Button from '../../components/Button/Button'
 import Input from '../../components/Input/Input'
 import MessageBox from '../../components/MessageBox/MessageBox'
+import { isEmailValid } from '../../helper/validate-email.helper'
 import { AuthService } from '../../services/AuthService'
 
 const Registration: FC = () => {
@@ -11,10 +12,15 @@ const Registration: FC = () => {
 	const [surname, setSurname] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
+	const [repeatPassword, setRepeatPassword] = useState<string>('')
 
 	const registrationHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {
 			e.preventDefault()
+			if (!isEmailValid(email)) {
+				toast.error('Email is invalid')
+				return
+			}
 			const data = await AuthService.registration({
 				name,
 				surname,
@@ -80,13 +86,23 @@ const Registration: FC = () => {
 								labelName='Confirm password:'
 								type='password'
 								placeholder='Confirm password...'
+								value={repeatPassword}
+								onChange={e => setRepeatPassword(e.target.value)}
 								required
 							/>
 						</div>
 						<Button
 							title='Register'
 							type='submit'
-							className='mt-16 uppercase'
+							className='mt-16 uppercase disabled:hover:bg-zinc-800 disabled:hover:text-white'
+							disabled={
+								!repeatPassword.length ||
+								!password.length ||
+								!name.length ||
+								!surname.length ||
+								!email.length ||
+								repeatPassword != password
+							}
 						/>
 					</form>
 				</>

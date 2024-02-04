@@ -46,39 +46,39 @@ const CreateDiscountForPositionModal: FC<Props> = ({
 			className='fixed w-full h-full z-10 bg-black/50 flex justify-center items-center'
 		>
 			<form
-				className='w-[20%] h-[300px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
+				className='w-[20%] h-[30vh] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
 				onSubmit={submitHandler}
 			>
-				<h2 className='font-bold uppercase w-full text-center text-2xl border-b-2 p-3'>
+				<h2 className='font-bold uppercase w-full text-center text-[2vh] border-b-2 p-3'>
 					CREATING DISCOUNT FOR POSITION #{positionID}
 				</h2>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='title'>
-						<small className='text-lg pl-2'>Amount:</small>
+						<small className='text-[1.8vh] pl-2'>Amount:</small>
 						<input
 							type='number'
 							name='amount'
 							placeholder='Amount...'
 							value={amount}
 							onChange={e => setAmount(e.target.value)}
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 					<label htmlFor='title'>
-						<small className='text-lg pl-2'>End at:</small>
+						<small className='text-[1.8vh] pl-2'>End at:</small>
 						<input
 							type='datetime-local'
 							name='endAt'
 							value={endAtDate}
 							onChange={e => setEntAtDate(e.target.value)}
 							placeholder='End at...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
-				<div className='flex items-center justify-end gap-5 w-full p-5'>
+				<div className='flex items-center justify-end gap-[1vh] w-full p-[1vh]'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						type='submit'
 						disabled={
 							!amount ||
@@ -92,7 +92,7 @@ const CreateDiscountForPositionModal: FC<Props> = ({
 					<button
 						type='button'
 						onClick={() => setVisibleModal(false)}
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

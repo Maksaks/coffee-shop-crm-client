@@ -74,15 +74,15 @@ const UpdateIngredientsModal: FC<Props> = ({
 			className='fixed z-10 w-full h-full bg-black/50 flex justify-center items-center'
 		>
 			<form
-				className='w-[40%] h-[800px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
+				className='w-[40%] h-[75vh] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto'
 				onSubmit={submitHandler}
 			>
-				<h2 className='font-bold uppercase w-full text-center text-2xl border-b-2 p-3 h-[10%]'>
+				<h2 className='font-bold uppercase w-full text-center text-[2vh] border-b-2 p-3 h-[10%]'>
 					Update ingredients menu position #{positionID}
 				</h2>
 				<div className='w-full px-5 h-[80%] flex p-2 gap-5'>
 					<div className='w-full h-[95%] mt-2 bg-zinc-300 rounded-2xl flex flex-col gap-5 overflow-auto'>
-						<h2 className='w-full text-center p-2 uppercase text-xl font-bold border-b-2 border-black'>
+						<h2 className='w-full text-center p-2 uppercase text-[2vh] font-bold border-b-2 border-black'>
 							Point ingredients
 						</h2>
 						{noUseIngredients &&
@@ -91,7 +91,7 @@ const UpdateIngredientsModal: FC<Props> = ({
 									<button
 										key={indx}
 										type='button'
-										className='rounded-xl bg-zinc-400 w-[90%] mx-auto p-3 uppercase text-xl hover:bg-zinc-200'
+										className='rounded-xl bg-zinc-400 w-[90%] mx-auto p-3 uppercase text-[2vh] hover:bg-zinc-200'
 										onClick={() => addIngredientHandler(item)}
 									>
 										{item.name}
@@ -100,7 +100,7 @@ const UpdateIngredientsModal: FC<Props> = ({
 							})}
 					</div>
 					<div className='w-full h-[95%] mt-2 bg-zinc-300 rounded-2xl flex flex-col gap-5 overflow-auto'>
-						<h2 className='w-full text-center p-2 uppercase text-xl font-bold border-b-2 border-black'>
+						<h2 className='w-full text-center p-2 uppercase text-[2vh] font-bold border-b-2 border-black'>
 							Recipe ingredients
 						</h2>
 						{ingredients &&
@@ -109,7 +109,7 @@ const UpdateIngredientsModal: FC<Props> = ({
 									<button
 										type='button'
 										key={indx}
-										className='rounded-xl bg-zinc-400 w-[90%] mx-auto p-3 uppercase text-xl hover:bg-zinc-200'
+										className='rounded-xl bg-zinc-400 w-[90%] mx-auto p-3 uppercase text-[2vh] hover:bg-zinc-200'
 										onClick={() => removeIngredientHandler(item)}
 									>
 										{item.name}
@@ -120,7 +120,7 @@ const UpdateIngredientsModal: FC<Props> = ({
 				</div>
 				<div className='flex h-[10%] items-center justify-end gap-5 w-full p-5'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						type='submit'
 					>
 						UPDATE
@@ -128,7 +128,7 @@ const UpdateIngredientsModal: FC<Props> = ({
 					<button
 						type='button'
 						onClick={() => setVisibleModal(false)}
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

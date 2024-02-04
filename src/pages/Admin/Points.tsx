@@ -117,7 +117,7 @@ const Points: FC = () => {
 						POINTS
 					</h2>
 					<button
-						className='absolute top-2 right-2 z-10 w-[2vw] h-[4vh] hover:text-black hover:bg-zinc-300 rounded-full disabled:hover:bg-zinc-700 disabled:hover:text-white'
+						className='absolute top-2 right-2 z-5 w-[2vw] h-[4vh] hover:text-black hover:bg-zinc-300 rounded-full disabled:hover:bg-zinc-700 disabled:hover:text-white'
 						onClick={() => {
 							setIsCreatingModalVisible(true)
 						}}

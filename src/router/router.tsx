@@ -119,6 +119,10 @@ export const router = createBrowserRouter([
 				element: <Recipes />,
 				loader: menuLoader,
 			},
+			{
+				path: 'refresh',
+				element: <RefreshPage />,
+			},
 		],
 	},
 	{

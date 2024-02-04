@@ -39,7 +39,7 @@ const Recipes: FC = () => {
 	}
 
 	return (
-		<div className='w-[80%] h-[1000px] mt-20 mx-auto text-white flex gap-[1%] font-roboto'>
+		<div className='w-[80%] h-[80vh] mt-[5vh] mx-auto text-white flex gap-[1%] font-roboto'>
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}

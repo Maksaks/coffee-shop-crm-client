@@ -75,14 +75,14 @@ const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 
 	return (
 		<div className='w-full h-[90%]'>
-			<div className='grid grid-cols-6 h-[23%] border-b-4 p-5 text-[2vh] items-center gap-x-5 gap-y-3'>
+			<div className='grid grid-cols-6 h-[25%] border-b-4 p-[1vh] text-[2vh] items-center gap-x-5 gap-y-3'>
 				<label className='col-span-3 uppercase font-bold text-center'>
 					Total amount:
 				</label>
 				<label className='col-span-3 uppercase font-bold text-center'>
 					Received amount:
 				</label>
-				<label className='col-span-3 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-2xl'>
+				<label className='col-span-3 w-full h-[5vh] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl cursor-default placeholder:text-black/50 placeholder:text-lg text-2xl'>
 					{orderList.totalAmount} UAH
 				</label>
 				<input
@@ -91,7 +91,7 @@ const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 					disabled={paymentMethod == 'By Card'}
 					value={receivedAmount}
 					onChange={receivedAmountChangeHandler}
-					className='col-span-3 w-full h-[55px] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl  placeholder:text-black/50 placeholder:text-lg text-2xl'
+					className='col-span-3 w-full h-[5vh] bg-gradient-to-r from-zinc-500 to-zinc-400 flex items-center p-3 rounded-2xl  placeholder:text-black/50 placeholder:text-lg text-2xl'
 				/>
 
 				<h2 className='col-span-2 uppercase font-bold'>Payment method:</h2>
@@ -117,7 +117,7 @@ const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 					By cash
 				</label>
 				<button
-					className='border-2 w-[10vw] h-[70px] rounded-2xl bg-zinc-900 uppercase font-bold hover:text-black hover:bg-zinc-300 disabled:hover:bg-zinc-900 disabled:hover:text-white disabled:hover:cursor-not-allowed  text-[2vh]'
+					className='border-2 w-[10vw] h-[6vh] rounded-2xl bg-zinc-900 uppercase font-bold hover:text-black hover:bg-zinc-300 disabled:hover:bg-zinc-900 disabled:hover:text-white disabled:hover:cursor-not-allowed  text-[2vh]'
 					onClick={submitHandler}
 					disabled={
 						(+receivedAmount < orderList.totalAmount &&

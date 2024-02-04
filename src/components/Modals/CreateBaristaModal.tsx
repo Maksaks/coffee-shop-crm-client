@@ -59,15 +59,15 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 			className='fixed w-full h-full bg-black/50 flex justify-center items-center z-10'
 		>
 			<form
-				className='w-[20%] min-h-[300px] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto gap-5'
+				className='w-[20%] h-[77vh] bg-zinc-400 rounded-2xl flex flex-col justify-between font-roboto gap-[1vh]'
 				onSubmit={submitHandler}
 			>
-				<h2 className='font-bold uppercase w-full text-center text-2xl border-b-2 p-3 bg-zinc-600 text-white rounded-t-2xl'>
+				<h2 className='font-bold uppercase w-full text-center text-[2vh] border-b-2 p-3 bg-zinc-600 text-white rounded-t-2xl'>
 					ADDING NEW BARISTA
 				</h2>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='name'>
-						<small className='text-lg pl-2'>Name:</small>
+						<small className='text-[1.6vh] pl-2'>Name:</small>
 						<input
 							required
 							type='text'
@@ -75,13 +75,13 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 							value={name}
 							onChange={e => setName(e.target.value)}
 							placeholder='Name...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='surname'>
-						<small className='text-lg pl-2'>Surname:</small>
+						<small className='text-[1.6vh] pl-2'>Surname:</small>
 						<input
 							required
 							type='text'
@@ -89,13 +89,13 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 							value={surname}
 							onChange={e => setSurname(e.target.value)}
 							placeholder='Surname...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='email'>
-						<small className='text-lg pl-2'>Email:</small>
+						<small className='text-[1.6vh] pl-2'>Email:</small>
 						<input
 							required
 							type='text'
@@ -103,13 +103,13 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 							value={email}
 							onChange={e => setEmail(e.target.value)}
 							placeholder='Email...'
-							className={`text-xl ${email.length && !isEmailValid(email) ? 'border-red-700 border-2' : ''} w-full p-2 rounded-xl`}
+							className={`text-[2vh] ${email.length && !isEmailValid(email) ? 'border-red-700 border-2' : ''} w-full p-2 rounded-xl`}
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='phoneNumber'>
-						<small className='text-lg pl-2'>Phone number:</small>
+						<small className='text-[1.6vh] pl-2'>Phone number:</small>
 						<input
 							required
 							type='text'
@@ -117,13 +117,13 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 							onChange={e => setPhoneNumber(e.target.value)}
 							name='phoneNumber'
 							placeholder='Phone number...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='password'>
-						<small className='text-lg pl-2'>Password:</small>
+						<small className='text-[1.6vh] pl-2'>Password:</small>
 						<input
 							required
 							type='password'
@@ -131,13 +131,13 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 							value={password}
 							onChange={e => setPassword(e.target.value)}
 							placeholder='Password...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='fixedHourRate'>
-						<small className='text-lg pl-2'>Fixed hour rate:</small>
+						<small className='text-[1.6vh] pl-2'>Fixed hour rate:</small>
 						<input
 							required
 							type='number'
@@ -145,13 +145,13 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 							value={fixedHourRate}
 							onChange={e => setFixedHourRate(e.target.value)}
 							placeholder='Fixed hour rate...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
 				<div className='w-[70%] mx-auto'>
 					<label htmlFor='percentFromEarnings'>
-						<small className='text-lg pl-2'>
+						<small className='text-[1.6vh] pl-2'>
 							Percent from earnings(0-100%):
 						</small>
 						<input
@@ -161,13 +161,13 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 							onChange={e => setPercentFromEarnings(e.target.value)}
 							name='percentFromEarnings'
 							placeholder='Percent from earnings...'
-							className='text-xl w-full p-2 rounded-xl'
+							className='text-[2vh] w-full p-2 rounded-xl'
 						/>
 					</label>
 				</div>
-				<div className='flex items-center justify-end gap-5 w-full p-5'>
+				<div className='flex items-center justify-end gap-[1vh] w-full p-[1vh]'>
 					<button
-						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
+						className={`bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase disabled:cursor-not-allowed disabled:hover:bg-zinc-700 disabled:hover:text-white`}
 						type='submit'
 					>
 						Add
@@ -175,7 +175,7 @@ const CreateBaristaModal: FC<Props> = ({ setVisibleModal }) => {
 					<button
 						type='button'
 						onClick={() => setVisibleModal(false)}
-						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-xl hover:bg-zinc-300 hover:text-black uppercase'
+						className='bg-zinc-700 text-white px-5 py-2 rounded-2xl text-[2vh] hover:bg-zinc-300 hover:text-black uppercase'
 					>
 						Close
 					</button>

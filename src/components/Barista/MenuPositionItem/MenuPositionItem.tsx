@@ -36,7 +36,7 @@ const MenuPositionItem: FC<Props> = ({ menuPosition }) => {
 	const dispatch = useDispatch()
 	return (
 		<button
-			className='w-full h-[200px] border-2 rounded-xl bg-zinc-600 flex flex-col items-center justify-center hover:bg-zinc-500 relative'
+			className='w-full h-[20vh] border-2 rounded-xl bg-zinc-600 flex flex-col items-center justify-center hover:bg-zinc-500 relative'
 			onClick={() => dispatch(addToOrder(menuPosition))}
 		>
 			{menuPosition.discount &&

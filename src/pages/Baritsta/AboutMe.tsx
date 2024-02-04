@@ -44,13 +44,13 @@ const AboutMe: FC = () => {
 	}
 
 	return (
-		<div className='w-[80%] p-10 mx-auto my-auto flex flex-row gap-10 font-roboto text-white'>
+		<div className='w-[80%] p-[1vh] mx-auto my-auto flex flex-row gap-10 font-roboto text-white'>
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 w-[30%] rounded-3xl flex flex-col items-center h-[1100px] shadow-2xl'
+				className='bg-zinc-700 w-[30%] rounded-3xl flex flex-col items-center h-[85vh] shadow-2xl'
 			>
 				<User className='w-[100%] h-[40%]' color='white' />
 				<h2 className=' text-[2vh] font-bold pt-5 pb-8 uppercase border-t-4 w-full text-center'>
@@ -79,13 +79,13 @@ const AboutMe: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='bg-zinc-700 w-[70%] h-[1100px] rounded-3xl pb-10 shadow-2xl'
+				className='bg-zinc-700 w-[70%] h-[85vh] rounded-3xl pb-10 shadow-2xl'
 			>
 				<h1 className='w-full text-center text-white uppercase text-[3vh] font-bold p-[1vh] border-b-4'>
 					Profile info
 				</h1>
 				<form
-					className='grid grid-cols-3 px-20 py-10 gap-y-5  h-[50%]'
+					className='grid grid-cols-3 px-20 py-[1vh] gap-y-[1vh]  h-[50%]'
 					onSubmit={submitHandler}
 				>
 					<label className='text-[2vh] font-bold uppercase p-3'>Name:</label>
@@ -127,7 +127,7 @@ const AboutMe: FC = () => {
 						placeholder='Enter your phone number...'
 					/>
 					<Button
-						className='col-start-3 uppercase'
+						className='col-start-3 uppercase h-[6vh] text-[2vh] p-0'
 						title='Update'
 						type='submit'
 					/>
