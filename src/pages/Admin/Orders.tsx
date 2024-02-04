@@ -37,6 +37,7 @@ const Orders: FC = () => {
 			setOrders(selectedPoint.orders)
 			setFromDate('')
 			setToDate('')
+			setSelectedOrder(undefined)
 			setSelectedOrderList([])
 		}
 	}, [selectedPoint])
@@ -104,14 +105,14 @@ const Orders: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='w-[70%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 shadow-2xl'
+			className='w-[70%] h-[80vh] mt-[5vh] mx-auto text-white font-roboto flex items-center gap-5'
 		>
-			<div className='h-[100%] w-[30%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
-				<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-2xl font-bold'>
+			<div className='h-[100%] w-[30%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+				<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-[2vh] font-bold'>
 					Baristas
 				</h2>
 				<input
-					className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-xl'
+					className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-[2vh]'
 					placeholder='Search barista by surname or name...'
 					onChange={searchHandler}
 				/>
@@ -125,43 +126,45 @@ const Orders: FC = () => {
 									onClick={() => {
 										setSelectedPoint(item)
 									}}
-									className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-xl ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
+									className={`p-[1vh] w-[90%] rounded-2xl hover:bg-zinc-400 text-[2vh] ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
 								>
 									{item.name}
 								</button>
 							)
 						})
 					) : (
-						<h2 className='uppercase text-2xl pt-5'>Not found</h2>
+						<h2 className='uppercase text-[2vh] pt-5'>Not found</h2>
 					)}
 				</div>
 			</div>
-			<div className='h-[100%] w-[70%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
-				<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-2xl font-bold'>
+			<div className='h-[100%] w-[70%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+				<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-[2vh] font-bold'>
 					ORDERS
 				</h2>
 
 				<div className='flex w-full h-[90%] flex-row p-3 gap-5'>
 					<div className='h-full w-[40%] flex flex-col gap-2'>
 						<div className='grid grid-cols-8 gap-2'>
-							<small className='uppercase text-sm font-bold my-auto'>
+							<small className='uppercase text-[1.1vh] font-bold my-auto'>
 								from:
 							</small>
 							<input
-								className='col-span-3 p-1 rounded-xl text-black'
+								className='col-span-3 p-1 text-[1.3vh] rounded-xl text-black'
 								type='datetime-local'
 								value={fromDate}
 								onChange={e => setFromDate(e.target.value)}
 							/>
-							<small className='uppercase text-sm font-bold my-auto'>to:</small>
+							<small className='uppercase text-[1.1vh]  font-bold my-auto'>
+								to:
+							</small>
 							<input
-								className='col-span-3 p-1 rounded-xl text-black'
+								className='col-span-3 p-1 text-[1.3vh] rounded-xl text-black'
 								type='datetime-local'
 								value={toDate}
 								onChange={e => setToDate(e.target.value)}
 							/>
 						</div>
-						<div className='w-full bg-zinc-800/80 h-[70px] rounded-t-2xl grid grid-cols-8 items-center px-5 py-2 font-bold text-xl'>
+						<div className='w-full bg-zinc-800/80 h-[6vh] rounded-t-2xl grid grid-cols-8 items-center px-5 py-2 font-bold text-[1.7vh]'>
 							<label>ID</label>
 							<label className='col-span-4 text-center'>CREATED AT</label>
 							<label className='col-span-2 text-center'>TOTAL AMOUNT</label>
@@ -173,41 +176,43 @@ const Orders: FC = () => {
 									return (
 										<div
 											key={indx}
-											className={`w-full h-[60px] rounded-2xl grid grid-cols-8 items-center px-5 py-2 text-lg hover:bg-zinc-400 hover:cursor-pointer ${item.id == selectedOrder?.id ? 'bg-zinc-400 text-black' : 'bg-zinc-600/90'}`}
+											className={`w-full h-[5vh] rounded-2xl grid grid-cols-8 items-center px-5 py-2 text-[1.5vh] hover:bg-zinc-400 hover:cursor-pointer ${item.id == selectedOrder?.id ? 'bg-zinc-400 text-black' : 'bg-zinc-600/90'}`}
 											onClick={() => setSelectedOrder(item)}
 										>
-											<label>{item.id}</label>
-											<label className='col-span-4  border-l-2 text-center'>
+											<label className=' hover:cursor-pointer '>
+												{item.id}
+											</label>
+											<label className='col-span-4  hover:cursor-pointer   border-l-2 text-center'>
 												{dateTimeFormatter(item.createdAt)}
 											</label>
-											<label className='col-span-2 text-center border-l-2 border-r-2'>
+											<label className=' hover:cursor-pointer col-span-2 text-center border-l-2 border-r-2'>
 												{item.totalAmount} UAH
 											</label>
 											<div className='col-span-1 flex justify-end'>
 												<button
-													className='w-10 rounded-full flex justify-end hover:bg-red-500 p-2'
+													className='w-[1.5vw] h-[2.5vh] rounded-full flex justify-end hover:bg-red-500 p-1'
 													onClick={() => removeOrderHandler(item)}
 													title='Remove this shift'
 												>
-													<Trash2 />
+													<Trash2 className='w-[1.5vw] h-[2vh]' />
 												</button>
 											</div>
 										</div>
 									)
 								})
 							) : (
-								<h2 className='uppercase font-bold text-xl w-full text-center p-10 text-white/60'>
+								<h2 className='uppercase font-bold text-[2vh] w-full text-center p-10 text-white/60'>
 									orders were not found
 								</h2>
 							)}
 						</div>
 					</div>
 					<div className='w-[58%] h-full border-l-4 flex flex-col gap-5 items-center'>
-						<h2 className='w-full uppercase text-center text-xl font-bold'>
+						<h2 className='w-full uppercase text-center text-[2vh] font-bold'>
 							Orders list
 						</h2>
 						<div className='w-[90%] h-[90%] bg-zinc-500 rounded-2xl p-5'>
-							<div className='grid grid-cols-7 border-b-2 items-center text-center font-bold text-lg'>
+							<div className='grid grid-cols-7 border-b-2 items-center text-center font-bold text-[1.7vh]'>
 								<label>ID</label>
 								<label className='col-span-2'>NAME</label>
 								<label className='col-span-2'>PRICE</label>
@@ -219,7 +224,7 @@ const Orders: FC = () => {
 										return (
 											<div
 												key={indx}
-												className='grid grid-cols-7 py-2 items-center text-center font-bold text-lg'
+												className='grid grid-cols-7 py-2 items-center text-center font-bold text-[1.5vh]'
 											>
 												<label>{indx + 1}</label>
 												<label className='col-span-2'>
@@ -233,13 +238,13 @@ const Orders: FC = () => {
 										)
 									})
 								) : (
-									<h2 className='uppercase font-bold text-xl w-full text-center p-10 text-white/60'>
+									<h2 className='uppercase font-bold text-[2vh] w-full text-center p-10 text-white/60'>
 										List of positions is empty
 									</h2>
 								)}
 							</div>
 							<div className='w-full h-[5%] border-t-4 flex flex-col items-center'>
-								<label className='p-3 text-lg'>
+								<label className='p-3 text-[1.7vh]'>
 									<b>TOTAL AMOUNT(WITH DISCOUNTS):</b>{' '}
 									{selectedOrder?.totalAmount.toFixed(2)} UAH
 								</label>

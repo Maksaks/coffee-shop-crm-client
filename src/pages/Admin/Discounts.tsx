@@ -63,24 +63,24 @@ const Discounts: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[50%] h-[1000px] mt-20 mx-auto bg-zinc-500 text-white font-roboto flex flex-col gap-4 rounded-2xl shadow-2xl'
+				className='w-[50%] h-[75vh] mt-[5vh] mx-auto bg-zinc-500 text-white font-roboto flex flex-col gap-4 rounded-2xl shadow-2xl'
 			>
-				<h2 className='w-full text-center p-3 border-b-4 text-2xl font-bold rounded-t-2xl bg-zinc-700'>
+				<h2 className='w-full text-center p-3 border-b-4 text-[2vh] font-bold rounded-t-2xl bg-zinc-700'>
 					DISCOUNTS FOR POSITIONS
 				</h2>
 				<input
-					className='w-[90%] py-2 px-5 mx-auto rounded-2xl text-black text-xl'
+					className='w-[95%] py-2 px-5 mx-auto rounded-2xl text-black text-[2vh]'
 					placeholder='Search discount by position name...'
 					onChange={searchHandler}
 				/>
-				<div className='w-[90%] p-3 h-[80%] overflow-auto bg-zinc-400 mx-auto rounded-2xl shadow-xl flex flex-col items-center gap-2'>
+				<div className='w-[95%] p-3 h-[75%] overflow-auto bg-zinc-400 mx-auto rounded-2xl shadow-xl flex flex-col items-center gap-2'>
 					{searchedDiscounts?.length ? (
-						<div className='w-[90%] bg-zinc-700/95 h-[70px] rounded-t-2xl grid grid-cols-11 items-center px-5 py-2 font-bold text-xl'>
+						<div className='w-[95%] bg-zinc-700/95 h-[5vh] rounded-t-2xl grid grid-cols-12 items-center px-5 py-2 font-bold text-[2vh]'>
 							<label>ID</label>
-							<label className='col-span-4 text-center'>POSITION</label>
+							<label className='col-span-3 text-center'>POSITION</label>
 							<label className='col-span-1 text-center'>AMOUNT</label>
-							<label className='col-span-2 text-center'>STARTED AT</label>
-							<label className='col-span-2 text-center'>ENDED AT</label>
+							<label className='col-span-3 text-center'>STARTED AT</label>
+							<label className='col-span-3 text-center'>ENDED AT</label>
 							<label className='col-span-1 text-center'></label>
 						</div>
 					) : (
@@ -91,43 +91,43 @@ const Discounts: FC = () => {
 							return (
 								<div
 									key={indx}
-									className='w-[90%] bg-zinc-600/90 h-[60px] rounded-2xl grid grid-cols-11 items-center px-5 py-2 text-lg'
+									className='w-[95%] bg-zinc-600/90 h-[5vh] rounded-2xl grid grid-cols-12 items-center px-5 py-2 text-[1.7vh]'
 								>
 									<label>{item.id}</label>
-									<label className='col-span-4 text-center'>
+									<label className='col-span-3 text-center'>
 										{item.menuPosition.name}
 									</label>
 									<label className='col-span-1 text-center'>
 										{item.amount} %
 									</label>
-									<label className='col-span-2 text-center'>
+									<label className='col-span-3 text-center'>
 										{dateTimeFormatter(item.startedAt)}
 									</label>
-									<label className='col-span-2 text-center'>
+									<label className='col-span-3 text-center'>
 										{dateTimeFormatter(item.endAt)}
 									</label>
 									<div className='col-span-1 flex justify-end'>
 										<button
-											className='w-10 rounded-full flex justify-end hover:bg-green-300 p-2'
+											className='w-[2vw] h-[3.5vh] rounded-full flex justify-end hover:bg-green-300 p-1'
 											onClick={() => {
 												setSelectedDiscount(item)
 												setIsUpdateDiscountModalVisible(true)
 											}}
 										>
-											<Pencil />
+											<Pencil className='w-[1.5vw] h-[2.5vh]' />
 										</button>
 										<button
-											className='w-10 rounded-full flex justify-end hover:bg-red-500 p-2'
+											className='w-[2vw] h-[3.5vh] rounded-full flex justify-end hover:bg-red-500 p-1'
 											onClick={() => removeDiscountHandler(item)}
 										>
-											<Trash2 />
+											<Trash2 className='w-[1.5vw] h-[2.5vh]' />
 										</button>
 									</div>
 								</div>
 							)
 						})
 					) : (
-						<h2 className='uppercase text-black/70 font-bold text-xl w-full text-center'>
+						<h2 className='uppercase text-black/70 font-bold text-[2vh] w-full text-center'>
 							Discounts were not found
 						</h2>
 					)}

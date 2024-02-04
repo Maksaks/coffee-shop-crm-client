@@ -111,14 +111,14 @@ const BaristaSalaryShifts: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='w-[50%] h-[700px] mx-auto  text-white font-roboto flex flex-row gap-4 rounded-2xl'
+			className='w-[70%] h-[75vh] mx-auto  text-white font-roboto flex flex-row gap-4 rounded-2xl'
 		>
-			<div className='h-[100%] w-[40%] bg-zinc-600 rounded-3xl flex items-center flex-col relative'>
-				<h2 className='w-full text-center text-2xl uppercase font-bold border-b-4 p-3'>
+			<div className='h-[100%] w-[35%] bg-zinc-600 rounded-3xl flex items-center flex-col relative'>
+				<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 					BARISTAS
 				</h2>
 				<input
-					className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-xl'
+					className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-[2vh]'
 					placeholder='Search baristas by name...'
 					onChange={searchHandler}
 					disabled={!baristas.length}
@@ -133,37 +133,37 @@ const BaristaSalaryShifts: FC = () => {
 									onClick={() => {
 										setSelectedBarista(item)
 									}}
-									className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-xl ${selectedBarista?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
+									className={`p-[1vh] w-[90%] rounded-2xl hover:bg-zinc-400 text-[2vh] ${selectedBarista?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
 								>
 									{item.surname + ' ' + item.name}
 								</button>
 							)
 						})
 					) : (
-						<h2 className='uppercase text-2xl pt-5'>Not found</h2>
+						<h2 className='uppercase text-[2vh] pt-5'>Not found</h2>
 					)}
 				</div>
 			</div>
-			<div className='h-[100%] w-[45%] bg-zinc-600 rounded-3xl flex items-center flex-col relative'>
-				<h2 className='w-full text-center text-2xl uppercase font-bold border-b-4 p-3'>
+			<div className='h-[100%] w-[65%] bg-zinc-600 rounded-3xl flex items-center flex-col relative'>
+				<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 					SALARY AND SHIFTS
 				</h2>
 				{selectedBarista && (
 					<div className='grid grid-cols-6 gap-2 p-3 w-full border-b-4'>
-						<small className='uppercase col-span-2 text-lg text-right font-bold my-auto'>
+						<small className='uppercase col-span-2 text-[1.8vh] text-right font-bold my-auto'>
 							from:
 						</small>
 						<input
-							className='col-span-4 p-1 rounded-xl text-black'
+							className='col-span-4 p-1 rounded-xl text-[1.8vh] text-black'
 							type='datetime-local'
 							value={fromDate}
 							onChange={e => setFromDate(e.target.value)}
 						/>
-						<small className='uppercase col-span-2 text-lg text-right font-bold my-auto'>
+						<small className='uppercase col-span-2 text-[1.8vh] text-right font-bold my-auto'>
 							to:
 						</small>
 						<input
-							className='col-span-4 p-1 rounded-xl text-black'
+							className='col-span-4 p-1 rounded-xl text-[1.8vh] text-black'
 							type='datetime-local'
 							value={toDate}
 							onChange={e => setToDate(e.target.value)}
@@ -171,7 +171,7 @@ const BaristaSalaryShifts: FC = () => {
 					</div>
 				)}
 				{selectedBarista && salaryAndShifts && (
-					<div className='w-full h-[40%] grid grid-cols-6 text-center text-xl'>
+					<div className='w-[80%] border-2 h-[70%] mt-5 grid grid-cols-6 text-center text-[2vh]'>
 						<label className='col-span-2 p-2 border-b-2 font-bold'>NAME</label>
 						<label className='col-span-4 p-2 border-l-2 border-b-2'>
 							{selectedBarista.name + ' ' + selectedBarista.surname}

@@ -63,50 +63,50 @@ const Admin: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='bg-zinc-700 mx-auto mt-20 w-[40%] rounded-3xl flex items-center h-[700px] shadow-2xl text-white font-roboto'
+			className='bg-zinc-700 mx-auto mt-20 w-[40%] rounded-3xl flex items-center h-[60vh] shadow-2xl text-white font-roboto'
 		>
 			<User className='w-[50%] h-full border-r-4' />
 			<form
-				className='w-[50%] h-full bg-zinc-500 rounded-r-3xl p-3 flex flex-col gap-3 justify-center'
+				className='w-[50%] h-full bg-zinc-500 rounded-r-3xl p-3 flex flex-col gap-[1vh] justify-center'
 				onSubmit={submitHandler}
 			>
-				<label className='text-2xl font-bold px-3'>Name:</label>
+				<label className='text-[2vh] uppercase font-bold px-3'>Name:</label>
 				<input
 					required
 					name='name'
 					value={name}
 					onChange={e => setName(e.target.value)}
-					className='w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl'
+					className='w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-[2vh]'
 					placeholder='Enter your name...'
 				/>
-				<label className='text-2xl font-bold px-3'>Surname:</label>
+				<label className='text-[2vh] uppercase font-bold px-3'>Surname:</label>
 				<input
 					required
 					name='surname'
-					className='w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl'
+					className='w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-[2vh]'
 					value={surname}
 					onChange={e => setSurname(e.target.value)}
 					placeholder='Enter your surname...'
 				/>
-				<label className='text-2xl font-bold px-3'>Email:</label>
+				<label className='text-[2vh] uppercase font-bold px-3'>Email:</label>
 				<input
 					required
 					name='email'
 					value={email}
 					onChange={e => setEmail(e.target.value)}
-					className={`w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl ${email?.length && !isEmailValid(email) ? 'border-red-700 border-2' : ''}`}
+					className={`w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-[2vh] ${email?.length && !isEmailValid(email) ? 'border-red-700 border-2' : ''}`}
 					placeholder='Enter your email...'
 				/>
-				<label className='text-2xl font-bold px-3'>Password:</label>
+				<label className='text-[2vh] uppercase font-bold px-3'>Password:</label>
 				<input
 					name='password'
 					value={password}
 					onChange={e => setPassword(e.target.value)}
-					className={`w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-white/90 placeholder:text-lg text-xl`}
+					className={`w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-white/90 placeholder:text-lg text-[2vh]`}
 					placeholder='Enter your password...'
 				/>
 				<Button
-					className='uppercase mt-10 w-[30%] mx-auto'
+					className='uppercase mt-[2vh] w-[50%] mx-auto'
 					title='Update'
 					type='submit'
 				/>

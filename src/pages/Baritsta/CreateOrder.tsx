@@ -47,14 +47,14 @@ const CreateOrder: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[80%] h-[1100px] mt-20 mx-auto text-white font-roboto flex flex-row gap-20 shadow-2xl'
+				className='w-[95vw] h-[1100px] mt-20 mx-auto text-white font-roboto flex flex-row gap-[1vh] shadow-2xl'
 			>
 				<div className='w-[60%] bg-zinc-700 rounded-3xl flex items-center flex-col'>
-					<h2 className='h-[5%] p-4 uppercase w-full text-center text-2xl font-bold border-b-4'>
+					<h2 className='h-[6vh] p-[1vh] uppercase w-full text-center text-[3vh] font-bold border-b-4'>
 						menu positions
 					</h2>
 					<input
-						className='w-[90%] py-2 px-5 my-5 rounded-2xl text-black text-xl'
+						className='w-[90%] py-2 px-5 my-5 rounded-2xl text-black text-[2vh]'
 						placeholder='Search position by name...'
 						onChange={searchHandler}
 					/>
@@ -71,7 +71,7 @@ const CreateOrder: FC = () => {
 					</div>
 				</div>
 				<div className='w-[40%] bg-zinc-700 rounded-3xl'>
-					<h2 className='h-[5%] p-4 uppercase w-full text-center text-2xl font-bold border-b-4'>
+					<h2 className='h-[6vh] p-[1vh] uppercase w-full text-center text-[3vh] font-bold border-b-4'>
 						current order info
 					</h2>
 					<OrderPositionList

@@ -64,12 +64,12 @@ const MainPage: FC = () => {
 
 			<Link
 				to={'/auth/login'}
-				className='fixed top-1 right-5 w-18 h-18 z-10 text-white hover:bg-zinc-200 hover:text-black p-2 rounded-2xl'
+				className='fixed top-1 right-5 w-[5vw] h-[6vh] z-10 text-white hover:bg-zinc-200 hover:text-black p-2 rounded-2xl'
 			>
-				<LogIn className='w-14 h-14' />
+				<LogIn className='w-[4vw] h-[4vh]' />
 			</Link>
-			<nav className='fixed top-0 left-0 w-full bg-gradient-to-t from-zinc-900 to-zinc-800 h-[80px] p-5'>
-				<ul className='flex items-center justify-center gap-32 text-white text-3xl font-bold'>
+			<nav className='fixed top-0 left-0 w-full bg-gradient-to-t from-zinc-900 to-zinc-800 h-[7vh] p-[1vh]'>
+				<ul className='flex items-center justify-center gap-[3vw] text-white text-[3vh] font-bold'>
 					<li>
 						<a
 							className='hover:bg-zinc-400 hover:text-black rounded-2xl py-3 px-10'
@@ -130,40 +130,21 @@ const MainPage: FC = () => {
 			</motion.section>
 			<section
 				id='aboutUs'
-				className='h-screen flex flex-col gap-10 items-center justify-center text-center text-white text-3xl'
+				className='h-screen flex flex-col gap-10 items-center justify-center text-center text-white text-[3vh]'
 			>
-				<p className='w-[50%]'>
+				<p className='w-[60%]'>
 					Welcome to the wonderful world of Coffee CRM - yours a reliable
 					companion in the successful management of the coffee business. Let's
 					tell you a little story about how our CRM system came to be an
 					indispensable tool for many coffee entrepreneurs.
 				</p>
-				<p className='w-[50%]'>
-					We welcome you to the wonderful world of "Coffee CRM" - your reliable
-					a companion in the successful conduct of the coffee business. Let us
-					tell you a small one the story of how our CRM system became an
-					indispensable tool for many coffee entrepreneurs.
-				</p>
-
-				<p className='w-[50%]'>
-					The story of the birth of "Coffee CRM" got rid of its own passion for
-					coffee and the desire to turn the coffee business into a true art. We
-					understood that every cup of coffee is not just a drink, it is a work
-					of art art, created with love and attention to detail.
-				</p>
-
-				<p className='w-[50%]'>
-					Based on this finding, we developed Coffee CRM as an integrated a
-					system that paves the way for an exceptional coffee experience.
-				</p>
-
-				<p className='w-[50%]'>
+				<p className='w-[60%]'>
 					With Coffee CRM, you will get the opportunity to effectively manage
 					stocks of the best coffee beans, maintain a high level of service and
 					analyze financial indicators so that every cup brings you joy not only
 					in taste, but also in financial success.
 				</p>
-				<p className='w-[50%]'>
+				<p className='w-[60%]'>
 					Our system is not only a tool, but also an assistant in management
 					every aspect of your coffee business. Join Coffee CRM and feel how
 					your cafe turns into a real work of art in the world of coffee. Thank
@@ -175,11 +156,11 @@ const MainPage: FC = () => {
 				id='advantages'
 				className='h-screen flex items-center justify-center'
 			>
-				<div className='w-[40%] h-[65%] rounded-3xl shadow-2xl'>
-					<h2 className='w-full border-b-2 p-3 text-center text-3xl text-white font-bold bg-zinc-800 rounded-t-3xl'>
+				<div className='w-[60vw] h-[80vh] rounded-3xl shadow-2xl'>
+					<h2 className='w-full border-b-2 p-3 text-center text-[4vh] text-white font-bold bg-zinc-800 rounded-t-3xl'>
 						ADVANTAGES
 					</h2>
-					<div className='flex flex-col py-14 px-10 text-white text-2xl gap-14'>
+					<div className='flex flex-col py-5 px-10 text-white text-[3vh] gap-5'>
 						<p>
 							🌱 <b>Inventory optimization:</b> Tracking inventory and demand
 							helps ensure your favorite coffees are available without cost
@@ -216,7 +197,7 @@ const MainPage: FC = () => {
 				id='interface'
 				className='h-screen flex items-center justify-center'
 			>
-				<div className='flex w-[70%] p-32 rounded-3xl justify-center items-center gap-10 '>
+				<div className='flex w-[90%] p-32 rounded-3xl justify-center items-center gap-10 '>
 					<button
 						onClick={arrowLeftHandler}
 						className='text-white hover:text-black hover:bg-zinc-300 rounded-3xl'
@@ -225,7 +206,7 @@ const MainPage: FC = () => {
 					</button>
 					<img
 						src={`/public/interface${slideNumber}.jpg`}
-						className='border-4 rounded-3xl'
+						className='border-4 rounded-3xl w-[80%] h-[70%]'
 					/>
 					<button
 						onClick={arrowRightHandler}
@@ -236,19 +217,19 @@ const MainPage: FC = () => {
 				</div>
 			</section>
 			<section id='howToGet' className='h-screen'>
-				<div className='w-full h-full flex flex-col items-center justify-center text-center text-white text-3xl gap-10'>
-					<p className='w-[50%] uppercase font-bold'>
+				<div className='w-full h-full flex flex-col items-center justify-center text-center text-white  text-[3vh] gap-5'>
+					<p className='w-[60%] uppercase font-bold'>
 						🌟 Welcome to the world of "Coffee CRM"!
 					</p>
 
-					<p className='w-[50%]'>
+					<p className='w-[60%]'>
 						Your own coffee shop is waiting for you, but in order to fully
 						master all the charms of our unique "Coffee CRM" platform, we need
 						to know a little about you. And the best news is that registration
 						is absolutely free and fast!
 					</p>
 
-					<p className='w-[50%]'>
+					<p className='w-[60%]'>
 						Get ready for the limitless world of possibilities that "Coffee CRM"
 						will reveal to you. Tools are available to you to optimize the
 						management of your coffee shop and create unique experiences for
@@ -256,20 +237,20 @@ const MainPage: FC = () => {
 						that you will want coffee even more!
 					</p>
 
-					<p className='w-[50%]'>
+					<p className='w-[60%]'>
 						Don't waste time and get access now to enjoy the endless
 						possibilities of "Coffee CRM". Because coffee is always even better
 						when your business is at the peak of its success! ☕✨
 					</p>
 					<Link
 						to={'/auth/registration'}
-						className='bg-zinc-900 px-20 py-8 uppercase text-4xl font-bold rounded-3xl'
+						className='bg-zinc-900 px-10 py-[3vh] uppercase text-[4vh] font-bold rounded-3xl hover:text-black hover:bg-zinc-300'
 					>
 						Get access
 					</Link>
 				</div>
 			</section>
-			<footer className='h-[100px] bg-zinc-700 text-white flex items-center justify-center border-t-2 text-xl'>
+			<footer className='h-[100px] bg-zinc-700 text-white flex items-center justify-center border-t-2 text-[3vh]'>
 				{' '}
 				<p>
 					&copy; 2024 Coffee CRM{' '}

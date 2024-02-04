@@ -4,15 +4,15 @@ import { NavLink, Outlet } from 'react-router-dom'
 const Statistics: FC = () => {
 	return (
 		<div className='w-full h-full flex flex-row'>
-			<nav className='w-[12%] p-6 h-full flex flex-col gap-8 text-xl  bg-zinc-700 text-white overflow-auto'>
+			<nav className='w-[12vw] p-[0.5vh] pt-[2vh] h-full flex flex-col gap-[2vh] text-[1.8vh]  bg-zinc-700 text-white overflow-auto'>
 				<NavLink
 					to={'popularity'}
 					className={({ isActive, isPending }) =>
 						isPending
 							? ''
 							: isActive
-								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
-								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
+								? 'text-center w-full rounded-2xl p-[1vh] font-bold bg-zinc-300 text-black'
+								: 'text-center w-full rounded-2xl bg-zinc-900 p-[1vh] font-bold hover:bg-zinc-300 hover:text-black'
 					}
 				>
 					POPULARITY POSITIONS
@@ -23,8 +23,8 @@ const Statistics: FC = () => {
 						isPending
 							? ''
 							: isActive
-								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
-								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
+								? 'text-center w-full rounded-2xl p-[1vh] font-bold bg-zinc-300 text-black'
+								: 'text-center w-full rounded-2xl bg-zinc-900 p-[1vh] font-bold hover:bg-zinc-300 hover:text-black'
 					}
 				>
 					EXPENSES AND INCOMES BY POINT
@@ -35,8 +35,8 @@ const Statistics: FC = () => {
 						isPending
 							? ''
 							: isActive
-								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
-								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
+								? 'text-center w-full rounded-2xl p-[1vh] font-bold bg-zinc-300 text-black'
+								: 'text-center w-full rounded-2xl bg-zinc-900 p-[1vh] font-bold hover:bg-zinc-300 hover:text-black'
 					}
 				>
 					COMMON EXPENSES AND INCOMES
@@ -47,8 +47,8 @@ const Statistics: FC = () => {
 						isPending
 							? ''
 							: isActive
-								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
-								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
+								? 'text-center w-full rounded-2xl p-[1vh] font-bold bg-zinc-300 text-black'
+								: 'text-center w-full rounded-2xl bg-zinc-900 p-[1vh] font-bold hover:bg-zinc-300 hover:text-black'
 					}
 				>
 					BARISTA SALARY AND SHIFTS
@@ -59,8 +59,8 @@ const Statistics: FC = () => {
 						isPending
 							? ''
 							: isActive
-								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
-								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
+								? 'text-center w-full rounded-2xl p-[1vh] font-bold bg-zinc-300 text-black'
+								: 'text-center w-full rounded-2xl bg-zinc-900 p-[1vh] font-bold hover:bg-zinc-300 hover:text-black'
 					}
 				>
 					ALL BARISTAS SALARY AND SHIFTS
@@ -71,8 +71,8 @@ const Statistics: FC = () => {
 						isPending
 							? ''
 							: isActive
-								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
-								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
+								? 'text-center w-full rounded-2xl p-[1vh] font-bold bg-zinc-300 text-black'
+								: 'text-center w-full rounded-2xl bg-zinc-900 p-[1vh] font-bold hover:bg-zinc-300 hover:text-black'
 					}
 				>
 					CONSUMPTION OF INGREDIENTS BY POINT
@@ -83,8 +83,8 @@ const Statistics: FC = () => {
 						isPending
 							? ''
 							: isActive
-								? 'text-center w-full rounded-2xl p-5 font-bold bg-zinc-300 text-black'
-								: 'text-center w-full rounded-2xl bg-zinc-900 p-5 font-bold hover:bg-zinc-300 hover:text-black'
+								? 'text-center w-full rounded-2xl p-[1vh] font-bold bg-zinc-300 text-black'
+								: 'text-center w-full rounded-2xl bg-zinc-900 p-[1vh] font-bold hover:bg-zinc-300 hover:text-black'
 					}
 				>
 					CATEGORIES ORDERS AND INCOMES

@@ -53,19 +53,19 @@ const AboutMe: FC = () => {
 				className='bg-zinc-700 w-[30%] rounded-3xl flex flex-col items-center h-[1100px] shadow-2xl'
 			>
 				<User className='w-[100%] h-[40%]' color='white' />
-				<h2 className=' text-3xl font-bold pt-5 pb-12 border-t-4 w-full text-center'>
+				<h2 className=' text-[2vh] font-bold pt-5 pb-8 uppercase border-t-4 w-full text-center'>
 					Statistics for last month:
 				</h2>
-				<div className='grid grid-cols-2 mb-4 gap-x-20 text-lg w-full px-10 pb-12 gap-y-4'>
+				<div className='grid grid-cols-2 mb-4 gap-x-20 text-[2vh] w-full px-10 pb-5 gap-y-4'>
 					<p className='font-bold uppercase'>Count of shifts:</p>
 					<p className='text-xl'>{aboutMe.shifts.length}</p>
 					<p className='font-bold uppercase'>Total shifts salary:</p>
 					<p className='text-xl'>{aboutMe.totalShiftsSalary} UAH</p>
 				</div>
-				<h2 className='font-roboto text-3xl font-bold p-5 border-t-4 w-full text-center pt-5 pb-12'>
+				<h2 className='font-roboto text-[2vh] uppercase font-bold p-5 border-t-4 w-full text-center pt-5 pb-8'>
 					Working conditions:
 				</h2>
-				<div className='grid grid-cols-2 mb-4 gap-x-20 text-lg w-full px-10 gap-y-4'>
+				<div className='grid grid-cols-2 mb-4 gap-x-20 text-[2vh] w-full px-10 gap-y-4'>
 					<p className='font-bold uppercase'>Fixed hour rate:</p>
 					<p className='text-xl'>{aboutMe.fixedHourRate} UAH/h</p>
 					<p className='font-bold uppercase'>Percent from earnings:</p>
@@ -81,47 +81,49 @@ const AboutMe: FC = () => {
 				transition={{ duration: 0.7 }}
 				className='bg-zinc-700 w-[70%] h-[1100px] rounded-3xl pb-10 shadow-2xl'
 			>
-				<h1 className='w-full text-center text-white uppercase text-4xl font-bold p-5 border-b-4'>
+				<h1 className='w-full text-center text-white uppercase text-[3vh] font-bold p-[1vh] border-b-4'>
 					Profile info
 				</h1>
 				<form
-					className='grid grid-cols-3 px-20 py-10 gap-y-10  h-[50%]'
+					className='grid grid-cols-3 px-20 py-10 gap-y-5  h-[50%]'
 					onSubmit={submitHandler}
 				>
-					<label className='text-2xl font-bold p-3'>Name:</label>
+					<label className='text-[2vh] font-bold uppercase p-3'>Name:</label>
 					<input
 						required
 						name='name'
 						value={name}
 						onChange={e => setName(e.target.value)}
-						className='w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl'
+						className='w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-[2vh]'
 						placeholder='Enter your name...'
 					/>
-					<label className='text-2xl font-bold p-3'>Surname:</label>
+					<label className='text-[2vh] uppercase font-bold p-3'>Surname:</label>
 					<input
 						required
 						name='surname'
-						className='w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl'
+						className='w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-[2vh]'
 						value={surname}
 						onChange={e => setSurname(e.target.value)}
 						placeholder='Enter your surname...'
 					/>
-					<label className='text-2xl font-bold p-3'>Email:</label>
+					<label className='text-[2vh] uppercase font-bold p-3'>Email:</label>
 					<input
 						required
 						name='email'
 						value={email}
 						onChange={e => setEmail(e.target.value)}
-						className={`w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl ${email.length && !isEmailValid(email) ? 'border-red-700 border-2' : ''}`}
+						className={`w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-[2vh] ${email.length && !isEmailValid(email) ? 'border-red-700 border-2' : ''}`}
 						placeholder='Enter your email...'
 					/>
-					<label className='text-2xl font-bold p-3'>Phone number:</label>
+					<label className='text-[2vh] uppercase font-bold p-3'>
+						Phone number:
+					</label>
 					<input
 						required
 						name='phoneNumber'
 						value={phoneNumber}
 						onChange={e => setPhoneNumber(e.target.value)}
-						className='w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-xl'
+						className='w-[80%] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-black/50 placeholder:text-lg text-[2vh]'
 						placeholder='Enter your phone number...'
 					/>
 					<Button
@@ -132,11 +134,11 @@ const AboutMe: FC = () => {
 				</form>
 				<div className='w-full flex flex-row h-[45%]'>
 					<div className='w-[50%] flex flex-col items-center'>
-						<h2 className='w-full text-center border-t-4 text-3xl uppercase font-bold p-5'>
+						<h2 className='w-full text-center border-t-4 text-[2vh] uppercase font-bold p-5'>
 							Your working points
 						</h2>
 						<div className='w-[90%] overflow-auto h-[80%]'>
-							<table className='table-auto w-full text-center border-collapse'>
+							<table className='table-auto w-full text-center text-[1.5vh] border-collapse'>
 								<thead>
 									<tr className='sticky top-0 text-xl bg-zinc-800'>
 										<th className='w-[10%] p-2 border border-white'>ID</th>
@@ -159,11 +161,11 @@ const AboutMe: FC = () => {
 						</div>
 					</div>
 					<div className='w-[50%] flex flex-col items-center'>
-						<h2 className='w-full text-center border-t-4 text-3xl uppercase font-bold p-5'>
+						<h2 className='w-full text-center border-t-4 text-[2vh] uppercase font-bold p-5'>
 							Your shifts
 						</h2>
 						<div className='w-[90%] overflow-auto h-[80%]'>
-							<table className='table-auto w-full text-center border-collapse'>
+							<table className='table-auto w-full text-[1.5vh] text-center border-collapse'>
 								<thead>
 									<tr className='sticky top-0 text-xl bg-zinc-800'>
 										<th className='w-[10%] p-2 border border-white'>ID</th>

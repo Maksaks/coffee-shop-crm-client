@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom'
 
 const AdminNavigation: FC = () => {
 	return (
-		<nav className='flex flex-row gap-5 font-roboto text-2xl font-bold uppercase h-full'>
+		<nav className='flex flex-row gap-[0.5vw] font-roboto text-[2vh] text-center font-bold uppercase h-full'>
 			<NavLink
 				className={({ isActive, isPending }) =>
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'baristas'}
 			>
@@ -21,8 +21,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'categories'}
 			>
@@ -33,8 +33,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'discounts'}
 			>
@@ -45,8 +45,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'ingredients'}
 			>
@@ -57,8 +57,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'positions'}
 			>
@@ -69,8 +69,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'orders'}
 			>
@@ -81,8 +81,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'points'}
 			>
@@ -93,8 +93,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'shifts'}
 			>
@@ -105,8 +105,8 @@ const AdminNavigation: FC = () => {
 					isPending
 						? 'pending'
 						: isActive
-							? 'flex items-center justify-center px-10 hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
-							: 'flex items-center justify-center px-10 hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
+							? 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  underline-offset-8 underline transition-transform transform hover:scale-110 hover:shadow-lg'
+							: 'flex items-center justify-center px-[1vw] hover:bg-zinc-600/60  transition-transform hover:underline underline-offset-8 transform hover:scale-110 hover:shadow-lg'
 				}
 				to={'statistics/popularity'}
 			>

@@ -15,9 +15,9 @@ const OrderPositionItem: FC<Props> = ({ orderPosition }) => {
 	const dispatch = useDispatch()
 
 	return (
-		<div className='w-[90%] h-32 bg-zinc-500 rounded-2xl py-3 text-xl'>
+		<div className='w-[90%] h-[10vh] bg-zinc-500 rounded-2xl py-3 text-[2vh]'>
 			<div className='flex flex-row h-[50%] border-b-2 pb-2 items-center px-5'>
-				<label className='text-xl w-full uppercase font-bold'>
+				<label className='text-[2vh] w-full uppercase font-bold'>
 					{orderPosition.position.name}
 				</label>
 				<button
@@ -60,7 +60,7 @@ const OrderPositionItem: FC<Props> = ({ orderPosition }) => {
 						+
 					</button>
 					<input
-						className='text-xl text-center w-20 text-black py-1 px-3 rounded-xl cursor-default disabled:bg-white'
+						className=' text-[2vh] text-center w-20 text-black py-1 px-3 rounded-xl cursor-default disabled:bg-white'
 						type='number'
 						max='100'
 						min='0'

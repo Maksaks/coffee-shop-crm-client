@@ -96,23 +96,23 @@ const Ingredients: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[70%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 shadow-2xl'
+				className='w-[70%] h-[80vh] mt-[5vh] mx-auto text-white font-roboto flex items-center gap-5'
 			>
-				<div className='h-[100%] w-[25%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
-					<h2 className='w-full text-center text-2xl uppercase font-bold border-b-4 p-3'>
+				<div className='h-[100%] w-[25%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+					<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 						POINTS
 					</h2>
 					<button
-						className='absolute top-2 right-2 z-10 w-10 h-10 hover:text-black hover:bg-zinc-300 rounded-full disabled:hover:bg-zinc-700 disabled:hover:text-white'
+						className='absolute top-2 right-2 z-10 w-[2vw] h-[3.5vh] hover:text-black hover:bg-zinc-300 rounded-full disabled:hover:bg-zinc-700 disabled:hover:text-white'
 						disabled={!selectedPoint}
 						onClick={() => {
 							setIsCreatingModalVisible(true)
 						}}
 					>
-						<Plus className='w-10 h-10' />
+						<Plus className='w-[2vw] h-[3.5vh]' />
 					</button>
 					<input
-						className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-xl'
+						className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-[2vh]'
 						placeholder='Search point by name...'
 						onChange={searchHandler}
 						disabled={!points.length}
@@ -122,28 +122,28 @@ const Ingredients: FC = () => {
 							searchedPoints.map((item, indx) => {
 								return (
 									<button
-										title='Select this barista'
+										title='Select this point'
 										key={indx}
 										onClick={() => {
 											setSelectedPoint(item)
 										}}
-										className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-xl ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
+										className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-[2vh] ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
 									>
 										{item.name}
 									</button>
 								)
 							})
 						) : (
-							<h2 className='uppercase text-2xl pt-5'>Not found</h2>
+							<h2 className='uppercase text-[2vh] pt-5'>Not found</h2>
 						)}
 					</div>
 				</div>
-				<div className='h-[100%] w-[75%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
-					<h2 className='w-full text-center text-2xl uppercase font-bold border-b-4 p-3'>
+				<div className='h-[100%] w-[75%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+					<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 						INGREDIENTS ON POINT
 					</h2>
-					<div className='flex flex-col w-full items-center gap-2 h-[90%]'>
-						<div className='w-[90%] bg-zinc-800/95 mt-3 h-[70px] rounded-t-2xl grid grid-cols-10 items-center px-5 py-2 font-bold text-xl'>
+					<div className='flex flex-col w-full items-center gap-2 h-[87%]'>
+						<div className='w-[90%] bg-zinc-800/95 mt-3 h-[5vh] rounded-t-2xl grid grid-cols-10 items-center px-5 py-2 font-bold text-[2vh]'>
 							<label>ID</label>
 							<label className='col-span-4 text-center'>NAME</label>
 							<label className='col-span-2 text-center'>PRICE</label>
@@ -155,7 +155,7 @@ const Ingredients: FC = () => {
 									return (
 										<div
 											key={indx}
-											className='w-full bg-zinc-600/90 h-[60px] rounded-2xl grid grid-cols-10 items-center px-5 py-2 text-lg'
+											className='w-full bg-zinc-500/90 h-[5vh] rounded-2xl grid grid-cols-10 items-center px-5 text-[1.7vh]'
 										>
 											<label>{item.id}</label>
 											<label className='col-span-4 text-center'>
@@ -169,26 +169,26 @@ const Ingredients: FC = () => {
 											</label>
 											<div className='col-span-1 flex justify-end'>
 												<button
-													className='w-10 rounded-full flex justify-end hover:bg-green-300 p-2'
+													className='w-[2vw] h-[3.5vh] rounded-full flex justify-end hover:bg-green-300 p-1'
 													onClick={() => {
 														setSelectedIngredient(item)
 														setIsUpdatingModalVisible(true)
 													}}
 												>
-													<Pencil />
+													<Pencil className='w-[1.5vw] h-[2.5vh]' />
 												</button>
 												<button
-													className='w-10 rounded-full flex justify-end hover:bg-red-500 p-2'
+													className='w-[2vw] h-[3.5vh] rounded-full flex justify-end hover:bg-red-500 p-1'
 													onClick={() => removeIngredientHandler(item)}
 												>
-													<Trash2 />
+													<Trash2 className='w-[1.5vw] h-[2.5vh]' />
 												</button>
 											</div>
 										</div>
 									)
 								})
 							) : (
-								<h2 className='uppercase text-white/70 font-bold text-xl w-full text-center'>
+								<h2 className='uppercase text-white/70 font-bold text-[2vh] w-full text-center'>
 									Ingredients were not found
 								</h2>
 							)}

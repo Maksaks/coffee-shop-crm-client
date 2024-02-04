@@ -53,27 +53,27 @@ const IngredientsInfo: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[50%] h-[1000px] mt-20 mx-auto bg-zinc-700 rounded-3xl p-5 text-white font-roboto flex flex-col items-center gap-5 shadow-2xl'
+				className='w-[50%] h-[1000px] mt-20 mx-auto bg-zinc-700 rounded-3xl text-white font-roboto flex flex-col items-center gap-5 shadow-2xl'
 			>
-				<h1 className='p-3 w-full text-center text-2xl font-bold border-b-4'>
+				<h1 className='h-[6vh] p-[1vh] uppercase w-full text-center text-[3vh] font-bold border-b-4'>
 					INGREDIENT ON CURRENT POINT
 				</h1>
 				<input
-					className='w-[90%] py-2 px-5 rounded-2xl text-black text-xl'
+					className='w-[90%] py-2 px-5 rounded-2xl text-black text-[2vh]'
 					placeholder='Search ingredients by name...'
 					onChange={searchHandler}
 				/>
 				<div className='h-[801px] overflow-auto w-[90%]'>
 					<table className='table-auto w-full text-center border-collapse mx-auto'>
 						<thead>
-							<tr className='sticky top-0 text-2xl bg-zinc-800'>
+							<tr className='sticky top-0 text-[2vh] bg-zinc-800'>
 								<th className='w-[5%] p-2 border border-white'>ID</th>
 								<th className='w-[70%] p-2 border border-white'>NAME</th>
 								<th className='w-[20%] p-2 border border-white'>QUANTITY</th>
 								<th className='w-[5%] p-2 border border-white'>ADD</th>
 							</tr>
 						</thead>
-						<tbody className='text-xl'>
+						<tbody className='text-[2vh]'>
 							{searchedIngredients?.length ? (
 								searchedIngredients.map((item, indx) => {
 									return (
@@ -87,7 +87,7 @@ const IngredientsInfo: FC = () => {
 												className='border border-white hover:bg-zinc-700 flex items-center justify-center hover:cursor-pointer p-2'
 												onClick={() => updateIngredientHandler(item)}
 											>
-												<Plus className='w-8 h-8' />
+												<Plus className='w-10 h-10' />
 											</td>
 										</tr>
 									)

@@ -113,14 +113,14 @@ const Popularity: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='w-[60%] h-[1000px] mx-auto  text-white font-roboto flex flex-row gap-4 rounded-2xl'
+			className='w-[60%] h-[80vh] mx-auto  text-white font-roboto flex flex-row gap-4 rounded-2xl'
 		>
-			<div className='h-[100%] w-[35%] bg-zinc-600 rounded-3xl flex items-center flex-col relative'>
-				<h2 className='w-full text-center text-2xl uppercase font-bold border-b-4 p-3'>
+			<div className='h-[100%] w-[35%] bg-zinc-600 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+				<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 					POINTS
 				</h2>
 				<input
-					className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-xl'
+					className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-[2vh]'
 					placeholder='Search point by name...'
 					onChange={searchHandler}
 					disabled={!points.length}
@@ -135,37 +135,37 @@ const Popularity: FC = () => {
 									onClick={() => {
 										setSelectedPoint(item)
 									}}
-									className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-xl ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
+									className={`p-[1vh] w-[90%] rounded-2xl hover:bg-zinc-400 text-[2vh] ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
 								>
 									{item.name}
 								</button>
 							)
 						})
 					) : (
-						<h2 className='uppercase text-2xl pt-5'>Not found</h2>
+						<h2 className='uppercase text-[2vh] pt-5'>Not found</h2>
 					)}
 				</div>
 			</div>
-			<div className='h-[100%] w-[65%] bg-zinc-600 rounded-3xl flex items-center flex-col relative'>
-				<h2 className='w-full h-[6%] text-center text-2xl uppercase font-bold border-b-4 p-3'>
+			<div className='h-[100%] w-[65%] bg-zinc-600 rounded-3xl flex items-center flex-col relative shadow-2xl gap-1'>
+				<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 					POINT`S MENU POSITIONS POPULARITY
 				</h2>
 				{selectedPoint && (
-					<div className='grid grid-cols-12 gap-2 p-3 w-full border-b-4'>
-						<small className='uppercase text-lg text-right font-bold my-auto'>
+					<div className='grid grid-cols-12 gap-2 p-1 w-full border-b-4'>
+						<small className='col-span-2 uppercase text-[1.8vh] text-right font-bold my-auto'>
 							from:
 						</small>
 						<input
-							className='col-span-3 p-1 rounded-xl text-black'
+							className='col-span-4 p-1 rounded-xl text-black text-[1.8vh]'
 							type='datetime-local'
 							value={fromDate}
 							onChange={e => setFromDate(e.target.value)}
 						/>
-						<small className='uppercase text-lg text-right font-bold my-auto'>
+						<small className='uppercase col-span-2 text-[1.8vh] text-right font-bold my-auto'>
 							to:
 						</small>
 						<input
-							className='col-span-3 p-1 rounded-xl text-black'
+							className='col-span-4 p-1 rounded-xl text-[1.8vh] text-black'
 							type='datetime-local'
 							value={toDate}
 							onChange={e => setToDate(e.target.value)}
@@ -173,22 +173,22 @@ const Popularity: FC = () => {
 					</div>
 				)}
 				{positionsPopularity?.length ? (
-					<div className='w-[90%] bg-zinc-700/95 h-[70px] rounded-t-2xl grid grid-cols-10 items-center px-5 py-2 font-bold text-xl'>
+					<div className='w-[90%] bg-zinc-700/95 h-[7vh] rounded-t-2xl grid grid-cols-10 items-center px-5 py-2 font-bold text-[1.9vh]'>
 						<label>ID</label>
 						<label className='col-span-4 text-center'>TITLE</label>
 						<label className='col-span-3 text-center'>CATEGORY</label>
-						<label className='col-span-2 text-center'>NUMBER OF ORDERING</label>
+						<label className='col-span-2 text-center'>COUNT OF ORDERINGS</label>
 					</div>
 				) : (
 					<></>
 				)}
-				<div className='w-full h-[80%] flex flex-col items-center gap-3 py-3 overflow-auto'>
+				<div className='w-[90%] h-[75%] flex flex-col items-center gap-3 py-3 overflow-auto'>
 					{positionsPopularity?.length ? (
 						positionsPopularity.map((item, indx) => {
 							return (
 								<div
 									key={indx}
-									className='w-[90%] bg-zinc-400 h-[60px] rounded-2xl grid grid-cols-10 items-center px-5 py-2 text-lg text-black/80'
+									className='w-[100%] bg-zinc-400 h-[5vh] rounded-2xl grid grid-cols-10 items-center px-5 py-2 text-[1.8vh] text-black/80'
 								>
 									<label>{item.id}</label>
 									<label className='col-span-4 text-center'>{item.name}</label>
@@ -202,7 +202,7 @@ const Popularity: FC = () => {
 							)
 						})
 					) : (
-						<h2 className='uppercase text-white/70 font-bold text-xl w-full text-center'>
+						<h2 className='uppercase text-white/70 font-bold text-[2vh] w-full text-center'>
 							No data
 						</h2>
 					)}

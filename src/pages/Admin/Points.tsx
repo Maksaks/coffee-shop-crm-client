@@ -110,22 +110,22 @@ const Points: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[60%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 rounded-3xl'
+				className='w-[60%] h-[80vh] mt-[5vh] mx-auto text-white font-roboto flex items-center gap-5 rounded-3xl'
 			>
-				<div className='h-[100%] w-[35%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
-					<h2 className='w-full text-center text-2xl uppercase font-bold border-b-4 p-3'>
+				<div className='h-[100%] w-[35%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+					<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 						POINTS
 					</h2>
 					<button
-						className='absolute top-2 right-2 z-10 w-10 h-10 hover:text-black hover:bg-zinc-300 rounded-full disabled:hover:bg-zinc-700 disabled:hover:text-white'
+						className='absolute top-2 right-2 z-10 w-[2vw] h-[4vh] hover:text-black hover:bg-zinc-300 rounded-full disabled:hover:bg-zinc-700 disabled:hover:text-white'
 						onClick={() => {
 							setIsCreatingModalVisible(true)
 						}}
 					>
-						<Plus className='w-10 h-10' />
+						<Plus className='w-[2vw] h-[4vh]' />
 					</button>
 					<input
-						className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-xl'
+						className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-[2vh]'
 						placeholder='Search point by name...'
 						onChange={searchHandler}
 						disabled={!points.length}
@@ -140,33 +140,33 @@ const Points: FC = () => {
 										onClick={() => {
 											setSelectedPoint(item)
 										}}
-										className={`p-4 w-[90%] rounded-2xl hover:bg-zinc-400 text-xl ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
+										className={`p-[1vh] w-[90%] rounded-2xl hover:bg-zinc-400 text-[2vh] ${selectedPoint?.id == item.id ? 'bg-zinc-300 text-black underline uppercase font-bold' : 'bg-zinc-500'}`}
 									>
 										{item.name}
 									</button>
 								)
 							})
 						) : (
-							<h2 className='uppercase text-2xl pt-5'>Not found</h2>
+							<h2 className='uppercase text-[2vh] pt-5'>Not found</h2>
 						)}
 					</div>
 				</div>
-				<div className='h-[100%] w-[65%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
-					<h2 className='w-full h-[6%] text-center text-2xl uppercase font-bold border-b-4 p-3'>
+				<div className='h-[100%] w-[65%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+					<h2 className='w-full h-[6%] text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 						POINT INFO
 					</h2>
-					<div className='h-[7%] border-b-2 w-full grid grid-cols-9 text-xl gap-3 p-5'>
-						<label className='col-span-2 px-5 uppercase font-bold'>
+					<div className='h-[7%] border-b-2 w-full grid grid-cols-11 text-[2vh] gap-2 p-5'>
+						<label className='col-span-2 px-3 uppercase font-bold'>
 							Baristas:
 						</label>
 						<label className='col-span-1'>{selectedPoint?.baristaCount}</label>
-						<label className='col-span-2 px-5 uppercase font-bold'>
+						<label className='col-span-3 px-3 uppercase font-bold'>
 							Ingredients:
 						</label>
 						<label className='col-span-1'>
 							{selectedPoint?.ingredientsCount}
 						</label>
-						<label className='col-span-2 px-5 uppercase font-bold'>
+						<label className='col-span-3 px-3 uppercase font-bold'>
 							Menu Position:
 						</label>
 						<label className='col-span-1'>
@@ -185,68 +185,68 @@ const Points: FC = () => {
 							onClick={() => removePointHandler()}
 						>
 							<Trash2
-								className={`w-16 h-16 p-2 rounded-full ${selectedPoint ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
+								className={`w-[3vw] h-[5vh] p-2 rounded-full ${selectedPoint ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
 							/>
 						</button>
 
-						<label className='text-2xl font-bold p-3 flex items-center'>
+						<label className='text-[2vh] uppercase font-bold p-3 flex items-center'>
 							Name:
 						</label>
 						<input
 							required
 							name='name'
-							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-[80%] h-[5vh] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter name...'
 							value={name}
 							disabled={!selectedPoint}
 							onChange={e => setName(e.target.value)}
 						/>
-						<label className='text-2xl font-bold p-3  flex items-center'>
+						<label className='text-[2vh] uppercase font-bold p-3  flex items-center'>
 							Address:
 						</label>
 						<input
 							required
 							name='address'
-							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-[80%] h-[5vh] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter address...'
 							value={address}
 							onChange={e => setAddress(e.target.value)}
 						/>
-						<label className='text-2xl font-bold p-3  flex items-center'>
+						<label className='text-[2vh] uppercase font-bold p-3  flex items-center'>
 							Working hours:
 						</label>
 						<input
 							required
 							name='workingHours'
-							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-[80%] h-[5vh] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter working hours...'
 							value={workingHours}
 							onChange={e => setWorkingHours(e.target.value)}
 						/>
-						<label className='text-2xl font-bold p-3  flex items-center'>
+						<label className='text-[2vh] uppercase font-bold p-3  flex items-center'>
 							Point money:
 						</label>
 						<input
 							required
 							name='pointMoney'
-							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-[80%] h-[5vh] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter point money...'
 							value={pointMoney}
 							onChange={e => setPointMoney(e.target.value)}
 						/>
-						<label className='text-2xl col-span-3 font-bold p-3 flex items-center'>
+						<label className='text-[2vh] uppercase col-span-3 font-bold p-3 flex items-center'>
 							Description:
 						</label>
 						<textarea
 							required
 							name='description'
-							className='w-full h-[90%] row-start-6 col-span-3 row-span-3 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 overflow-auto placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-full h-[15vh] row-start-6 col-span-3 row-span-3 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 overflow-auto placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter description...'
 							value={description}
 							onChange={e => setDescription(e.target.value)}
 						/>
 						<Button
-							className='col-span-3 w-[50%] mx-auto px-10 uppercase disabled:hover:text-white disabled:hover:bg-zinc-800'
+							className='col-span-3 w-[50%] mx-auto px-10 h-[5vh] p-0 mt-5 uppercase disabled:hover:text-white text-[2vh] disabled:hover:bg-zinc-800'
 							title='Update'
 							type='submit'
 							disabled={

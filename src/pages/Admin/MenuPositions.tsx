@@ -217,10 +217,10 @@ const MenuPositions: FC = () => {
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 0.7 }}
-				className='w-[80%] h-[1000px] mt-20 mx-auto text-white font-roboto flex items-center gap-5 shadow-2xl'
+				className='w-[80%] h-[80vh] mt-[5vh] mx-auto text-white font-roboto flex items-center gap-5'
 			>
-				<div className='h-[100%] w-[25%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
-					<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-2xl font-bold'>
+				<div className='h-[100%] w-[25%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
+					<h2 className='w-full h-[7%] p-3 border-b-4 uppercase text-center text-[2vh] font-bold'>
 						Menu positions
 					</h2>
 					<button
@@ -229,14 +229,14 @@ const MenuPositions: FC = () => {
 						onClick={() => setIsCreatingModalVisible(true)}
 						title='Create new position to this point'
 					>
-						<ListPlus className='w-10 h-10' />
+						<ListPlus className='w-[2vw] h-[3.5vh]' />
 					</button>
-					<small className='w-[80%] text-sm uppercase font-bold mt-2 text-left'>
+					<small className='w-[80%] text-[1.4vh] uppercase font-bold mt-2 text-left'>
 						positions for point:
 					</small>
 					<select
 						id='selectPoint'
-						className='p-3 text-black h-[5%] rounded-xl text-xl  w-[85%] mb-3 font-roboto hover:cursor-pointer'
+						className='p-3 text-black h-[6%] rounded-xl text-[2vh]  w-[85%] mb-3 font-roboto hover:cursor-pointer'
 						value={selectedPoint?.id}
 						onChange={e => {
 							setName('')
@@ -263,10 +263,10 @@ const MenuPositions: FC = () => {
 							)
 						})}
 					</select>
-					<div className='flex flex-col h-[83%] w-full border-t-4 p-3 overflow-auto items-center gap-3'>
+					<div className='flex flex-col h-[80%] w-full border-t-4 p-3 overflow-auto items-center gap-3'>
 						{selectedPoint && (
 							<input
-								className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-xl'
+								className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-[2vh]'
 								placeholder='Search position by name...'
 								onChange={searchHandler}
 								disabled={!selectedPoint.menuPositions.length}
@@ -278,7 +278,7 @@ const MenuPositions: FC = () => {
 									return (
 										<button
 											key={indx}
-											className={`p-3 w-[90%] uppercase font-bold text-xl rounded-2xl hover:bg-zinc-300 hover:text-black ${selectedPosition?.id == item.id ? 'bg-zinc-300 text-black underline' : 'bg-zinc-500'}`}
+											className={`p-3 w-[90%] font-bold text-[2vh] rounded-2xl hover:bg-zinc-300 hover:text-black ${selectedPosition?.id == item.id ? 'bg-zinc-300 text-black underline uppercase' : 'bg-zinc-500'}`}
 											onClick={() => setSelectedPosition(item)}
 											title='Select this position'
 										>
@@ -299,7 +299,7 @@ const MenuPositions: FC = () => {
 						)}
 					</div>
 				</div>
-				<div className='h-[100%] w-[75%] bg-zinc-700 rounded-3xl flex items-center flex-col relative'>
+				<div className='h-[100%] w-[75%] bg-zinc-700 rounded-3xl flex items-center flex-col relative  shadow-2xl'>
 					<form
 						className='grid grid-cols-6 px-12 pt-10 grid-rows-4 w-full h-[35%] items-center border-b-4 relative'
 						onSubmit={submitHandler}
@@ -307,28 +307,40 @@ const MenuPositions: FC = () => {
 						{selectedPositionWithRecipe?.discount &&
 							new Date(selectedPositionWithRecipe?.discount.endAt) >
 								new Date() && (
-								<label className='absolute top-[260px] left-[290px] text-red-600/70'>
+								<label className='absolute top-[21.5vh] text-[1.3vh] left-[11.5vw] text-red-500/70'>
 									-{selectedPositionWithRecipe.discount.amount}% discount on
 									this item until{' '}
 									{dateTimeFormatter(selectedPositionWithRecipe.discount.endAt)}
 								</label>
 							)}
-						{!selectedPositionWithRecipe?.discount ||
-							(selectedPositionWithRecipe.discount &&
-								new Date(selectedPositionWithRecipe.discount.endAt) <
-									new Date() && (
-									<button
-										className='absolute top-[210px] left-[670px]'
-										disabled={!selectedPositionWithRecipe}
-										onClick={() => setIsCreatingDiscountModalVisible(true)}
-										type='button'
-										title='Create discount to this position'
-									>
-										<Percent
-											className={`w-12 h-12 p-1 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
-										/>
-									</button>
-								))}
+						{!selectedPositionWithRecipe?.discount && (
+							<button
+								className='absolute top-[210px] left-[670px]'
+								disabled={!selectedPositionWithRecipe}
+								onClick={() => setIsCreatingDiscountModalVisible(true)}
+								type='button'
+								title='Create discount to this position'
+							>
+								<Percent
+									className={`w-12 h-12 p-1 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
+								/>
+							</button>
+						)}
+						{selectedPositionWithRecipe?.discount &&
+							new Date(selectedPositionWithRecipe?.discount.endAt) <
+								new Date() && (
+								<button
+									className='absolute top-[210px] left-[670px]'
+									disabled={!selectedPositionWithRecipe}
+									onClick={() => setIsCreatingDiscountModalVisible(true)}
+									type='button'
+									title='Create discount to this position'
+								>
+									<Percent
+										className={`w-[1.5vw] h-[2.5vh] p-1 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
+									/>
+								</button>
+							)}
 						<button
 							className='absolute top-3 right-3'
 							disabled={!selectedPositionWithRecipe}
@@ -337,41 +349,41 @@ const MenuPositions: FC = () => {
 							title='Delete this position'
 						>
 							<Trash2
-								className={`w-16 h-16 p-2 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
+								className={`w-[3vw] h-[5vh] p-2 rounded-full ${selectedPositionWithRecipe ? 'hover:stroke-black hover:bg-zinc-400' : ''}`}
 							/>
 						</button>
 
-						<label className='text-2xl font-bold p-3 flex items-center'>
+						<label className='text-[2vh] uppercase font-bold p-3 flex items-center'>
 							Name:
 						</label>
 						<input
 							required
 							name='name'
-							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-[80%] h-[5vh] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter name...'
 							value={name}
 							disabled={!selectedPositionWithRecipe}
 							onChange={e => setName(e.target.value)}
 						/>
-						<label className='text-2xl col-start-4 col-span-1 font-bold p-3  flex items-center'>
+						<label className='text-[2vh] uppercase col-start-4 col-span-1 font-bold p-3  flex items-center'>
 							Description:
 						</label>
 						<textarea
 							required
 							name='description'
-							className='w-full h-[90%] row-start-2 col-start-4 col-span-3 row-span-3 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 overflow-auto placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-full h-[15vh] row-start-2 col-start-4 col-span-3 row-span-3 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 overflow-auto placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter description...'
 							value={description}
 							disabled={!selectedPositionWithRecipe}
 							onChange={e => setDescription(e.target.value)}
 						/>
-						<label className='text-2xl font-bold p-3  flex items-center'>
+						<label className='text-[2vh] uppercase font-bold p-3  flex items-center'>
 							Category:
 						</label>
 						<select
 							required
 							name='category'
-							className={`w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0`}
+							className={`w-[80%] h-[5vh] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0`}
 							defaultValue={-1}
 							value={category}
 							disabled={!selectedPositionWithRecipe}
@@ -388,13 +400,13 @@ const MenuPositions: FC = () => {
 								)
 							})}
 						</select>
-						<label className='text-2xl font-bold p-3  flex items-center'>
+						<label className='text-[2vh] uppercase font-bold p-3  flex items-center'>
 							Price:
 						</label>
 						<input
 							required
 							name='price'
-							className='w-[80%] h-[60px] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-lg text-xl disabled:hover:border-0'
+							className='w-[80%] h-[5vh] col-span-2 bg-gradient-to-r from-zinc-500 to-zinc-400 p-3 rounded-2xl hover:border-2 placeholder:text-white/70 placeholder:text-[1.8vh] text-[1.8vh] disabled:hover:border-0'
 							placeholder='Enter price...'
 							value={price}
 							disabled={!selectedPositionWithRecipe}
@@ -402,36 +414,36 @@ const MenuPositions: FC = () => {
 						/>
 
 						<Button
-							className='col-start-5 row-start-1 col-span-2 w-[50%] mx-auto px-10 uppercase disabled:hover:text-white disabled:hover:bg-zinc-800'
+							className='col-start-5 row-start-1 col-span-2 h-[5vh] p-0 w-[50%] mx-auto px-[1wv] uppercase text-[2vh] disabled:hover:text-white disabled:hover:bg-zinc-800'
 							title='Update'
 							disabled={!selectedPositionWithRecipe}
 							type='submit'
 						/>
 					</form>
-					<h2 className='w-full h-[4%] text-center uppercase text-2xl font-bold p-2'>
+					<h2 className='w-full h-[4%] text-center uppercase text-[2vh] font-bold p-2'>
 						Recipe
 					</h2>
 					<div className='w-full h-[60%] p-5 flex gap-5'>
 						<div className='w-[50%] flex flex-col gap-3 h-full bg-zinc-600 rounded-2xl relative'>
 							<button
-								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
+								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-1 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
 								onClick={() => setIsUpdatingStepsModalVisible(true)}
 								disabled={!selectedPoint || !selectedPositionWithRecipe}
 								title='Update steps to reproduce to this position'
 							>
-								<Pencil className='w-7 h-7' />
+								<Pencil className='w-[1.5vw] h-[2.5vh]' />
 							</button>
-							<h2 className='w-full border-b-4 uppercase text-center p-3 font-bold text-xl'>
+							<h2 className='w-full border-b-4 uppercase text-center p-3 font-bold text-[2vh]'>
 								steps to reproduce
 							</h2>
-							<div className='w-[90%] mx-auto h-[80%] rounded-2xl overflow-auto flex flex-col gap-2'>
+							<div className='w-[90%] mx-auto h-[75%] rounded-2xl overflow-auto flex flex-col gap-2'>
 								{selectedPositionWithRecipe &&
 									selectedPositionWithRecipe.recipe.stepsToReproduce.map(
 										(item, indx) => {
 											return (
 												<label
 													key={indx}
-													className='w-full p-3 bg-zinc-500 min-h-10 rounded-2xl flex gap-2'
+													className='w-full p-3 bg-zinc-500 min-h-[6vh] rounded-2xl flex text-[1.5vh] gap-2'
 												>
 													<Footprints />
 													{item}
@@ -442,24 +454,24 @@ const MenuPositions: FC = () => {
 							</div>
 						</div>
 						<div className='w-[50%] flex flex-col gap-3 h-full bg-zinc-600 rounded-2xl relative'>
-							<h2 className='w-full border-b-4 uppercase text-center p-3 font-bold text-xl'>
+							<h2 className='w-full border-b-4 uppercase text-center p-3 font-bold text-[2vh]'>
 								ingredients
 							</h2>
 							<button
-								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-2 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
+								className='absolute right-1 top-1 rounded-full hover:bg-zinc-400 p-1 hover:text-black disabled:hover:bg-zinc-600 disabled:hover:text-white'
 								disabled={!selectedPoint || !selectedPositionWithRecipe}
 								onClick={() => setIsUpdatingIngredientsModalVisible(true)}
 								title='Update ingredients to this position'
 							>
-								<Pencil className='w-7 h-7' />
+								<Pencil className='w-[1.5vw] h-[2.5vh]' />
 							</button>
-							<div className='w-[90%] mx-auto h-[80%] rounded-2xl overflow-auto flex flex-col gap-2'>
+							<div className='w-[90%] mx-auto h-[75%] rounded-2xl overflow-auto flex flex-col gap-2'>
 								{selectedPositionWithRecipe &&
 									selectedPositionWithRecipe.recipe.ingredients.map(item => {
 										return (
 											<label
 												key={item.id}
-												className='w-full p-3 bg-zinc-500 min-h-10 rounded-2xl flex gap-2'
+												className='w-full p-3 text-[1.5vh] bg-zinc-500 min-h-10 rounded-2xl flex gap-2'
 											>
 												<Footprints />
 												{item.name}

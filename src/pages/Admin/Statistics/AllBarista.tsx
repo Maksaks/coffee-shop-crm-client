@@ -52,27 +52,27 @@ const AllBarista: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='w-[50%] h-[1000px] mx-auto  text-white font-roboto flex flex-col gap-2 rounded-2xl bg-zinc-600 shadow-2xl items-center'
+			className='w-[50%] h-[80vh] mx-auto  text-white font-roboto flex flex-col gap-2 rounded-2xl bg-zinc-600 shadow-2xl items-center'
 		>
-			<h2 className='w-full h-[6%] text-center text-2xl uppercase font-bold border-b-4 p-3'>
+			<h2 className='w-full h-[6%] text-center text-[2vh] uppercase font-bold border-b-4 p-3'>
 				ALL BARISTAS SALARIES AND SHIFTS
 			</h2>
 
 			<div className='grid grid-cols-12 gap-2 p-3 w-full border-b-4'>
-				<small className='uppercase col-start-3 text-lg text-right font-bold my-auto'>
+				<small className='uppercase col-start-2 text-[1.8vh] text-right font-bold my-auto'>
 					from:
 				</small>
 				<input
-					className='col-span-3 p-1 rounded-xl text-black'
+					className='col-span-4 p-1 rounded-xl text-[1.8vh] text-black'
 					type='datetime-local'
 					value={fromDate}
 					onChange={e => setFromDate(e.target.value)}
 				/>
-				<small className='uppercase text-lg text-right font-bold my-auto'>
+				<small className='uppercase text-[1.8vh] text-right font-bold my-auto'>
 					to:
 				</small>
 				<input
-					className='col-span-3 p-1 rounded-xl text-black'
+					className='col-span-4 p-1 rounded-xl text-[1.8vh] text-black'
 					type='datetime-local'
 					value={toDate}
 					onChange={e => setToDate(e.target.value)}
@@ -80,7 +80,7 @@ const AllBarista: FC = () => {
 			</div>
 
 			{salaryAndShifts?.length ? (
-				<div className='w-[90%] bg-zinc-700/95 h-[70px] rounded-t-2xl grid grid-cols-10 items-center px-5 py-2 font-bold text-xl'>
+				<div className='w-[90%] bg-zinc-700/95 h-[6vh] rounded-t-2xl grid grid-cols-10 items-center px-5 py-2 font-bold text-[2vh]'>
 					<label>ID</label>
 					<label className='col-span-4 text-center'>NAME</label>
 					<label className='col-span-3 text-center'>COUNT OF SHIFTS</label>
@@ -89,13 +89,13 @@ const AllBarista: FC = () => {
 			) : (
 				<></>
 			)}
-			<div className='w-full h-[80%] flex flex-col items-center gap-3 py-3 overflow-auto'>
+			<div className='w-full h-[80%] flex flex-col items-center gap-3 overflow-auto'>
 				{salaryAndShifts?.length ? (
 					salaryAndShifts.map((item, indx) => {
 						return (
 							<div
 								key={indx}
-								className={`w-[90%] h-[60px] rounded-2xl grid grid-cols-10 items-center px-5 py-2 text-lg text-black/80 bg-zinc-300`}
+								className={`w-[90%] h-[5vh] rounded-2xl grid grid-cols-10 items-center px-5 py-2 text-[1.8vh] text-black/80 bg-zinc-300`}
 							>
 								<label>{item.id}</label>
 								<label className='col-span-4 text-center'>{item.name}</label>
@@ -109,7 +109,7 @@ const AllBarista: FC = () => {
 						)
 					})
 				) : (
-					<h2 className='uppercase text-white/70 font-bold text-xl w-full text-center'>
+					<h2 className='uppercase text-white/70 font-bold text-[2vh] w-full text-center'>
 						No data
 					</h2>
 				)}

@@ -74,8 +74,8 @@ const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 	}
 
 	return (
-		<div className='w-full h-[95%]'>
-			<div className='grid grid-cols-6 h-[20%] border-b-4 p-5 text-xl items-center gap-x-5 gap-y-3'>
+		<div className='w-full h-[90%]'>
+			<div className='grid grid-cols-6 h-[23%] border-b-4 p-5 text-[2vh] items-center gap-x-5 gap-y-3'>
 				<label className='col-span-3 uppercase font-bold text-center'>
 					Total amount:
 				</label>
@@ -117,7 +117,7 @@ const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 					By cash
 				</label>
 				<button
-					className='border-2 w-[200px] h-[70px] rounded-2xl bg-zinc-900 uppercase font-bold hover:text-black hover:bg-zinc-300 disabled:hover:bg-zinc-900 disabled:hover:text-white disabled:hover:cursor-not-allowed'
+					className='border-2 w-[10vw] h-[70px] rounded-2xl bg-zinc-900 uppercase font-bold hover:text-black hover:bg-zinc-300 disabled:hover:bg-zinc-900 disabled:hover:text-white disabled:hover:cursor-not-allowed  text-[2vh]'
 					onClick={submitHandler}
 					disabled={
 						(+receivedAmount < orderList.totalAmount &&
@@ -128,13 +128,15 @@ const OrderPositionList: FC<Props> = ({ setVisibleModal, setOrderResult }) => {
 					Submit order
 				</button>
 			</div>
-			<div className='w-[95%] mx-auto h-[80%] flex flex-col items-center gap-5 p-5 overflow-auto'>
-				<h2 className='border-b-4 w-full text-center pb-5 rounded-full text-xl font-bold'>
+			<div className='w-[95%] mx-auto h-[75%] flex flex-col items-center gap-5 p-5'>
+				<h2 className='border-b-4 w-full text-center pb-5 rounded-full  text-[2vh] font-bold'>
 					ORDER LIST
 				</h2>
-				{orderList.selectedMenuPositions.map((item, indx) => {
-					return <OrderPositionItem key={indx} orderPosition={item} />
-				})}
+				<div className='h-[90%] w-full flex flex-col items-center overflow-auto gap-3'>
+					{orderList.selectedMenuPositions.map((item, indx) => {
+						return <OrderPositionItem key={indx} orderPosition={item} />
+					})}
+				</div>
 			</div>
 		</div>
 	)

@@ -41,18 +41,20 @@ const MenuPositionItem: FC<Props> = ({ menuPosition }) => {
 		>
 			{menuPosition.discount &&
 				new Date(menuPosition.discount.endAt) > new Date() && (
-					<span className='absolute top-1 right-1 border-2 rounded-full p-1 bg-zinc-200 text-black'>
+					<span className='absolute top-1 right-1 border-2 rounded-full p-1 bg-zinc-200 text-black  text-[1.5vh]'>
 						{menuPosition.discount?.amount} %
 					</span>
 				)}
 			<span
-				className={`absolute font-bold top-1 left-1 border-2 rounded-full p-1 ${menuPosition.discount && new Date(menuPosition.discount.endAt) > new Date() ? 'bg-red-600 text-white border-black' : 'bg-zinc-200 text-black'}`}
+				className={`absolute font-bold  text-[1.5vh] top-1 left-1 border-2 rounded-full p-1 ${menuPosition.discount && new Date(menuPosition.discount.endAt) > new Date() ? 'bg-red-600 text-white border-black' : 'bg-zinc-200 text-black'}`}
 			>
 				{menuPosition.discount &&
 				new Date(menuPosition.discount.endAt) > new Date() ? (
 					<>
-						<span className='line-through mr-4'>{menuPosition.price}</span>
-						<span>
+						<span className='line-through mr-2 text-[1.5vh]'>
+							{menuPosition.price}
+						</span>
+						<span className='text-[1.5vh]'>
 							{Math.round(
 								(menuPosition.price * (100 - menuPosition.discount.amount)) /
 									100
@@ -67,7 +69,7 @@ const MenuPositionItem: FC<Props> = ({ menuPosition }) => {
 			<label className='h-[70%] w-full flex items-end justify-center border-b-2  hover:cursor-pointer'>
 				{CategoryIconSelector(menuPosition.category.title)}
 			</label>
-			<div className='h-[30%] w-full flex flex-col items-center justify-center  uppercase text-[22px] font-bold'>
+			<div className='h-[30%] w-full flex flex-col items-center justify-center  uppercase text-[2vh] font-bold'>
 				{menuPosition.name}
 			</div>
 		</button>
