@@ -315,7 +315,7 @@ const MenuPositions: FC = () => {
 							)}
 						{!selectedPositionWithRecipe?.discount && (
 							<button
-								className='absolute top-[210px] left-[670px]'
+								className='absolute top-[200px] left-[610px]'
 								disabled={!selectedPositionWithRecipe}
 								onClick={() => setIsCreatingDiscountModalVisible(true)}
 								type='button'
@@ -330,7 +330,7 @@ const MenuPositions: FC = () => {
 							new Date(selectedPositionWithRecipe?.discount.endAt) <
 								new Date() && (
 								<button
-									className='absolute top-[210px] left-[670px]'
+									className='absolute top-[200px] left-[610px]'
 									disabled={!selectedPositionWithRecipe}
 									onClick={() => setIsCreatingDiscountModalVisible(true)}
 									type='button'

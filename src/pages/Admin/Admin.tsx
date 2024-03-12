@@ -103,7 +103,7 @@ const Admin: FC = () => {
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 					className={`w-full bg-gradient-to-r from-zinc-800 to-zinc-700 p-3 rounded-2xl hover:border-2 placeholder:text-white/90 placeholder:text-lg text-[2vh]`}
-					placeholder='Enter your password...'
+					placeholder='Enter new password...'
 				/>
 				<Button
 					className='uppercase mt-[2vh] w-[50%] mx-auto'

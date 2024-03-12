@@ -112,7 +112,7 @@ const Consumption: FC = () => {
 			animate={{ opacity: 1, y: 0 }}
 			exit={{ opacity: 0, y: -20 }}
 			transition={{ duration: 0.7 }}
-			className='w-[60%] h-[1000px] mx-auto  text-white font-roboto flex flex-row gap-4 rounded-2xl'
+			className='w-[60%] h-[75vh] mx-auto  text-white font-roboto flex flex-row gap-4 rounded-2xl'
 		>
 			<div className='h-[100%] w-[35%] bg-zinc-600 rounded-3xl flex items-center flex-col relative'>
 				<h2 className='w-full text-center text-[2vh] uppercase font-bold border-b-4 p-3'>

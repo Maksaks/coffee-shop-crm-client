@@ -109,11 +109,11 @@ const Orders: FC = () => {
 		>
 			<div className='h-[100%] w-[30%] bg-zinc-700 rounded-3xl flex items-center flex-col relative shadow-2xl'>
 				<h2 className='w-full h-[6%] p-3 border-b-4 uppercase text-center text-[2vh] font-bold'>
-					Baristas
+					Points
 				</h2>
 				<input
 					className='w-[90%] py-2 px-5 my-3 rounded-2xl text-black text-[2vh]'
-					placeholder='Search barista by surname or name...'
+					placeholder='Search point by name...'
 					onChange={searchHandler}
 				/>
 				<div className='w-full h-[80%] flex flex-col items-center gap-2 overflow-auto'>
